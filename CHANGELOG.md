@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2022-08-19
+### Added
+- `bh prem -add [ARG...]` to allow a user to add a new premises.
+- `bh pres -list` to list all premises.
+- Added the `filesys` to access the file system. 
+
 ## [0.0.0] - 2022-08-18
 ### Added
 - Initial structure.
