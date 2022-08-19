@@ -26,6 +26,9 @@ func init() {
 	INFO.FlagSet.BoolVar(&help, "help", false, "Display the info help.")
 	INFO.FlagSet.BoolVar(&list, "list", false, "List all of the current context information.")
 	INFO.FlagSet.BoolVar(&set, "set", false, "Set some info parameter used within the global context of this application.")
+	INFO.FlagSet.StringVar(&premisesUUID, "premises-uuid", "", "The premises UUID to be set for filtering.")
+	INFO.FlagSet.StringVar(&startDate, "start-date", "", "The start date to be set for filtering.")
+	INFO.FlagSet.StringVar(&endDate, "end-date", "", "The end date to be set for filtering.")
 }
 
 // executes the info command
@@ -35,6 +38,8 @@ func infoExecute(cmd *cmd.Command) {
 		cmd.PrintHelp()
 	case list:
 		ListInfo()
+	case set:
+		SetInfo(&premisesUUID, &startDate, &endDate)
 	default:
 		cmd.PrintHelp()
 	}
@@ -79,4 +84,33 @@ func (i *Info) Save() {
 func ListInfo() {
 	i := LoadInfo()
 	fmt.Printf("%s\n", i.Print())
+}
+
+func SetInfo(propertyUUID *string, startDate *string, endDate *string) {
+	i := LoadInfo()
+	if *propertyUUID != "" {
+		UUID, err := uuid.Parse(*propertyUUID)
+		if err != nil {
+			fmt.Printf("Unable to set property UUID: %v", err)
+		} else {
+			i.PropertyUUID = UUID
+		}
+	}
+	if *startDate != "" {
+		t, err := time.Parse("2006-01-02", *startDate)
+		if err != nil {
+			fmt.Printf("Unable to set start date: %v", err)
+		} else {
+			i.StartDate = t
+		}
+	}
+	if *endDate != "" {
+		t, err := time.Parse("2006-01-02", *endDate)
+		if err != nil {
+			fmt.Printf("Unable to set end date: %v", err)
+		} else {
+			i.EndDate = t
+		}
+	}
+	i.Save()
 }

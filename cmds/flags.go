@@ -35,3 +35,12 @@ var address string
 
 // the plotNumber of a data structure
 var plotNumber string
+
+// the premisesUUID for filtering premises
+var premisesUUID string
+
+// the startDate for filtering
+var startDate string
+
+// the endDate for filtering
+var endDate string
