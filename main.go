@@ -4,11 +4,14 @@ import (
 	"fmt"
 	"github.com/bleuhold/bh/cmd"
 	"github.com/bleuhold/bh/cmds"
+	"github.com/bleuhold/bh/filesys"
 	"log"
 	"os"
 )
 
 func main() {
+	// set up the default data directory for the command line tool.
+	filesys.DirectorySetup()
 	fmt.Printf("**%v**\n", os.Args)
 	cs := cmd.NewCommandSet()
 

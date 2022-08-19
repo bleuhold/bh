@@ -2,7 +2,9 @@
 > By Bleu Holdings powered by [Dottics](https://dottics.com)
 
 `bh` is a simple command line tool to simplify rental management.
-
+> This command line tool tries to follow practises as set out and described
+> by the command line interface guidelines of [CLIG](https://clig.dev/).
+    
 **Goal**
 This CLI tool is an MVP for a simplified rental management interface. With the
 tool being expanded from a local tool, to a cloud based tool with CLI interface

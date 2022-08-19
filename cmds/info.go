@@ -19,6 +19,7 @@ func init() {
 	INFO.FlagSet.BoolVar(&help, "h", false, "")
 	INFO.FlagSet.BoolVar(&help, "help", false, "Display the info help.")
 	INFO.FlagSet.BoolVar(&list, "list", false, "List all of the current context information.")
+	INFO.FlagSet.BoolVar(&set, "set", false, "Set some info parameter used within the global context of this application.")
 }
 
 // executes the info command
