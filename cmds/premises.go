@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/bleuhold/bh/cmd"
 	"github.com/bleuhold/bh/filesys"
-	"github.com/bleuhold/bhman/fs"
 	"github.com/google/uuid"
 	"log"
 )
@@ -67,7 +66,7 @@ func (p *PremisesData) Save() {
 	if err != nil {
 		log.Fatalf("Unable to marshal premises data: %v", err)
 	}
-	fs.WriteFile(premisesFilename, xb)
+	filesys.WriteFile(premisesFilename, xb)
 }
 
 // Print prints the list of all premises
