@@ -27,3 +27,11 @@ var update bool
 var set bool
 
 /* MORE SPECIFIC FLAGS */
+
+// the name of a data structure
+var name string
+
+var address string
+
+// the plotNumber of a data structure
+var plotNumber string

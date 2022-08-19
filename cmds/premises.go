@@ -8,6 +8,7 @@ import (
 	"github.com/bleuhold/bh/filesys"
 	"github.com/google/uuid"
 	"log"
+	"strings"
 )
 
 var PREMISES *cmd.Command
@@ -27,6 +28,9 @@ func init() {
 	PREMISES.FlagSet.BoolVar(&add, "add", false, "To add a new premises.")
 	PREMISES.FlagSet.BoolVar(&update, "update", false, "To update a specific premises' data.")
 	PREMISES.FlagSet.BoolVar(&remove, "remove", false, "To remove/delete a specific premises' data.")
+	PREMISES.FlagSet.StringVar(&name, "name", "", "The name of the premises.")
+	PREMISES.FlagSet.StringVar(&address, "address", "", "The address of the premises.")
+	PREMISES.FlagSet.StringVar(&plotNumber, "plot-number", "", "The plot number of the premises.")
 }
 
 func premExecute(cmd *cmd.Command) {
@@ -34,7 +38,9 @@ func premExecute(cmd *cmd.Command) {
 	case help:
 		cmd.PrintHelp()
 	case list:
-		ListProperties()
+		ListPremises()
+	case add:
+		AddPremises(cmd, &name, &address, &plotNumber)
 	default:
 		cmd.PrintHelp()
 	}
@@ -83,8 +89,24 @@ func (p *PremisesData) Print() {
 	}
 }
 
-// ListProperties lists all the properties available
-func ListProperties(_ ...string) {
+// ListPremises lists all the properties available
+func ListPremises() {
 	p := LoadProperties()
 	p.Print()
+}
+
+// AddPremises adds a new premises.
+func AddPremises(cmd *cmd.Command, name *string, address *string, plotNumber *string) {
+	s := append([]string{*address}, cmd.FlagSet.Args()...)
+	*address = strings.Join(s, " ")
+
+	p := LoadProperties()
+	prem := Premises{
+		UUID:       uuid.New(),
+		Name:       *name,
+		Address:    *address,
+		PlotNumber: *plotNumber,
+	}
+	p.Premises = append(p.Premises, prem)
+	p.Save()
 }
