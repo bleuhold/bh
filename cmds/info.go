@@ -5,20 +5,21 @@ import (
 	"flag"
 	"fmt"
 	"github.com/bleuhold/bh/cmd"
-	"github.com/bleuhold/bhman/fs"
+	"github.com/bleuhold/bh/filesys"
 	"github.com/google/uuid"
 	"log"
 	"time"
 )
 
 var INFO *cmd.Command
+var infoFilename = "info.json"
 
 func init() {
 	INFO = &cmd.Command{
 		Name:        "info",
 		Description: "To show the current info.",
 		FlagSet:     flag.NewFlagSet("info", flag.ExitOnError),
-		Execute:     execute,
+		Execute:     infoExecute,
 	}
 	// Define the local usage for a flag.
 	INFO.FlagSet.BoolVar(&help, "h", false, "")
@@ -28,13 +29,12 @@ func init() {
 }
 
 // executes the info command
-func execute(cmd *cmd.Command) {
-	fmt.Println("FLAGS", list, help)
+func infoExecute(cmd *cmd.Command) {
 	switch {
 	case help:
 		cmd.PrintHelp()
 	case list:
-		fmt.Println("info list")
+		ListInfo()
 	default:
 		cmd.PrintHelp()
 	}
@@ -46,11 +46,24 @@ type Info struct {
 	EndDate      time.Time `json:"endDate"`
 }
 
+// LoadInfo loads the info data.
+func LoadInfo() *Info {
+	info := &Info{
+		PropertyUUID: uuid.UUID{},
+		StartDate:    time.Now(),
+		EndDate:      time.Now(),
+	}
+	filesys.LoadInterface(infoFilename, info)
+	return info
+}
+
 // Print prints the info data to the CLI.
-func (i *Info) Print() {
-	fmt.Printf("%-15s %v\n", "Property UUID:", i.PropertyUUID)
-	fmt.Printf("%-15s %v\n", "Start Date:", i.StartDate)
-	fmt.Printf("%-15s %v\n", "End Date:", i.EndDate)
+func (i *Info) Print() string {
+	s := ""
+	s += fmt.Sprintf("%-15s %v\n", "Property UUID:", i.PropertyUUID)
+	s += fmt.Sprintf("%-15s %v\n", "Start Date:", i.StartDate.Format("2006-01-02"))
+	s += fmt.Sprintf("%-15s %v\n", "End Date:", i.EndDate.Format("2006-01-02"))
+	return s
 }
 
 // Save writes the data to the file system.
@@ -59,5 +72,11 @@ func (i *Info) Save() {
 	if err != nil {
 		log.Fatalf("Unable to marshal info data: %v", err)
 	}
-	fs.WriteFile("info.json", xb)
+	filesys.WriteFile(infoFilename, xb)
+}
+
+// ListInfo lists the info to the console.
+func ListInfo() {
+	i := LoadInfo()
+	fmt.Printf("%s\n", i.Print())
 }

@@ -12,7 +12,7 @@ import (
 func main() {
 	// set up the default data directory for the command line tool.
 	filesys.DirectorySetup()
-	fmt.Printf("**%v**\n", os.Args)
+	fmt.Printf("**%v**\n\n", os.Args)
 	cs := cmd.NewCommandSet()
 
 	err := cs.Add(cmds.INFO)
