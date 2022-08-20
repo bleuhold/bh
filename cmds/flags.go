@@ -23,9 +23,6 @@ var remove bool
 // to update a data structure
 var update bool
 
-// to set a piece of information/config/settings
-var set bool
-
 /* MORE SPECIFIC FLAGS */
 
 // the name of a data structure

@@ -1,10 +1,11 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"github.com/bleuhold/bh/cmd"
 	"github.com/bleuhold/bh/cmds"
 	"github.com/bleuhold/bh/filesys"
+	"github.com/dottics/cli"
 	"log"
 	"os"
 )
@@ -13,77 +14,19 @@ func main() {
 	// set up the default data directory for the command line tool.
 	filesys.DirectorySetup()
 	fmt.Printf("**%v**\n\n", os.Args)
-	cs := cmd.NewCommandSet(0)
 
-	err := cs.Add(cmds.INFO)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	err = cs.Add(cmds.PREMISES)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	err = cs.Add(cmds.BANK)
+	c := cli.NewCommand("bh", flag.ExitOnError)
+
+	// add commands
+	err := c.AddCommands([]*cli.Command{
+		cmds.INFO,
+	})
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	c, err := cs.Run()
+	err = c.Run(os.Args[1:])
 	if err != nil {
 		log.Fatalln(err)
-	}
-	fmt.Printf("cmd: %v\n\n", c)
-	if c != nil {
-		c.Execute(c)
 	}
 }
-
-//
-//func main() {
-//	//fmt.Println("Hello")
-//	// if there is an error the "get" subcommand will exit on error
-//	getCmd := flag.NewFlagSet("get", flag.ExitOnError)
-//	var getAll bool
-//	getCmd.BoolVar(&getAll, "all", false, "")
-//	//getAll := getCmd.Bool("all", false, "Get all videos.")
-//	var getID string
-//	getCmd.StringVar(&getID, "id", "", "YouTube video ID.")
-//	getCmd.StringVar(&getID, "I", "", "YouTube video ID.")
-//
-//	addCmd := flag.NewFlagSet("add", flag.ExitOnError)
-//	addID := addCmd.String("id", "", "YouTube video ID.")
-//	addTitle := addCmd.String("title", "", "YouTube video title.")
-//
-//	if len(os.Args) < 2 {
-//		fmt.Println("expected 'get' or 'add' subcommand")
-//		os.Exit(1)
-//	}
-//
-//	switch os.Args[1] {
-//	case "get":
-//		// handle get
-//		HandleGet(getCmd, &getAll, &getID)
-//	case "add":
-//		// handle add
-//		HandleAdd(addCmd, addID, addTitle)
-//	default:
-//		// handle default
-//	}
-//}
-//
-//func HandleGet(getCmd *flag.FlagSet, all *bool, id *string) {
-//	err := getCmd.Parse(os.Args[2:])
-//	if err != nil {
-//		log.Fatalln("Unable to parse get command", err)
-//	}
-//
-//	if *all == false && *id == "" {
-//		fmt.Println("id is required or specify --all for all videos")
-//		getCmd.PrintDefaults()
-//		os.Exit(1)
-//	}
-//
-//	fmt.Println("get all videos")
-//}
-//
-//func HandleAdd(addCmd *flag.FlagSet, id *string, title *string) {}

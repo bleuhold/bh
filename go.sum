@@ -1,2 +1,4 @@
+github.com/dottics/cli v0.1.0 h1:+c0bRvbtZdunHB34XGNOcgOgELUf9ZFWTQRaUZPy9MI=
+github.com/dottics/cli v0.1.0/go.mod h1:aNeOk9kHJtXxC8Eo7Skja4hiIgkkwoMl/hYNBJL9zeE=
 github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
 github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
