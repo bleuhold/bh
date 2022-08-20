@@ -13,7 +13,7 @@ func main() {
 	// set up the default data directory for the command line tool.
 	filesys.DirectorySetup()
 	fmt.Printf("**%v**\n\n", os.Args)
-	cs := cmd.NewCommandSet()
+	cs := cmd.NewCommandSet(0)
 
 	err := cs.Add(cmds.INFO)
 	if err != nil {
@@ -23,10 +23,18 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-
-	err = cs.Run()
+	err = cs.Add(cmds.BANK)
 	if err != nil {
 		log.Fatalln(err)
+	}
+
+	c, err := cs.Run()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Printf("cmd: %v\n\n", c)
+	if c != nil {
+		c.Execute(c)
 	}
 }
 

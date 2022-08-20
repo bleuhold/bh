@@ -15,7 +15,19 @@ type Command struct {
 	Name        string
 	Description string
 	FlagSet     *flag.FlagSet
-	Execute     func(command *Command)
+	//CommandSet  *CommandSet
+	Execute func(command *Command)
+}
+
+// NewCommand creates a basic new command.
+func NewCommand(name string, handling flag.ErrorHandling) *Command {
+	cmd := &Command{
+		Name:        name,
+		Description: "",
+		FlagSet:     flag.NewFlagSet(name, handling),
+		Execute:     WIP,
+	}
+	return cmd
 }
 
 // Help is the method that prints the help description of the command to
@@ -36,7 +48,7 @@ func (c Command) PrintHelp() {
 }
 
 // Commands is a slice of all commands for the command line tool
-type Commands map[string]Command
+type Commands map[string]*Command
 
 // Help formats the string that is printed to the os.StdOut when
 // the --help flag is passed.
@@ -54,12 +66,16 @@ func (c Commands) PrintHelp() {
 }
 
 type CommandSet struct {
+	level    int
 	Commands Commands
 }
 
-func NewCommandSet() CommandSet {
-	cs := CommandSet{}
-	cs.Commands = make(map[string]Command)
+// NewCommandSet creates a new CommandSet.
+func NewCommandSet(level int) *CommandSet {
+	cs := &CommandSet{
+		level: level,
+	}
+	cs.Commands = make(map[string]*Command)
 	return cs
 }
 
@@ -69,31 +85,41 @@ func (cs *CommandSet) Add(cmd *Command) error {
 	if _, ok := cs.Commands[cmd.Name]; ok {
 		return fmt.Errorf("cannot add command %s already exists", cmd.Name)
 	}
-	cs.Commands[cmd.Name] = *cmd
+	cs.Commands[cmd.Name] = cmd
 	return nil
 }
 
 // Run handles the execution of the command set.
-func (cs *CommandSet) Run() error {
-	help := flag.Bool("help", false, "Show help")
+func (cs *CommandSet) Run() (*Command, error) {
+	fmt.Printf("args: %v\n", os.Args)
+	//help := flag.Bool("help", false, "Show help")
+	//if len(os.Args) < 2 {
+	//	cs.Commands.PrintHelp()
+	//	return nil, nil
+	//}
+	//flag.Parse()
 	if len(os.Args) < 2 {
 		cs.Commands.PrintHelp()
-		return nil
+		return nil, nil
 	}
-	flag.Parse()
 
-	cmd, ok := cs.Commands[os.Args[1]]
+	command := os.Args[1+cs.level]
+	args := os.Args[(2 + cs.level):]
+	fmt.Printf("%v %v\n", command, args)
+
+	cmd, ok := cs.Commands[command]
 	switch {
-	case *help:
-		cs.Commands.PrintHelp()
+	//case *help:
+	//	cs.Commands.PrintHelp()
 	case ok:
-		if err := cmd.Init(os.Args[2:]); err != nil {
-			return err
+		if err := cmd.Init(args); err != nil {
+			return nil, err
 		}
-		cmd.Execute(&cmd)
+		//cmd.Execute(&cmd)
+		return cmd, nil
 	default:
 		fmt.Printf("Invalid command: %s\n\n", os.Args[1])
 		cs.Commands.PrintHelp()
 	}
-	return nil
+	return nil, nil
 }

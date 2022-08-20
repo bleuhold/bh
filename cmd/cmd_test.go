@@ -2,7 +2,9 @@ package cmd
 
 import (
 	"errors"
+	"flag"
 	"fmt"
+	"os"
 	"testing"
 )
 
@@ -21,11 +23,11 @@ func TestCommand_Help(t *testing.T) {
 
 func TestCommands_Help(t *testing.T) {
 	xc := Commands{
-		"get": Command{
+		"get": &Command{
 			Name:        "get",
 			Description: "Get all <entries>",
 		},
-		"adds": Command{
+		"adds": &Command{
 			Name:        "adds",
 			Description: "Add a new <entry>",
 		},
@@ -40,7 +42,7 @@ func TestCommands_Help(t *testing.T) {
 
 func TestCommandSet_Add(t *testing.T) {
 	cs := CommandSet{
-		Commands: map[string]Command{
+		Commands: map[string]*Command{
 			"add": {
 				Name: "add",
 			},
@@ -79,5 +81,38 @@ func TestCommandSet_Add(t *testing.T) {
 				t.Errorf("expected error '%v' got '%v'", err2, err1)
 			}
 		})
+	}
+}
+
+func TestCommandSet_Run_Level_0(t *testing.T) {
+	// best practise to restore the global state to as before
+	oldArgs := os.Args
+	defer func() { os.Args = oldArgs }()
+
+	cs := &CommandSet{
+		level: 0,
+		Commands: map[string]*Command{
+			"add": {
+				Name:    "add",
+				FlagSet: flag.NewFlagSet("add", flag.ExitOnError),
+			},
+		},
+	}
+
+	os.Args = []string{"bh", "add", "-help"}
+	fmt.Printf("cs: %v\n", cs)
+
+	c, err := cs.Run()
+	fmt.Printf("%v\n", c)
+	if err != nil {
+		t.Errorf("expected error nil got %v", err)
+	}
+	cmd := cs.Commands["add"]
+	if c == nil {
+		t.Errorf("expected command got nil")
+	} else {
+		if c != cmd {
+			t.Errorf("expected command address %v got %v", cmd, c)
+		}
 	}
 }

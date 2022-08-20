@@ -22,13 +22,13 @@ func init() {
 		Execute:     infoExecute,
 	}
 	// Define the local usage for a flag.
-	INFO.FlagSet.BoolVar(&help, "h", false, "")
-	INFO.FlagSet.BoolVar(&help, "help", false, "Display the info help.")
-	INFO.FlagSet.BoolVar(&list, "list", false, "List all of the current context information.")
-	INFO.FlagSet.BoolVar(&set, "set", false, "Set some info parameter used within the global context of this application.")
-	INFO.FlagSet.StringVar(&premisesUUID, "premises-uuid", "", "The premises UUID to be set for filtering.")
-	INFO.FlagSet.StringVar(&startDate, "start-date", "", "The start date to be set for filtering.")
-	INFO.FlagSet.StringVar(&endDate, "end-date", "", "The end date to be set for filtering.")
+	//INFO.FlagSet.BoolVar(&help, "h", false, "")
+	//INFO.FlagSet.BoolVar(&help, "help", false, "Display the info help.")
+	//INFO.FlagSet.BoolVar(&list, "list", false, "List all of the current context information.")
+	//INFO.FlagSet.BoolVar(&set, "set", false, "Set some info parameter used within the global context of this application.")
+	//INFO.FlagSet.StringVar(&premisesUUID, "premises-uuid", "", "The premises UUID to be set for filtering.")
+	//INFO.FlagSet.StringVar(&startDate, "start-date", "", "The start date to be set for filtering.")
+	//INFO.FlagSet.StringVar(&endDate, "end-date", "", "The end date to be set for filtering.")
 }
 
 // executes the info command
@@ -91,7 +91,7 @@ func SetInfo(propertyUUID *string, startDate *string, endDate *string) {
 	if *propertyUUID != "" {
 		UUID, err := uuid.Parse(*propertyUUID)
 		if err != nil {
-			fmt.Printf("Unable to set property UUID: %v", err)
+			fmt.Printf("Unable to set property UUID: %v\n", err)
 		} else {
 			i.PropertyUUID = UUID
 		}
@@ -99,7 +99,7 @@ func SetInfo(propertyUUID *string, startDate *string, endDate *string) {
 	if *startDate != "" {
 		t, err := time.Parse("2006-01-02", *startDate)
 		if err != nil {
-			fmt.Printf("Unable to set start date: %v", err)
+			fmt.Printf("Unable to set start date: %v\n", err)
 		} else {
 			i.StartDate = t
 		}
@@ -107,7 +107,7 @@ func SetInfo(propertyUUID *string, startDate *string, endDate *string) {
 	if *endDate != "" {
 		t, err := time.Parse("2006-01-02", *endDate)
 		if err != nil {
-			fmt.Printf("Unable to set end date: %v", err)
+			fmt.Printf("Unable to set end date: %v\n", err)
 		} else {
 			i.EndDate = t
 		}
