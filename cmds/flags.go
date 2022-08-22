@@ -11,33 +11,13 @@ Flags are shared with all subcommands.
 // to show help information
 var help bool
 
-// to list all available data
-var list bool
+// all the available bool variables
+var b1 bool
 
-// to add a new data structure
-var add bool
-
-// to remove a data structure
-var remove bool
-
-// to update a data structure
-var update bool
-
-/* MORE SPECIFIC FLAGS */
+// all the available string variables
+var s1 string
+var s2 string
+var s3 string
 
 // the name of a data structure
 var name string
-
-var address string
-
-// the plotNumber of a data structure
-var plotNumber string
-
-// the premisesUUID for filtering premises
-var premisesUUID string
-
-// the startDate for filtering
-var startDate string
-
-// the endDate for filtering
-var endDate string

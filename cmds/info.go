@@ -15,7 +15,7 @@ var infoFilename = "info.json"
 //executes the info command
 func infoExecute(cmd *cli.Command) error {
 	switch {
-	case list:
+	case b1:
 		ListInfo()
 	default:
 		cmd.PrintHelp()

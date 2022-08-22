@@ -8,11 +8,14 @@ import (
 )
 
 func infoSetExecute(cmd *cli.Command) error {
-	u, s, e, err := parseSetInfoData(&premisesUUID, &startDate, &endDate)
+	u, s, e, err := parseSetInfoData(&s1, &s2, &s3)
 
 	// if there are boolean flags
 	// check in the switch statement
 	switch {
+	case help:
+		cmd.PrintHelp()
+		return nil
 	case err != nil:
 		return SetInfo(&u, &s, &e)
 	default:

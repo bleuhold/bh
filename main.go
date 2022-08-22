@@ -10,12 +10,14 @@ import (
 	"os"
 )
 
+var help bool
+
 func main() {
 	// set up the default data directory for the command line tool.
 	filesys.DirectorySetup()
 	fmt.Printf("**%v**\n\n", os.Args)
 
-	c := cli.NewCommand("bh", flag.ExitOnError)
+	c := cli.NewCommand("bh", &help, flag.ExitOnError)
 	c.Execute = executeBH
 
 	// add commands
