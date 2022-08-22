@@ -23,6 +23,7 @@ func main() {
 	// add commands
 	err := c.AddCommands([]*cli.Command{
 		cmds.INFO,
+		cmds.UPLOAD,
 	})
 	if err != nil {
 		log.Fatalln(err)

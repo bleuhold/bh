@@ -9,7 +9,12 @@ import (
 var INFO *cli.Command
 var INFO_SET *cli.Command
 
+var UPLOAD *cli.Command
+
 func init() {
+	/*
+		INFO
+	*/
 	INFO = cli.NewCommand("info", &help, flag.ExitOnError)
 	INFO.Usage = "bh"
 	INFO.Description = "To show the current info."
@@ -31,6 +36,18 @@ func init() {
 	err := INFO.AddCommands([]*cli.Command{
 		INFO_SET,
 	})
+
+	/*
+		UPLOAD
+	*/
+	UPLOAD = cli.NewCommand("upload", &help, flag.ExitOnError)
+	INFO.Usage = "bh"
+	UPLOAD.Description = "Upload a bank statement."
+	UPLOAD.Execute = uploadExecute
+
+	UPLOAD.FlagSet.StringVar(&s1, "f", "", "The bank statement CSV to be uploaded.")
+	UPLOAD.FlagSet.StringVar(&s1, "file", "", "The bank statement CSV to be uploaded.")
+
 	if err != nil {
 		log.Fatalln(err)
 	}
