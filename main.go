@@ -16,6 +16,7 @@ func main() {
 	fmt.Printf("**%v**\n\n", os.Args)
 
 	c := cli.NewCommand("bh", flag.ExitOnError)
+	c.Execute = executeBH
 
 	// add commands
 	err := c.AddCommands([]*cli.Command{
@@ -29,4 +30,9 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+}
+
+func executeBH(c *cli.Command) error {
+	c.PrintHelp()
+	return nil
 }
