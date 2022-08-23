@@ -45,8 +45,8 @@ func init() {
 	UPLOAD.Description = "Upload a bank statement."
 	UPLOAD.Execute = uploadExecute
 
-	UPLOAD.FlagSet.StringVar(&s1, "f", "", "The bank statement CSV to be uploaded.")
-	UPLOAD.FlagSet.StringVar(&s1, "file", "", "The bank statement CSV to be uploaded.")
+	UPLOAD.FlagSet.StringVar(&s1, "f", "", "The path to the bank statement CSV to be uploaded.")
+	UPLOAD.FlagSet.StringVar(&s1, "file", "", "The path to the bank statement CSV to be uploaded.")
 
 	if err != nil {
 		log.Fatalln(err)
