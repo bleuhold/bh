@@ -3,7 +3,9 @@ package cmds
 import (
 	"errors"
 	"fmt"
+	"github.com/bleuhold/bh/ecsv"
 	"github.com/dottics/cli"
+	"github.com/google/uuid"
 	"os"
 	"strings"
 )
@@ -11,13 +13,16 @@ import (
 // uploadExecute is the function executed when the upload command is called.
 func uploadExecute(cmd *cli.Command) error {
 	// since both -f and -file point to variable s1
-	_, err := validateCSV(&s1)
+	xb, err := validateCSV(&s1)
+	if err != nil {
+		return err
+	}
 	switch {
 	case help:
 		cmd.PrintHelp()
 		return nil
-	case err != nil:
-
+	default:
+		err = marshalCSV(xb)
 	}
 	return err
 }
@@ -43,4 +48,21 @@ func validateCSV(path *string) ([]byte, error) {
 		return []byte{}, err
 	}
 	return xb, nil
+}
+
+func marshalCSV(xb []byte) error {
+	c := ecsv.CSV{
+		StartOffset: 2, // for Investec CSV files
+	}
+	c.ReadData(xb)
+	xt := make(Transactions, 0)
+	err := xt.MarshalCSV("investec", uuid.New(), &c)
+	if err != nil {
+		return err
+	}
+	fmt.Println(xt.String())
+	//for _, r := range c.Records {
+	//	fmt.Printf("* %v *\n", r)
+	//}
+	return nil
 }
