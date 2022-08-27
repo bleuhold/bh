@@ -22,7 +22,9 @@ func uploadExecute(cmd *cli.Command) error {
 		if err != nil {
 			return err
 		}
-		err = marshalCSV(xb)
+		xt, err := marshalCSV(xb)
+		xt, err = appendTransactions(xt)
+		xt.Save()
 		return err
 	}
 }
@@ -52,7 +54,7 @@ func validateCSV(path *string) ([]byte, error) {
 	return xb, err
 }
 
-func marshalCSV(xb []byte) error {
+func marshalCSV(xb []byte) (*Transactions, error) {
 	c := ecsv.CSV{
 		StartOffset: 2, // for Investec CSV files
 	}
@@ -60,19 +62,33 @@ func marshalCSV(xb []byte) error {
 	xt := make(Transactions, 0)
 	err := xt.MarshalCSV("investec", uuid.New(), &c)
 	if err != nil {
-		return err
+		return &xt, err
 	}
-	fmt.Println(xt.String())
-	//for _, r := range c.Records {
-	//	fmt.Printf("* %v *\n", r)
-	//}
-	return nil
+	//fmt.Println(xt.String())
+	return &xt, nil
 }
 
 // appendTransactions takes a Transactions, loads the saved transactions.
 // It compares the new transactions to the current transactions and only appends
 // non-duplicate transactions to the current transactions.
 // the returns the transactions.
-func appendTransactions(xt *Transactions) error {
-	return nil
+func appendTransactions(xt *Transactions) (*Transactions, error) {
+	// cxt denotes current slice of transactions
+	cxt := LoadTransactions()
+	fmt.Println(cxt.String())
+	for _, ti := range *xt {
+		// by default, we will want to add a new transaction
+		add := true
+		for _, t := range *cxt {
+			if t == ti {
+				// if the transaction is already in the current slice of
+				// transaction, then do not add the transaction.
+				add = false
+			}
+		}
+		if add {
+			*cxt = append(*cxt, ti)
+		}
+	}
+	return cxt, nil
 }

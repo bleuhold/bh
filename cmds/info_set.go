@@ -16,7 +16,7 @@ func infoSetExecute(cmd *cli.Command) error {
 	case help:
 		cmd.PrintHelp()
 		return nil
-	case err != nil:
+	case err == nil:
 		return SetInfo(&u, &s, &e)
 	default:
 		cmd.PrintHelp()
