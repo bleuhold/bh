@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/bleuhold/bh/ecsv"
 	"github.com/bleuhold/bh/filesys"
+	"github.com/dottics/cli"
 	"github.com/google/uuid"
 	"log"
 	"strconv"
@@ -21,6 +22,17 @@ var BANKS = map[string]map[int]string{
 		4: "credit",
 		5: "balance",
 	},
+}
+
+func transactionsExecute(cmd *cli.Command) error {
+	switch {
+	case help:
+		cmd.PrintHelp()
+		return nil
+	case b1:
+		ListTransactions()
+	}
+	return nil
 }
 
 // Transaction is a struct containing all fields relevant to a transaction.
@@ -114,4 +126,11 @@ func (t *Transaction) Set(record []string, bankMap map[int]string) {
 			t.Balance, _ = strconv.ParseFloat(v, 64)
 		}
 	}
+}
+
+// ListTransactions loads all the transactions and prints them to the
+// transactions.
+func ListTransactions() {
+	xt := LoadTransactions()
+	fmt.Printf("%s", xt.String())
 }

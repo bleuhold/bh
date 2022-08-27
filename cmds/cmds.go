@@ -11,6 +11,8 @@ var INFO_SET *cli.Command
 
 var UPLOAD *cli.Command
 
+var TRANSACTIONS *cli.Command
+
 func init() {
 	/*
 		INFO
@@ -47,6 +49,16 @@ func init() {
 
 	UPLOAD.FlagSet.StringVar(&s1, "f", "", "The path to the bank statement CSV to be uploaded.")
 	UPLOAD.FlagSet.StringVar(&s1, "file", "", "The path to the bank statement CSV to be uploaded.")
+
+	/*
+		TRANSACTIONS
+	*/
+	TRANSACTIONS = cli.NewCommand("transactions", &help, flag.ExitOnError)
+	TRANSACTIONS.Usage = "bh"
+	TRANSACTIONS.Description = "All bank transaction related commands."
+	TRANSACTIONS.Execute = transactionsExecute
+
+	TRANSACTIONS.FlagSet.BoolVar(&b1, "list", false, "List all transactions for the set date ranges.")
 
 	if err != nil {
 		log.Fatalln(err)

@@ -24,6 +24,7 @@ func main() {
 	err := c.AddCommands([]*cli.Command{
 		cmds.INFO,
 		cmds.UPLOAD,
+		cmds.TRANSACTIONS,
 	})
 	if err != nil {
 		log.Fatalln(err)
