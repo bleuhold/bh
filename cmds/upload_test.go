@@ -51,3 +51,7 @@ func TestValidateCSV(t *testing.T) {
 		})
 	}
 }
+
+func TestMarshalCSV(t *testing.T) {
+
+}

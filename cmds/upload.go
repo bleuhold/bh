@@ -68,3 +68,11 @@ func marshalCSV(xb []byte) error {
 	//}
 	return nil
 }
+
+// appendTransactions takes a Transactions, loads the saved transactions.
+// It compares the new transactions to the current transactions and only appends
+// non-duplicate transactions to the current transactions.
+// the returns the transactions.
+func appendTransactions(xt *Transactions) error {
+	return nil
+}

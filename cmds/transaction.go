@@ -1,12 +1,17 @@
 package cmds
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/bleuhold/bh/ecsv"
+	"github.com/bleuhold/bh/filesys"
 	"github.com/google/uuid"
+	"log"
 	"strconv"
 	"time"
 )
+
+var transactionsFilename = "transactions.json"
 
 var BANKS = map[string]map[int]string{
 	"investec": {
@@ -38,6 +43,22 @@ type Transaction struct {
 }
 
 type Transactions []Transaction
+
+// LoadTransactions loads the transactions from the file system.
+func LoadTransactions() *Transactions {
+	xt := &Transactions{}
+	filesys.LoadInterface(transactionsFilename, xt)
+	return xt
+}
+
+// Save writes the data to the file system.
+func (xt *Transactions) Save() {
+	xb, err := json.Marshal(xt)
+	if err != nil {
+		log.Fatalf("unable to marshal transactions data: %v", err)
+	}
+	filesys.WriteFile(transactionsFilename, xb)
+}
 
 // MarshalCSV reads all the csv rows from the reader and marshals each row into
 // its own transaction.
