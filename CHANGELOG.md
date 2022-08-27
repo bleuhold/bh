@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2022-08-27
+### Added
+- `bh upload -f [PATH TO FILE]` to allow a user to upload a bank statement and 
+marshal the transactions' data into the transactions of the command line tool.
+- `bh upload -file [PATH TO FILE]` is the same as above.
+- `bh upload --help` help flag to display the upload help information.
+- Added `*Transactions.Save` method to save the transactions to the file system.
+- Added `LoadTransactions` to load the transactions' data from the file system.
+
 ## [0.1.0] - 2022-08-19
 ### Added
 - `bh prem -add [ARG...]` to allow a user to add a new premises.
