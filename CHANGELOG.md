@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2022-08-27 
+### Added
+- `bh transactions` command to do transaction related tasks.
+- `bh transactions -list` to view all uploaded transactions.
+
+### Fixed
+- Updated the duplicate transaction check since, currently a random bank account
+UUID is added to new transactions.
+- The switch with `bh info set` command did a wrong error check with is fixed.
+
 ## [0.2.0] - 2022-08-27
 ### Added
 - `bh upload -f [PATH TO FILE]` to allow a user to upload a bank statement and 
