@@ -80,11 +80,17 @@ func appendTransactions(xt *Transactions) (*Transactions, error) {
 		// by default, we will want to add a new transaction
 		add := true
 		for _, t := range *cxt {
-			if t == ti {
+			// TODO: remove condition and implement bottom, once account are introduced
+			if t.Date == ti.Date && t.Description == ti.Description && t.Debit == ti.Debit && t.Credit == ti.Credit {
 				// if the transaction is already in the current slice of
 				// transaction, then do not add the transaction.
 				add = false
 			}
+			//if t == ti {
+			//	// if the transaction is already in the current slice of
+			//	// transaction, then do not add the transaction.
+			//	add = false
+			//}
 		}
 		if add {
 			*cxt = append(*cxt, ti)
