@@ -13,18 +13,18 @@ import (
 // uploadExecute is the function executed when the upload command is called.
 func uploadExecute(cmd *cli.Command) error {
 	// since both -f and -file point to variable s1
-	xb, err := validateCSV(&s1)
-	if err != nil {
-		return err
-	}
 	switch {
 	case help:
 		cmd.PrintHelp()
 		return nil
 	default:
+		xb, err := validateCSV(&s1)
+		if err != nil {
+			return err
+		}
 		err = marshalCSV(xb)
+		return err
 	}
-	return err
 }
 
 // validateCSV validates that the path points to a CSV file.
