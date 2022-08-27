@@ -28,6 +28,11 @@ func uploadExecute(cmd *cli.Command) error {
 }
 
 // validateCSV validates that the path points to a CSV file.
+//
+// Validates:
+// 1. The path is a path to a file.
+// 2. The file extension is csv.
+// 3. Finally, read the file and return the []bytes or the error.
 func validateCSV(path *string) ([]byte, error) {
 	fileInfo, err := os.Stat(*path)
 	if err != nil {
@@ -44,10 +49,7 @@ func validateCSV(path *string) ([]byte, error) {
 		return []byte{}, fmt.Errorf("invalid file extension: expected '%s' got '%s'", "csv", ext)
 	}
 	xb, err := os.ReadFile(*path)
-	if err != nil {
-		return []byte{}, err
-	}
-	return xb, nil
+	return xb, err
 }
 
 func marshalCSV(xb []byte) error {
