@@ -3,6 +3,7 @@ package cmds
 import (
 	"fmt"
 	"github.com/dottics/cli"
+	"github.com/google/uuid"
 )
 
 var ACCOUNT_ADD *cli.Command
@@ -45,4 +46,42 @@ func addAccount(number, accountType, providerName string) {
 	xa := LoadAccounts()
 	xa = xa.Add(a)
 	xa.Save()
+}
+
+var ACCOUNT_REMOVE *cli.Command
+
+func AccountRemoveExecute(cmd *cli.Command) error {
+	UUID, err := validateAccountUUID(&S1)
+	switch {
+	case Help:
+		cmd.PrintHelp()
+		return nil
+	case err == nil:
+		return removeAccount(UUID)
+	}
+	return err
+}
+
+func validateAccountUUID(s *string) (uuid.UUID, error) {
+	return uuid.Parse(*s)
+}
+
+func removeAccount(UUID uuid.UUID) error {
+	xa := LoadAccounts()
+	found := false
+	removeIndex := -1
+	for i, a := range *xa {
+		if a.UUID == UUID {
+			found = true
+			removeIndex = i
+		}
+	}
+	if !found {
+		return fmt.Errorf("invalid UUID account not found: %v", UUID)
+	} else {
+		// remove the account at the remove index
+		*xa = append((*xa)[:removeIndex], (*xa)[removeIndex+1:]...)
+		xa.Save()
+	}
+	return nil
 }

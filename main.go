@@ -88,8 +88,16 @@ func init() {
 	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S2, "type", "", "The wallet/account type.")
 	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S3, "provider", "", "The wallet/account provider (bank/organisation).")
 
+	cmds.ACCOUNT_REMOVE = cli.NewCommand("remove", &cmds.Help, flag.ExitOnError)
+	cmds.ACCOUNT_REMOVE.Usage = "bh account"
+	cmds.ACCOUNT_REMOVE.Description = "Remove an account."
+	cmds.ACCOUNT_REMOVE.Execute = cmds.AccountRemoveExecute
+
+	cmds.ACCOUNT_REMOVE.FlagSet.StringVar(&cmds.S1, "uuid", "", "The wallet/account uuid to be removed.")
+
 	err = cmds.ACCOUNT.AddCommands([]*cli.Command{
 		cmds.ACCOUNT_ADD,
+		cmds.ACCOUNT_REMOVE,
 	})
 
 	if err != nil {
