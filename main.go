@@ -12,6 +12,16 @@ import (
 
 var help bool
 
+//Black: \u001b[30m
+//Red: \u001b[31m
+//Green: \u001b[32m
+//Yellow: \u001b[33m
+//Blue: \u001b[34m
+//Magenta: \u001b[35m
+//Cyan: \u001b[36m
+//White: \u001b[37m
+//Reset: \u001b[0m
+
 func init() {
 	/*
 		INFO
@@ -62,12 +72,25 @@ func init() {
 	/*
 		ACCOUNT
 	*/
-	cmds.ACCOUNT = cli.NewCommand("account", &help, flag.ExitOnError)
+	cmds.ACCOUNT = cli.NewCommand("account", &cmds.Help, flag.ExitOnError)
 	cmds.ACCOUNT.Usage = "bh"
 	cmds.ACCOUNT.Description = "All wallet/bank accounts."
 	cmds.ACCOUNT.Execute = cmds.AccountExecute
 
 	cmds.ACCOUNT.FlagSet.BoolVar(&cmds.B1, "list", false, "List all accounts.")
+
+	cmds.ACCOUNT_ADD = cli.NewCommand("add", &cmds.Help, flag.ExitOnError)
+	cmds.ACCOUNT_ADD.Usage = "bh account"
+	cmds.ACCOUNT_ADD.Description = "Add a new account."
+	cmds.ACCOUNT_ADD.Execute = cmds.AccountAddExecute
+
+	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S1, "number", "", "The wallet/account number or identifier.")
+	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S2, "type", "", "The wallet/account type.")
+	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S3, "provider", "", "The wallet/account provider (bank/organisation).")
+
+	err = cmds.ACCOUNT.AddCommands([]*cli.Command{
+		cmds.ACCOUNT_ADD,
+	})
 
 	if err != nil {
 		log.Fatalln(err)
@@ -95,7 +118,7 @@ func main() {
 
 	err = c.Run(os.Args[1:])
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Printf("\u001b[31mERROR\u001b[0m: %v\n\n", err)
 	}
 }
 
