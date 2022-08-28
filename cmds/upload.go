@@ -24,7 +24,15 @@ func UploadExecute(cmd *cli.Command) error {
 		if err != nil {
 			return err
 		}
-		xt, err := marshalCSV(xb)
+		UUID, err := uuid.Parse(S2)
+		if err != nil {
+			return err
+		}
+		a, err := GetAccount(UUID)
+		if err != nil {
+			return err
+		}
+		xt, err := marshalCSV(xb, a.UUID, a.ProviderName)
 		xt, err = appendTransactions(xt)
 		xt.Save()
 		return err
@@ -56,13 +64,13 @@ func validateCSV(path *string) ([]byte, error) {
 	return xb, err
 }
 
-func marshalCSV(xb []byte) (*Transactions, error) {
+func marshalCSV(xb []byte, accountUUID uuid.UUID, providerName string) (*Transactions, error) {
 	c := ecsv.CSV{
 		StartOffset: 2, // for Investec CSV files
 	}
 	c.ReadData(xb)
 	xt := make(Transactions, 0)
-	err := xt.MarshalCSV("investec", uuid.New(), &c)
+	err := xt.MarshalCSV(providerName, accountUUID, &c)
 	if err != nil {
 		return &xt, err
 	}
@@ -77,7 +85,6 @@ func marshalCSV(xb []byte) (*Transactions, error) {
 func appendTransactions(xt *Transactions) (*Transactions, error) {
 	// cxt denotes current slice of transactions
 	cxt := LoadTransactions()
-	fmt.Println(cxt.String())
 	for _, ti := range *xt {
 		// by default, we will want to add a new transaction
 		add := true

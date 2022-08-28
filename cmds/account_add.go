@@ -13,6 +13,7 @@ func AccountAddExecute(cmd *cli.Command) error {
 	switch {
 	case Help:
 		cmd.PrintHelp()
+		return nil
 	case err == nil:
 		addAccount(n, t, p)
 	}

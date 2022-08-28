@@ -62,6 +62,16 @@ func (xa *Accounts) Add(acc *Account) *Accounts {
 	return &x
 }
 
+func GetAccount(UUID uuid.UUID) (*Account, error) {
+	xa := LoadAccounts()
+	for _, a := range *xa {
+		if a.UUID == UUID {
+			return &a, nil
+		}
+	}
+	return &Account{}, fmt.Errorf("invalid UUID: account not found: %v", UUID)
+}
+
 /*
 	ACCOUNT
 */

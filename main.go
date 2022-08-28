@@ -58,6 +58,7 @@ func init() {
 
 	cmds.UPLOAD.FlagSet.StringVar(&cmds.S1, "f", "", "The path to the bank statement CSV to be uploaded.")
 	cmds.UPLOAD.FlagSet.StringVar(&cmds.S1, "file", "", "The path to the bank statement CSV to be uploaded.")
+	cmds.UPLOAD.FlagSet.StringVar(&cmds.S2, "uuid", "", "The wallet/account UUID for the transactions to be associated with.")
 
 	/*
 		TRANSACTIONS
