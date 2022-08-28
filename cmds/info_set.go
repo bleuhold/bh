@@ -7,8 +7,10 @@ import (
 	"time"
 )
 
-func infoSetExecute(cmd *cli.Command) error {
-	u, s, e, err := parseSetInfoData(&s1, &s2, &s3)
+var INFO_SET *cli.Command
+
+func InfoSetExecute(cmd *cli.Command) error {
+	u, s, e, err := parseSetInfoData(&S1, &S2, &S3)
 
 	// if there are boolean flags
 	// check in the switch statement

@@ -12,6 +12,7 @@ import (
 	"time"
 )
 
+var TRANSACTIONS *cli.Command
 var transactionsFilename = "transactions.json"
 
 var BANKS = map[string]map[int]string{
@@ -24,12 +25,12 @@ var BANKS = map[string]map[int]string{
 	},
 }
 
-func transactionsExecute(cmd *cli.Command) error {
+func TransactionsExecute(cmd *cli.Command) error {
 	switch {
 	case help:
 		cmd.PrintHelp()
 		return nil
-	case b1:
+	case B1:
 		ListTransactions()
 	}
 	return nil

@@ -10,15 +10,17 @@ import (
 	"strings"
 )
 
-// uploadExecute is the function executed when the upload command is called.
-func uploadExecute(cmd *cli.Command) error {
+var UPLOAD *cli.Command
+
+// UploadExecute is the function executed when the upload command is called.
+func UploadExecute(cmd *cli.Command) error {
 	// since both -f and -file point to variable s1
 	switch {
 	case help:
 		cmd.PrintHelp()
 		return nil
 	default:
-		xb, err := validateCSV(&s1)
+		xb, err := validateCSV(&S1)
 		if err != nil {
 			return err
 		}

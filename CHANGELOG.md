@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2022-08-28
+### Added
+- `bh account` command to be able to manage all wallet/bank accounts.
+- `bh account -list` to list all accounts.
+- `bh account -help` to show account help description.
+- `bh account add -number=... -provider-name=... -type=...` subcommand to be 
+able to add a new account.
+- `bh account remove -number=...` subcommand to be able to remove an account.
+
 ## [0.3.0] - 2022-08-27 
 ### Added
 - `bh transactions` command to do transaction related tasks.

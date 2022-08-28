@@ -10,12 +10,13 @@ import (
 	"time"
 )
 
+var INFO *cli.Command
 var infoFilename = "info.json"
 
-//executes the info command
-func infoExecute(cmd *cli.Command) error {
+//InfoExecute executes the info command.
+func InfoExecute(cmd *cli.Command) error {
 	switch {
-	case b1:
+	case B1:
 		ListInfo()
 	default:
 		cmd.PrintHelp()

@@ -12,12 +12,15 @@ Flags are shared with all subcommands.
 var help bool
 
 // all the available bool variables
-var b1 bool
+
+var B1 bool
 
 // all the available string variables
-var s1 string
-var s2 string
-var s3 string
+
+var S1 string
+var S2 string
+var S3 string
 
 // the name of a data structure
+
 var name string
