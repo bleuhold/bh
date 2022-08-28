@@ -15,7 +15,7 @@ func InfoSetExecute(cmd *cli.Command) error {
 	// if there are boolean flags
 	// check in the switch statement
 	switch {
-	case help:
+	case Help:
 		cmd.PrintHelp()
 		return nil
 	case err == nil:

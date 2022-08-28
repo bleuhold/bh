@@ -27,7 +27,7 @@ var BANKS = map[string]map[int]string{
 
 func TransactionsExecute(cmd *cli.Command) error {
 	switch {
-	case help:
+	case Help:
 		cmd.PrintHelp()
 		return nil
 	case B1:

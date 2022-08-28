@@ -16,7 +16,7 @@ func init() {
 	/*
 		INFO
 	*/
-	cmds.INFO = cli.NewCommand("info", &help, flag.ExitOnError)
+	cmds.INFO = cli.NewCommand("info", &cmds.Help, flag.ExitOnError)
 	cmds.INFO.Usage = "bh"
 	cmds.INFO.Description = "To show the current info."
 	cmds.INFO.Execute = cmds.InfoExecute
@@ -24,7 +24,7 @@ func init() {
 	cmds.INFO.FlagSet.BoolVar(&cmds.B1, "list", false, "List all of the current context information.")
 
 	/* SUB COMMANDS */
-	cmds.INFO_SET = cli.NewCommand("set", &help, flag.ExitOnError)
+	cmds.INFO_SET = cli.NewCommand("set", &cmds.Help, flag.ExitOnError)
 
 	cmds.INFO_SET.Usage = "bh info"
 	cmds.INFO_SET.Description = "To set an info parameter."
@@ -41,7 +41,7 @@ func init() {
 	/*
 		UPLOAD
 	*/
-	cmds.UPLOAD = cli.NewCommand("upload", &help, flag.ExitOnError)
+	cmds.UPLOAD = cli.NewCommand("upload", &cmds.Help, flag.ExitOnError)
 	cmds.UPLOAD.Usage = "bh"
 	cmds.UPLOAD.Description = "Upload a bank statement."
 	cmds.UPLOAD.Execute = cmds.UploadExecute
@@ -52,7 +52,7 @@ func init() {
 	/*
 		TRANSACTIONS
 	*/
-	cmds.TRANSACTIONS = cli.NewCommand("transactions", &help, flag.ExitOnError)
+	cmds.TRANSACTIONS = cli.NewCommand("transactions", &cmds.Help, flag.ExitOnError)
 	cmds.TRANSACTIONS.Usage = "bh"
 	cmds.TRANSACTIONS.Description = "All bank transaction related commands."
 	cmds.TRANSACTIONS.Execute = cmds.TransactionsExecute

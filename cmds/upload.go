@@ -16,7 +16,7 @@ var UPLOAD *cli.Command
 func UploadExecute(cmd *cli.Command) error {
 	// since both -f and -file point to variable s1
 	switch {
-	case help:
+	case Help:
 		cmd.PrintHelp()
 		return nil
 	default:

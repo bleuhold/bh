@@ -62,11 +62,12 @@ func (xa *Accounts) String() string {
 
 func AccountExecute(cmd *cli.Command) error {
 	switch {
+	case Help:
+		cmd.PrintHelp()
+		return nil
 	case B1:
 		ListAccounts()
 		return nil
-	default:
-		cmd.PrintHelp()
 	}
 	return nil
 }

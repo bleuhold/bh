@@ -9,7 +9,8 @@ Flags are shared with all subcommands.
 /* ALL GENERIC FLAGS */
 
 // to show help information
-var help bool
+
+var Help bool
 
 // all the available bool variables
 
