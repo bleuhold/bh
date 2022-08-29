@@ -71,6 +71,17 @@ func init() {
 	cmds.TRANSACTIONS.FlagSet.BoolVar(&cmds.B1, "list", false, "List all transactions for the set date ranges.")
 
 	/*
+		ITEM
+	*/
+	cmds.ITEM = cli.NewCommand("item", &cmds.Help, flag.ExitOnError)
+	cmds.ITEM.Usage = "bh"
+	cmds.ITEM.Description = "All item related commands. A transaction is an aggregate of a collection of items."
+	cmds.ITEM.Execute = cmds.ItemExecute
+
+	cmds.ITEM.FlagSet.BoolVar(&cmds.B1, "list", false, "List all the items.")
+	cmds.ITEM.FlagSet.StringVar(&cmds.S1, "transaction-uuid", "", "To list all items related to a transactions, used with the list flag")
+
+	/*
 		ACCOUNT
 	*/
 	cmds.ACCOUNT = cli.NewCommand("account", &cmds.Help, flag.ExitOnError)
@@ -109,7 +120,7 @@ func init() {
 func main() {
 	// set up the default data directory for the command line tool.
 	filesys.DirectorySetup()
-	fmt.Printf("**%v**\n\n", os.Args)
+	fmt.Printf("**%v**\n\u001b[34mBleu Holdings\u001b[0m \u001b[1mSimplified Rental Management\u001b[0m\n", os.Args)
 
 	c := cli.NewCommand("bh", &help, flag.ExitOnError)
 	c.Execute = executeBH
@@ -120,6 +131,7 @@ func main() {
 		cmds.UPLOAD,
 		cmds.TRANSACTIONS,
 		cmds.ACCOUNT,
+		cmds.ITEM,
 	})
 	if err != nil {
 		log.Fatalln(err)

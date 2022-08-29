@@ -93,19 +93,13 @@ func (xt *Transactions) MarshalCSV(bankCode string, accountUUID uuid.UUID, data 
 }
 
 func (xt Transactions) String() string {
-	s := ""
+	s := fmt.Sprintf("%-36s %-36s %-10s %-40s %-11s %-11s\n", "UUID", "ACCOUNT UUID", "DATE", "DESCRIPTION", "DEBIT", "CREDIT")
 	for _, rec := range xt {
 		desc := rec.Description
 		if len(rec.Description) > 40 {
 			desc = rec.Description[:41]
 		}
-		s += fmt.Sprintf("%36s  ", rec.AccountUUID)
-		s += fmt.Sprintf("%1s  ", rec.Date.Format("2006-01-02"))
-		s += fmt.Sprintf("%-40s  ", desc)
-		s += fmt.Sprintf("%11.2f  ", rec.Debit)
-		s += fmt.Sprintf("%11.2f  ", rec.Credit)
-		s += fmt.Sprintf("%11.2f", rec.Balance)
-		s += "\n"
+		s += fmt.Sprintf("%-36s %-36s %-10s %-40s %-11.2f %-11.2f\n", rec.UUID, rec.AccountUUID, rec.Date, desc, rec.Debit, rec.Credit)
 	}
 	return s
 }

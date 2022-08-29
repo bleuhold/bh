@@ -33,8 +33,9 @@ func UploadExecute(cmd *cli.Command) error {
 			return err
 		}
 		xt, err := marshalCSV(xb, a.UUID, a.ProviderName)
-		xt, err = appendTransactions(xt)
+		xt, xi, err := appendTransactions(xt)
 		xt.Save()
+		xi.Save()
 		return err
 	}
 }
@@ -82,9 +83,10 @@ func marshalCSV(xb []byte, accountUUID uuid.UUID, providerName string) (*Transac
 // It compares the new transactions to the current transactions and only appends
 // non-duplicate transactions to the current transactions.
 // the returns the transactions.
-func appendTransactions(xt *Transactions) (*Transactions, error) {
+func appendTransactions(xt *Transactions) (*Transactions, *Items, error) {
 	// cxt denotes current slice of transactions
 	cxt := LoadTransactions()
+	cxi := LoadItems()
 	for _, ti := range *xt {
 		// by default, we will want to add a new transaction
 		add := true
@@ -103,7 +105,14 @@ func appendTransactions(xt *Transactions) (*Transactions, error) {
 		}
 		if add {
 			*cxt = append(*cxt, ti)
+			// also create the new item along with the transaction.
+			i := NewItem(ti.UUID)
+			i.Description = ti.Description
+			i.Debit = ti.Debit
+			i.Credit = ti.Credit
+			cxi.Add(*i)
 		}
 	}
-	return cxt, nil
+
+	return cxt, cxi, nil
 }
