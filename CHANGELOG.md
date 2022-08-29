@@ -5,6 +5,11 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.6.0] - 2022-08-29
+### Added
+- `bh item tag -add` to add tags to an item.
+- `bh item tag -remove` to remove tags from an item.
+
 ## [0.5.0] - 2022-08-28
 ### Added 
 - `bh item` command to manage the basic implementation of items.
