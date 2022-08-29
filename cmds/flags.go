@@ -15,6 +15,7 @@ var Help bool
 // all the available bool variables
 
 var B1 bool
+var B2 bool
 
 // all the available string variables
 

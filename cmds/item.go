@@ -30,6 +30,40 @@ func NewItem(TransactionUUID uuid.UUID) *Item {
 	return i
 }
 
+func (i *Item) AddTags(tags []string) {
+	addTags := make([]string, 0)
+	for _, tag := range tags {
+		add := true
+		for _, iTag := range i.Tags {
+			if tag == iTag {
+				// this tag already exists
+				add = false
+			}
+		}
+		if add {
+			addTags = append(addTags, tag)
+		}
+	}
+	// add all the tags at once
+	i.Tags = append(i.Tags, addTags...)
+}
+
+func (i *Item) RemoveTags(tags []string) {
+	keepTags := make([]string, 0)
+	for _, iTag := range i.Tags {
+		keep := true
+		for _, tag := range tags {
+			if tag == iTag {
+				keep = false
+			}
+		}
+		if keep {
+			keepTags = append(keepTags, iTag)
+		}
+	}
+	i.Tags = keepTags
+}
+
 type Items []Item
 
 // LoadItems loads all the items from the file system.
@@ -41,7 +75,7 @@ func LoadItems() *Items {
 
 // Save writes the items to the file system.
 func (xi *Items) Save() {
-	xb, err := json.Marshal(xi)
+	xb, err := json.Marshal(*xi)
 	if err != nil {
 		log.Fatalf("Unable to marshal items data: %v", err)
 	}

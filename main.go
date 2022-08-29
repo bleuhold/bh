@@ -81,6 +81,20 @@ func init() {
 	cmds.ITEM.FlagSet.BoolVar(&cmds.B1, "list", false, "List all the items.")
 	cmds.ITEM.FlagSet.StringVar(&cmds.S1, "transaction-uuid", "", "To list all items related to a transactions, used with the list flag")
 
+	cmds.ITEM_TAG = cli.NewCommand("tag", &cmds.Help, flag.ExitOnError)
+	cmds.ITEM_TAG.Usage = "bh item"
+	cmds.ITEM_TAG.Description = "Add or remove a tag from an item.\nExample: bh item tag -add -uuid=... -tags=tag1,tag2,tag3\nNote: tags cannot have spaces in their name."
+	cmds.ITEM_TAG.Execute = cmds.ItemTagExecute
+
+	cmds.ITEM_TAG.FlagSet.BoolVar(&cmds.B1, "add", false, "Add a tag to an item based on the item UUID.")
+	cmds.ITEM_TAG.FlagSet.BoolVar(&cmds.B2, "remove", false, "Remove a tag from an item based on the item UUID.")
+	cmds.ITEM_TAG.FlagSet.StringVar(&cmds.S1, "uuid", "", "The item UUID referenced.")
+	cmds.ITEM_TAG.FlagSet.StringVar(&cmds.S2, "tags", "", "The tags to be added/removed seperated by a comma: \"tag,tag,tag\".")
+
+	err = cmds.ITEM.AddCommands([]*cli.Command{
+		cmds.ITEM_TAG,
+	})
+
 	/*
 		ACCOUNT
 	*/
