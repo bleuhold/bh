@@ -14,7 +14,7 @@ func ItemTagExecute(cmd *cli.Command) error {
 	switch {
 	case Help:
 		cmd.PrintHelp()
-		break
+		return nil
 	case err != nil:
 		return err
 	case B1: // add
