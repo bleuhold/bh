@@ -63,12 +63,12 @@ func init() {
 	/*
 		TRANSACTIONS
 	*/
-	cmds.TRANSACTIONS = cli.NewCommand("transactions", &cmds.Help, flag.ExitOnError)
-	cmds.TRANSACTIONS.Usage = "bh"
-	cmds.TRANSACTIONS.Description = "All bank transaction related commands."
-	cmds.TRANSACTIONS.Execute = cmds.TransactionsExecute
+	cmds.TRANSACTION = cli.NewCommand("transaction", &cmds.Help, flag.ExitOnError)
+	cmds.TRANSACTION.Usage = "bh"
+	cmds.TRANSACTION.Description = "All bank transaction related commands."
+	cmds.TRANSACTION.Execute = cmds.TransactionsExecute
 
-	cmds.TRANSACTIONS.FlagSet.BoolVar(&cmds.B1, "list", false, "List all transactions for the set date ranges.")
+	cmds.TRANSACTION.FlagSet.BoolVar(&cmds.B1, "list", false, "List all transactions for the set date ranges.")
 
 	/*
 		ITEM
@@ -91,8 +91,18 @@ func init() {
 	cmds.ITEM_TAG.FlagSet.StringVar(&cmds.S1, "uuid", "", "The item UUID referenced.")
 	cmds.ITEM_TAG.FlagSet.StringVar(&cmds.S2, "tags", "", "The tags to be added/removed seperated by a comma: \"tag,tag,tag\".")
 
+	cmds.ITEM_ADD = cli.NewCommand("add", &cmds.Help, flag.ExitOnError)
+	cmds.ITEM_ADD.Usage = "bh item"
+	cmds.ITEM_ADD.Description = "Add a new item to a transaction based on the transaction UUID. Add description after all the flags."
+	cmds.ITEM_ADD.Execute = cmds.ItemAddExecute
+
+	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S1, "uuid", "", "The transaction UUID for the item to be added to.")
+	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S2, "debit", "", "The item debits.")
+	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S3, "credit", "", "The item credits.")
+
 	err = cmds.ITEM.AddCommands([]*cli.Command{
 		cmds.ITEM_TAG,
+		cmds.ITEM_ADD,
 	})
 
 	/*
@@ -143,7 +153,7 @@ func main() {
 	err := c.AddCommands([]*cli.Command{
 		cmds.INFO,
 		cmds.UPLOAD,
-		cmds.TRANSACTIONS,
+		cmds.TRANSACTION,
 		cmds.ACCOUNT,
 		cmds.ITEM,
 	})

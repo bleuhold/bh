@@ -23,6 +23,8 @@ var S1 string
 var S2 string
 var S3 string
 
+//var S4 string
+
 // the name of a data structure
 
 var name string

@@ -2,6 +2,7 @@ package cmds
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/bleuhold/bh/ecsv"
 	"github.com/bleuhold/bh/filesys"
@@ -12,7 +13,7 @@ import (
 	"time"
 )
 
-var TRANSACTIONS *cli.Command
+var TRANSACTION *cli.Command
 var transactionsFilename = "transactions.json"
 
 var BANKS = map[string]map[int]string{
@@ -121,6 +122,17 @@ func (t *Transaction) Set(record []string, bankMap map[int]string) {
 			t.Balance, _ = strconv.ParseFloat(v, 64)
 		}
 	}
+}
+
+// Find finds a transaction based on the UUID. Or returns an error if not found.
+// TODO: replace with a hash map for O(1) operation to find transactions.
+func (xt *Transactions) Find(UUID uuid.UUID) (*Transaction, error) {
+	for _, t := range *xt {
+		if t.UUID == UUID {
+			return &t, nil
+		}
+	}
+	return &Transaction{}, errors.New("transaction not found")
 }
 
 // ListTransactions loads all the transactions and prints them to the
