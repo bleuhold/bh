@@ -64,6 +64,8 @@ func (i *Item) RemoveTags(tags []string) {
 	i.Tags = keepTags
 }
 
+// TODO ITEMS: update the a map
+
 type Items []Item
 
 // LoadItems loads all the items from the file system.

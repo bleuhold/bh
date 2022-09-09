@@ -100,9 +100,17 @@ func init() {
 	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S2, "debit", "", "The item debits.")
 	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S3, "credit", "", "The item credits.")
 
+	cmds.ITEM_REMOVE = cli.NewCommand("remove", &cmds.Help, flag.ExitOnError)
+	cmds.ITEM_REMOVE.Usage = "bh item"
+	cmds.ITEM_REMOVE.Description = "Removes an item based on the UUID permanently."
+	cmds.ITEM_REMOVE.Execute = cmds.ItemRemoveExecute
+
+	cmds.ITEM_REMOVE.FlagSet.StringVar(&cmds.S1, "uuid", "", "The UUID of the item to be removed.")
+
 	err = cmds.ITEM.AddCommands([]*cli.Command{
 		cmds.ITEM_TAG,
 		cmds.ITEM_ADD,
+		cmds.ITEM_REMOVE,
 	})
 
 	/*
