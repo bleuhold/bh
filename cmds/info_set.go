@@ -72,15 +72,17 @@ func parseSetInfoData(UUID *string, startDate *string, endDate *string) (uuid.UU
 func SetInfo(UUID *uuid.UUID, startDate *time.Time, endDate *time.Time) error {
 	i := LoadInfo()
 	b := false
-	if i.PropertyUUID != *UUID {
+	t := time.Time{}
+	u := uuid.UUID{}
+	if i.PropertyUUID != *UUID && *UUID != u {
 		i.PropertyUUID = *UUID
 		b = true
 	}
-	if i.StartDate != *startDate {
+	if i.StartDate != *startDate && *startDate != t {
 		i.StartDate = *startDate
 		b = true
 	}
-	if i.EndDate != *endDate {
+	if i.EndDate != *endDate && *endDate != t {
 		i.EndDate = *endDate
 		b = true
 	}
