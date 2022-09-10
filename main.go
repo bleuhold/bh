@@ -97,9 +97,8 @@ func init() {
 	cmds.ITEM_ADD.Execute = cmds.ItemAddExecute
 
 	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S1, "uuid", "", "The transaction UUID for the item to be added to.")
-	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S2, "date", "", "The item date of the transaction.")
-	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S3, "debit", "", "The item debits.")
-	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S4, "credit", "", "The item credits.")
+	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S2, "debit", "", "The item debits.")
+	cmds.ITEM_ADD.FlagSet.StringVar(&cmds.S3, "credit", "", "The item credits.")
 
 	cmds.ITEM_REMOVE = cli.NewCommand("remove", &cmds.Help, flag.ExitOnError)
 	cmds.ITEM_REMOVE.Usage = "bh item"
