@@ -53,9 +53,9 @@ func (xa *Accounts) Save() {
 }
 
 func (xa *Accounts) String() string {
-	s := fmt.Sprintf("%-36s %-16s %-16s %-16s\n", "UUID", "NUMBER", "PROVIDER", "TYPE")
+	s := fmt.Sprintf("%-36s %-16s %-16s %-16s %-16s %s\n", "UUID", "NUMBER", "PROVIDER", "TYPE", "HOLDER", "ALIAS")
 	for _, a := range *xa {
-		s += fmt.Sprintf("%36s %-16s %-16s %-16s\n", a.UUID, a.Number, a.ProviderName, a.AccountType)
+		s += fmt.Sprintf("%36s %-16s %-16s %-16s %-16s %s\n", a.UUID, a.Number, a.ProviderName, a.AccountType, a.HolderName, a.Alias)
 	}
 	return s
 }
