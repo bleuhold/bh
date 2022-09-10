@@ -18,16 +18,18 @@ type Account struct {
 	AccountType  string    `json:"accountType"`
 	ProviderName string    `json:"providerName"`
 	HolderName   string    `json:"holderName"`
+	Alias        string    `json:"alias"`
 }
 
 // NewAccount creates a new account, with a default UUID.
-func NewAccount(number, accountType, providerName, holderName string) *Account {
+func NewAccount(number, accountType, providerName, holderName, alias string) *Account {
 	a := &Account{
 		UUID:         uuid.New(),
 		Number:       number,
 		AccountType:  accountType,
 		ProviderName: providerName,
 		HolderName:   holderName,
+		Alias:        alias,
 	}
 	return a
 }

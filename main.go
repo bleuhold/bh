@@ -132,6 +132,7 @@ func init() {
 	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S2, "type", "", "The wallet/account type.")
 	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S3, "provider", "", "The wallet/account provider (bank/organisation).")
 	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S4, "holder", "", "The wallet/account holder.")
+	cmds.ACCOUNT_ADD.FlagSet.StringVar(&cmds.S5, "alias", "", "The wallet/account alias or an account descriptive name.")
 
 	cmds.ACCOUNT_REMOVE = cli.NewCommand("remove", &cmds.Help, flag.ExitOnError)
 	cmds.ACCOUNT_REMOVE.Usage = "bh account"
