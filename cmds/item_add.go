@@ -6,6 +6,7 @@ import (
 	"github.com/google/uuid"
 	"strconv"
 	"strings"
+	"time"
 )
 
 var ITEM_ADD *cli.Command
@@ -13,7 +14,7 @@ var ITEM_ADD *cli.Command
 // ItemAddExecute is the function executed when the command `bh item add` is
 // run. To add a new item to a transaction.
 func ItemAddExecute(cmd *cli.Command) error {
-	item, err := validateItemAdd(S1, S2, S3, cmd.FlagSet.Args())
+	item, err := validateItemAdd(S1, S2, S3, S4, cmd.FlagSet.Args())
 	switch {
 	case Help:
 		cmd.PrintHelp()
@@ -24,7 +25,7 @@ func ItemAddExecute(cmd *cli.Command) error {
 	return nil
 }
 
-func validateItemAdd(s1, s2, s3 string, desc []string) (*Item, error) {
+func validateItemAdd(s1, s2, s3, s4 string, desc []string) (*Item, error) {
 	description := strings.Join(desc, " ")
 	if description == "" {
 		return &Item{}, fmt.Errorf("description is a required field")
@@ -38,16 +39,21 @@ func validateItemAdd(s1, s2, s3 string, desc []string) (*Item, error) {
 	if err != nil {
 		return &Item{}, err
 	}
-	debits, err := strconv.ParseFloat(s2, 64)
+	date, err := time.Parse("2006-01-02", s2)
 	if err != nil {
 		return &Item{}, err
 	}
-	credits, err := strconv.ParseFloat(s3, 64)
+	debits, err := strconv.ParseFloat(s3, 64)
+	if err != nil {
+		return &Item{}, err
+	}
+	credits, err := strconv.ParseFloat(s4, 64)
 	if err != nil {
 		return &Item{}, err
 	}
 	i := NewItem(t.UUID)
 	i.Description = description
+	i.Date = date
 	i.Debit = debits
 	i.Credit = credits
 	return i, nil

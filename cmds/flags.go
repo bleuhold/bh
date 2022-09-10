@@ -22,6 +22,7 @@ var B2 bool
 var S1 string
 var S2 string
 var S3 string
+var S4 string
 
 //var S4 string
 

@@ -108,6 +108,7 @@ func appendTransactions(xt *Transactions) (*Transactions, *Items, error) {
 			// also create the new item along with the transaction.
 			i := NewItem(ti.UUID)
 			i.Description = ti.Description
+			i.Date = ti.Date
 			i.Debit = ti.Debit
 			i.Credit = ti.Credit
 			cxi.Add(*i)
