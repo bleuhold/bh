@@ -5,6 +5,11 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.7.3] - 2022-09-10
+### Changed
+- The account to also include an account holder name.
+- The account to also include an alias for the account.
+
 ## [0.7.2] - 2022-09-10
 ### Changed
 - Updated items to now have the same date as the transaction, to simplify the 

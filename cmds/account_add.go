@@ -9,13 +9,13 @@ import (
 var ACCOUNT_ADD *cli.Command
 
 func AccountAddExecute(cmd *cli.Command) error {
-	n, t, p, err := validateAccount(&S1, &S2, &S3)
+	n, t, p, h, err := validateAccount(&S1, &S2, &S3, &S4)
 	switch {
 	case Help:
 		cmd.PrintHelp()
 		return nil
 	case err == nil:
-		addAccount(n, t, p)
+		addAccount(n, t, p, h)
 	}
 	if err != nil {
 		cmd.PrintHelp()
@@ -24,7 +24,7 @@ func AccountAddExecute(cmd *cli.Command) error {
 	return nil
 }
 
-func validateAccount(number, accountType, providerName *string) (string, string, string, error) {
+func validateAccount(number, accountType, providerName, holderName *string) (string, string, string, string, error) {
 	ok := true
 	if *number == "" {
 		ok = false
@@ -35,15 +35,18 @@ func validateAccount(number, accountType, providerName *string) (string, string,
 	if *providerName == "" {
 		ok = false
 	}
+	if *holderName == "" {
+		ok = false
+	}
 	if ok {
-		return *number, *accountType, *providerName, nil
+		return *number, *accountType, *providerName, *holderName, nil
 	} else {
-		return *number, *accountType, *providerName, fmt.Errorf("invalid arguments to create a new account")
+		return *number, *accountType, *providerName, *holderName, fmt.Errorf("invalid arguments to create a new account")
 	}
 }
 
-func addAccount(number, accountType, providerName string) {
-	a := NewAccount(number, accountType, providerName)
+func addAccount(number, accountType, providerName, holderName string) {
+	a := NewAccount(number, accountType, providerName, holderName)
 	xa := LoadAccounts()
 	xa = xa.Add(a)
 	xa.Save()

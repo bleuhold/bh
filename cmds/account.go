@@ -13,19 +13,21 @@ var ACCOUNT *cli.Command
 var accountsFilename = "accounts.json"
 
 type Account struct {
-	UUID         uuid.UUID
-	Number       string
-	AccountType  string
-	ProviderName string
+	UUID         uuid.UUID `json:"uuid"`
+	Number       string    `json:"number"`
+	AccountType  string    `json:"accountType"`
+	ProviderName string    `json:"providerName"`
+	HolderName   string    `json:"holderName"`
 }
 
 // NewAccount creates a new account, with a default UUID.
-func NewAccount(number, accountType, providerName string) *Account {
+func NewAccount(number, accountType, providerName, holderName string) *Account {
 	a := &Account{
 		UUID:         uuid.New(),
 		Number:       number,
 		AccountType:  accountType,
 		ProviderName: providerName,
+		HolderName:   holderName,
 	}
 	return a
 }
