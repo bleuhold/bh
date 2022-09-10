@@ -1,5 +1,14 @@
 package cmds
 
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/bleuhold/bh/filesys"
+	"github.com/dottics/cli"
+	"github.com/google/uuid"
+	"log"
+)
+
 //import (
 //	"encoding/json"
 //	"flag"
@@ -11,10 +20,10 @@ package cmds
 //	"log"
 //	"strings"
 //)
-//
-//var PREMISES *cli.Command
-//var premisesFilename = "properties.json"
-//
+
+var PREMISES *cli.Command
+var premisesFilename = "properties.json"
+
 //func init() {
 //	PREMISES = &cli.Command{
 //		Name:        "prem",
@@ -33,69 +42,70 @@ package cmds
 //	PREMISES.FlagSet.StringVar(&address, "address", "", "The address of the premises.")
 //	PREMISES.FlagSet.StringVar(&plotNumber, "plot-number", "", "The plot number of the premises.")
 //}
-//
-//func premExecute(cmd *cmd.Command) {
-//	switch {
-//	case help:
-//		cmd.PrintHelp()
-//	case list:
-//		ListPremises()
-//	case add:
-//		AddPremises(cmd, &name, &address, &plotNumber)
-//	default:
-//		cmd.PrintHelp()
-//	}
-//}
-//
-//type Premises struct {
-//	UUID       uuid.UUID `json:"UUID"`
-//	Name       string    `json:"name"`
-//	Address    string    `json:"address"`
-//	PlotNumber string    `json:"plotNumber"`
-//}
-//
-//type PremisesData struct {
-//	Premises []Premises `json:"Premises"`
-//}
-//
-//// LoadProperties loads all the property data.
-//func LoadProperties() *PremisesData {
-//	p := &PremisesData{
-//		Premises: []Premises{},
-//	}
-//	filesys.LoadInterface(premisesFilename, p)
-//	return p
-//}
-//
-//// Save writes the premises' data to the file system.
-//func (p *PremisesData) Save() {
-//	xb, err := json.Marshal(p)
-//	if err != nil {
-//		log.Fatalf("Unable to marshal premises data: %v", err)
-//	}
-//	filesys.WriteFile(premisesFilename, xb)
-//}
-//
-//// Print prints the list of all premises
-//func (p *PremisesData) Print() {
-//	fmt.Printf("%3s %-13s %-15s %-8s %s\n", "IDX", "UUID", "NAME", "PLOTNUM", "ADDRESS")
-//	for i, pi := range p.Premises {
-//		name := pi.Name
-//		if len(name) > 10 {
-//			name = name[:12] + "..."
-//		}
-//		UUID := pi.UUID.String()
-//		UUID = UUID[:13]
-//		fmt.Printf("%-3d %-13s %-15s %-8s %s\n", i, UUID, name, pi.PlotNumber, pi.Address)
-//	}
-//}
-//
-//// ListPremises lists all the properties available
-//func ListPremises() {
-//	p := LoadProperties()
-//	p.Print()
-//}
-//
+
+func PremisesExecute(cmd *cli.Command) error {
+	switch {
+	case Help:
+		cmd.PrintHelp()
+		return nil
+	case B1:
+		return ListPremises()
+		//case add:
+		//	AddPremises(cmd, &name, &address, &plotNumber)
+		//default:
+		//	cmd.PrintHelp()
+	}
+	return nil
+}
+
+type Premises struct {
+	UUID       uuid.UUID `json:"UUID"`
+	Name       string    `json:"name"`
+	Address    string    `json:"address"`
+	PlotNumber string    `json:"plotNumber"`
+}
+
+func (p *Premises) String() string {
+	return fmt.Sprintf("%36s %-30s %-8s %s\n", p.UUID, p.Name, p.PlotNumber, p.Address)
+}
+
+type PremisesData struct {
+	Premises []Premises `json:"Premises"`
+}
+
+// LoadProperties loads all the property data.
+func LoadProperties() *PremisesData {
+	p := &PremisesData{
+		Premises: []Premises{},
+	}
+	filesys.LoadInterface(premisesFilename, p)
+	return p
+}
+
+// Save writes the premises' data to the file system.
+func (p *PremisesData) Save() {
+	xb, err := json.Marshal(p)
+	if err != nil {
+		log.Fatalf("Unable to marshal premises data: %v", err)
+	}
+	filesys.WriteFile(premisesFilename, xb)
+}
+
+// Print prints the list of all premises
+func (p *PremisesData) Print() {
+	fmt.Printf("%-36s %-30s %-8s %s\n", "UUID", "NAME", "PLOTNUM", "ADDRESS")
+	for _, pi := range p.Premises {
+		fmt.Printf("%s", pi.String())
+	}
+}
+
+// ListPremises lists all the properties available
+func ListPremises() error {
+	p := LoadProperties()
+	p.Print()
+	return nil
+}
+
 //// AddPremises adds a new premises.
 //func AddPremises(cmd *cmd.Command, name *string, address *string, plotNumber *string) {
 //	s := append([]string{*address}, cmd.FlagSet.Args()...)

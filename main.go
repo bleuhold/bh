@@ -146,6 +146,16 @@ func init() {
 		cmds.ACCOUNT_REMOVE,
 	})
 
+	/*
+		PREMISES
+	*/
+	cmds.PREMISES = cli.NewCommand("premises", &cmds.Help, flag.ExitOnError)
+	cmds.PREMISES.Usage = "bh"
+	cmds.PREMISES.Description = "All premises related commands."
+	cmds.PREMISES.Execute = cmds.PremisesExecute
+
+	cmds.PREMISES.FlagSet.BoolVar(&cmds.B1, "list", false, "List all the premises.")
+
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -166,6 +176,7 @@ func main() {
 		cmds.TRANSACTION,
 		cmds.ACCOUNT,
 		cmds.ITEM,
+		cmds.PREMISES,
 	})
 	if err != nil {
 		log.Fatalln(err)
