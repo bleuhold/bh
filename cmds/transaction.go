@@ -9,6 +9,7 @@ import (
 	"github.com/dottics/cli"
 	"github.com/google/uuid"
 	"log"
+	"sort"
 	"strconv"
 	"time"
 )
@@ -67,11 +68,29 @@ func LoadTransactions() *Transactions {
 
 // Save writes the data to the file system.
 func (xt *Transactions) Save() {
+	sort.Sort(xt)
 	xb, err := json.Marshal(xt)
 	if err != nil {
 		log.Fatalf("unable to marshal transactions data: %v", err)
 	}
 	filesys.WriteFile(transactionsFilename, xb)
+}
+
+// Len returns the length of transactions
+func (xt *Transactions) Len() int {
+	return len(*xt)
+}
+
+// Less returns whether transaction i is before transaction j
+func (xt *Transactions) Less(i, j int) bool {
+	xti := (*xt)[i]
+	xtj := (*xt)[j]
+	return xti.Date.Before(xtj.Date)
+}
+
+// Swap interchanges two elements in the slice.
+func (xt *Transactions) Swap(i, j int) {
+	(*xt)[i], (*xt)[j] = (*xt)[j], (*xt)[i]
 }
 
 // MarshalCSV reads all the csv rows from the reader and marshals each row into
@@ -98,9 +117,9 @@ func (xt Transactions) String() string {
 	for _, rec := range xt {
 		desc := rec.Description
 		if len(rec.Description) > 40 {
-			desc = rec.Description[:41]
+			desc = rec.Description[:40]
 		}
-		s += fmt.Sprintf("%-36s %-36s %-10s %-40s %-11.2f %-11.2f\n", rec.UUID, rec.AccountUUID, rec.Date, desc, rec.Debit, rec.Credit)
+		s += fmt.Sprintf("%-36s %-36s %-10s %-40s %11.2f %11.2f\n", rec.UUID, rec.AccountUUID, rec.Date, desc, rec.Debit, rec.Credit)
 	}
 	return s
 }
@@ -139,5 +158,6 @@ func (xt *Transactions) Find(UUID uuid.UUID) (*Transaction, error) {
 // transactions.
 func ListTransactions() {
 	xt := LoadTransactions()
+	sort.Sort(xt)
 	fmt.Printf("%s", xt.String())
 }
