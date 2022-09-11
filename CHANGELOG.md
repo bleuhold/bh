@@ -5,6 +5,15 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.8.0] - 2022-09-11
+### Added
+- `bh tenant` command enable to system to manage tenants.
+- `bh tenant -list` to be able to list all tenants.
+
+### Changed
+- Added sorting to transactions just before saving.
+- Added sorting to items just before saving.
+
 ## [0.7.4] - 2022-09-10
 ### Changed
 - Re-introduced the `bh premises` command.
