@@ -7,6 +7,7 @@ import (
 	"github.com/dottics/cli"
 	"github.com/google/uuid"
 	"log"
+	"sort"
 	"time"
 )
 
@@ -79,11 +80,27 @@ func LoadItems() *Items {
 
 // Save writes the items to the file system.
 func (xi *Items) Save() {
+	sort.Sort(xi)
 	xb, err := json.Marshal(*xi)
 	if err != nil {
 		log.Fatalf("Unable to marshal items data: %v", err)
 	}
 	filesys.WriteFile(itemsFilename, xb)
+}
+
+// Len returns the length of the slice of items.
+func (xi *Items) Len() int {
+	return len(*xi)
+}
+
+// Less return whether item i is before item j.
+func (xi *Items) Less(i, j int) bool {
+	return (*xi)[i].Date.Before((*xi)[j].Date)
+}
+
+// Swap interchanges the positions of i and j.
+func (xi *Items) Swap(i, j int) {
+	(*xi)[i], (*xi)[j] = (*xi)[j], (*xi)[i]
 }
 
 // String returns a string representation of the items.
