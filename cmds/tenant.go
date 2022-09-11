@@ -23,7 +23,7 @@ type Tenant struct {
 }
 
 func (t *Tenant) String() string {
-	return fmt.Sprintf("%36s %13s %-12s %-12s %10s %-20s %10s\n", t.UUID, t.ID, t.FirstName, t.LastName, t.ContactNumber, t.Email, t.Passport)
+	return fmt.Sprintf("%36s %13s %-15s %-15s %-13s %-10s %s\n", t.UUID, t.ID, t.FirstName, t.LastName, t.ContactNumber, t.Passport, t.Email)
 }
 
 type Tenants []Tenant
@@ -43,11 +43,27 @@ func (t *Tenants) Save() {
 }
 
 func (t *Tenants) String() string {
-	s := fmt.Sprintf("%-36s %-13s %-12s %-12s %-10s %-20s %-10s\n", "UUID", "ID", "FIRSTNAME", "LASTNAME", "CONTACTNUMBER", "EMAIL", "PASSPORT")
+	s := fmt.Sprintf("%-36s %-13s %-15s %-15s %-13s %-10s %s\n", "UUID", "ID", "FIRSTNAME", "LASTNAME", "CONTACTNUMBER", "PASSPORT", "EMAIL")
 	for _, ti := range *t {
 		s += ti.String()
 	}
 	return s
+}
+
+/*
+	COMMAND
+*/
+
+func TenantExecute(cmd *cli.Command) error {
+	switch {
+	case Help:
+		cmd.PrintHelp()
+		return nil
+	case B1:
+		ListTenants()
+		return nil
+	}
+	return nil
 }
 
 func ListTenants() {

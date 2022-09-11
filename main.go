@@ -156,6 +156,16 @@ func init() {
 
 	cmds.PREMISES.FlagSet.BoolVar(&cmds.B1, "list", false, "List all the premises.")
 
+	/*
+		TENANT
+	*/
+	cmds.TENANT = cli.NewCommand("tenant", &cmds.Help, flag.ExitOnError)
+	cmds.TENANT.Usage = "bh"
+	cmds.TENANT.Description = "Show tenant related information."
+	cmds.TENANT.Execute = cmds.TenantExecute
+
+	cmds.TENANT.FlagSet.BoolVar(&cmds.B1, "list", false, "Show a list of all the tenants.")
+
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -177,6 +187,7 @@ func main() {
 		cmds.ACCOUNT,
 		cmds.ITEM,
 		cmds.PREMISES,
+		cmds.TENANT,
 	})
 	if err != nil {
 		log.Fatalln(err)
