@@ -5,6 +5,15 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.10.0] - 2022-09-12
+### Added 
+- `bh statement` command for the generating of a statement.
+- `bh statement -uuid=<>` command to generate a statement for the given contract
+UUID by default prints a statement preview to the console. Purposely for easy
+editing.
+- `bh statement -uuid=<> -pdf` only when the `-pdf` flag is passed with the
+actual PDF be generated and save to the user's `Downloads` directory.
+
 ## [0.9.0] - 2022-09-12
 ### Added
 - `bh contract` command to enable to user to manage their contracts.
