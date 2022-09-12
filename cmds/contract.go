@@ -47,6 +47,16 @@ type Contract struct {
 	} `json:"percentages"`
 }
 
+func (c *Contract) References() map[string]bool {
+	references := map[string]bool{
+		c.Reference: true,
+	}
+	for _, ref := range c.AdditionalReferences {
+		references[ref] = true
+	}
+	return references
+}
+
 func (c *Contract) String(all bool) string {
 	occupation := c.Dates.Occupation.Format("2006-01-02")
 	termination := c.Dates.Termination.Format("2006-01-02")
@@ -143,5 +153,13 @@ func ListContract(UUID uuid.UUID) error {
 	xc := LoadContracts()
 	c := (*xc)[UUID]
 	c.Print(true)
+	return nil
+}
+
+func GetContract(UUID uuid.UUID) *Contract {
+	xc := LoadContracts()
+	if c, ok := (*xc)[UUID]; ok {
+		return &c
+	}
 	return nil
 }

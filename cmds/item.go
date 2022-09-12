@@ -103,9 +103,34 @@ func (xi *Items) Swap(i, j int) {
 	(*xi)[i], (*xi)[j] = (*xi)[j], (*xi)[i]
 }
 
+func (xi *Items) DateRange(start, end time.Time) *Items {
+	items := Items{}
+	startDate := start.AddDate(0, 0, -1)
+	endDate := end.AddDate(0, 0, 1)
+	for _, item := range *xi {
+		if item.Date.After(startDate) && item.Date.Before(endDate) {
+			items = append(items, item)
+		}
+	}
+	return &items
+}
+
+func (xi *Items) FilterTags(tags map[string]bool) *Items {
+	items := Items{}
+	for _, item := range *xi {
+		for _, tag := range item.Tags {
+			if _, ok := tags[tag]; ok {
+				items = append(items, item)
+				break
+			}
+		}
+	}
+	return &items
+}
+
 // String returns a string representation of the items.
 func (xi *Items) String() string {
-	s := fmt.Sprintf("%-36s %-36s %10s %-40s %-11s %-11s %s", "UUID", "TRANSACTION UUID", "DATE", "DESCRIPTION", "DEBIT", "CREDIT", "TAGS")
+	s := fmt.Sprintf("%-36s %-36s %10s %-40s %-11s %-11s %s\n", "UUID", "TRANSACTION UUID", "DATE", "DESCRIPTION", "DEBIT", "CREDIT", "TAGS")
 	for _, i := range *xi {
 		desc := i.Description
 		if len(i.Description) > 40 {
