@@ -186,6 +186,7 @@ func init() {
 	cmds.STATEMENT.Execute = cmds.StatementExecute
 
 	cmds.STATEMENT.FlagSet.StringVar(&cmds.S1, "uuid", "", "Contract UUID for which to generate a statement.")
+	cmds.STATEMENT.FlagSet.BoolVar(&cmds.B1, "pdf", false, "Generate the statement as a PDF and save to Downloads.")
 
 	if err != nil {
 		log.Fatalln(err)
