@@ -166,6 +166,17 @@ func init() {
 
 	cmds.TENANT.FlagSet.BoolVar(&cmds.B1, "list", false, "Show a list of all the tenants.")
 
+	/*
+		CONTRACT
+	*/
+	cmds.CONTRACT = cli.NewCommand("contract", &cmds.Help, flag.ExitOnError)
+	cmds.CONTRACT.Usage = "bh"
+	cmds.CONTRACT.Description = "Contract related information."
+	cmds.CONTRACT.Execute = cmds.ContractExecute
+
+	cmds.CONTRACT.FlagSet.BoolVar(&cmds.B1, "list", false, "List all contracts.")
+	cmds.CONTRACT.FlagSet.StringVar(&cmds.S1, "uuid", "", "Show contract detail for UUID.")
+
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -188,6 +199,7 @@ func main() {
 		cmds.ITEM,
 		cmds.PREMISES,
 		cmds.TENANT,
+		cmds.CONTRACT,
 	})
 	if err != nil {
 		log.Fatalln(err)
