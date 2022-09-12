@@ -130,7 +130,7 @@ func (xi *Items) FilterTags(tags map[string]bool) *Items {
 
 // String returns a string representation of the items.
 func (xi *Items) String() string {
-	s := fmt.Sprintf("%-36s %-36s %10s %-40s %-11s %-11s %s\n", "UUID", "TRANSACTION UUID", "DATE", "DESCRIPTION", "DEBIT", "CREDIT", "TAGS")
+	s := fmt.Sprintf("%-36s %-36s %-10s %-40s %11s %11s %s\n", "UUID", "TRANSACTION UUID", "DATE", "DESCRIPTION", "DEBIT", "CREDIT", "TAGS")
 	for _, i := range *xi {
 		desc := i.Description
 		if len(i.Description) > 40 {
