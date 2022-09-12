@@ -5,6 +5,12 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.9.0] - 2022-09-12
+### Added
+- `bh contract` command to enable to user to manage their contracts.
+- `bh contract -list` to view all the contracts.
+- `bh contract -uuid` to get a detailed view of a specific contract.
+
 ## [0.8.0] - 2022-09-11
 ### Added
 - `bh tenant` command enable to system to manage tenants.
