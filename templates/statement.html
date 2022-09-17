@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+    <style>
+        /* add document styling here */
+        * {
+            font-family: '.AppleSystemUIFont', sans-serif;
+            font-size: 0.8rem;
+        }
+
+        body {
+            max-width: 1200px;
+        }
+
+        .logo {
+            padding: 0 20px;
+            max-width: 400px;
+            margin-bottom: -10px;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 50px;
+            /*display: flex;*/
+            /*display: -webkit-flex;*/
+            /*-webkit-flex-direction: row;*/
+            /*flex-direction: row;*/
+        }
+
+        /* TABLE  */
+        header table {
+            margin-bottom: auto;
+            text-align: left;
+        }
+
+        table th {
+            text-transform: uppercase;
+        }
+
+        table td.tbl-definition {
+            color: dimgrey;
+            text-transform: capitalize;
+        }
+
+        table td.tbl-input {
+            text-transform: capitalize;
+        }
+        table td.email {
+            text-transform: lowercase;
+        }
+
+        .statement-history table tr:nth-child(odd) {
+            background: #EBEBEB;
+        }
+
+        /* add row spacing between multiple tenants */
+        .tenant-contact-number + .tenant-name td.tbl-definition,
+        .tenant-contact-number + .tenant-name td.tbl-input{
+            padding-top: 10px;
+        }
+
+        /* END TABLE  */
+
+        .fine-print {
+            font-size: 10px;
+
+            padding: 5px 30px;
+        }
+
+        .statement-item {
+            margin: 10px 3px 0;
+        }
+
+        .statement-item .item-description {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .statement-item .item {
+            text-transform: capitalize;
+        }
+
+        /* STATEMENT HISTORY */
+        .statement-history {
+            display: grid;
+            text-align: center;
+        }
+
+        .statement-history table {
+            border-radius: 9px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .statement-history thead th,
+        .statement-history tfoot th,
+        .statement-history tfoot td {
+            padding: 5px;
+        }
+
+        .statement-history thead tr,
+        .statement-history tfoot tr {
+            border-radius: 10px;
+        }
+        .statement-history thead tr th:first-child {
+            border-top-left-radius: 9px;
+        }
+        .statement-history thead tr th:last-child {
+            border-top-right-radius: 9px;
+        }
+        .statement-history tfoot tr th:first-child {
+            border-bottom-left-radius: 9px;
+        }
+        .statement-history tfoot tr td:last-child {
+            border-bottom-right-radius: 9px;
+        }
+
+        .statement-history th {
+            text-align: left;
+        }
+
+        .statement-history td {
+            text-align: left;
+        }
+
+        .number {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            width: 100%;
+        }
+
+        .number span + span {
+            text-align: right;
+        }
+        /* END STATEMENT HISTORY */
+
+        .border {
+            border: 1px solid lightgrey;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="logo">
+    <img src='data:image/svg+xml;utf8,<svg id="bleuhold-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3460.076 631" width="400" height="73">
+        <g id="bleuhold-logo-2" data-name="bleuhold-logo" transform="translate(0 72)">
+            <path id="Union_5" data-name="Union 5" d="M99.808,246.461a124.324,124.324,0,0,1-44.7-18.808,125.36,125.36,0,0,1-45.288-55A124.362,124.362,0,0,1,2.54,149.192,125.779,125.779,0,0,1,0,125H0V.008C.359,0,.68,0,.985,0A61.217,61.217,0,0,1,25.124,4.911a61.891,61.891,0,0,1,10.535,5.763,62.554,62.554,0,0,1,9.178,7.632,62.835,62.835,0,0,1,7.573,9.249,62.718,62.718,0,0,1,5.718,10.616A62.437,62.437,0,0,1,62.983,61H63v62h.008c-.005.3-.008.631-.008,1a61.713,61.713,0,0,0,10.589,34.664,62.18,62.18,0,0,0,27.278,22.463A61.617,61.617,0,0,0,125,186c.33,0,.666,0,1-.008v63c-.332,0-.669,0-1,0A125.891,125.891,0,0,1,99.808,246.461Z" transform="matrix(0.966, -0.259, 0.259, 0.966, 0, 39.548)" fill="#598298"/>
+            <path id="Union_6" data-name="Union 6" d="M124.582,436H.509C.5,435.641.5,435.318.5,435.014a61.418,61.418,0,0,1,4.911-24.181,62.054,62.054,0,0,1,5.763-10.553A62.513,62.513,0,0,1,61.5,372.909v-.017h64V373a61.706,61.706,0,0,0,34.164-10.586,62.18,62.18,0,0,0,22.463-27.278,61.919,61.919,0,0,0-5.716-58.8,62.18,62.18,0,0,0-27.278-22.463A61.591,61.591,0,0,0,125,249c-.331,0-.668,0-1,.007V249a125.846,125.846,0,0,1-24.192-2.536,124.324,124.324,0,0,1-44.7-18.808,125.36,125.36,0,0,1-45.288-55A124.362,124.362,0,0,1,2.54,149.192,125.832,125.832,0,0,1,0,125H0V.008C.359,0,.68,0,.985,0A61.217,61.217,0,0,1,25.124,4.911a61.891,61.891,0,0,1,10.535,5.763,62.554,62.554,0,0,1,9.178,7.632,62.835,62.835,0,0,1,7.573,9.249,62.718,62.718,0,0,1,5.718,10.616A62.437,62.437,0,0,1,62.983,61H63v62h.008c-.005.3-.008.631-.008,1a61.713,61.713,0,0,0,10.589,34.664,62.18,62.18,0,0,0,27.278,22.463A61.617,61.617,0,0,0,125,186c.33,0,.666,0,1-.008V186a125.8,125.8,0,0,1,24.192,2.536,124.324,124.324,0,0,1,44.7,18.808,125.36,125.36,0,0,1,45.288,55,124.343,124.343,0,0,1,7.284,23.464,126.207,126.207,0,0,1,0,50.384,124.323,124.323,0,0,1-18.808,44.7,125.36,125.36,0,0,1-55,45.288,124.342,124.342,0,0,1-23.464,7.284A125.892,125.892,0,0,1,125.5,436h-.919Z" transform="translate(56.076)" fill="#8baabc"/>
+        </g>
+        <text id="Bleu_Holdings" data-name="Bleu Holdings" transform="translate(386.076 473)" fill="#707070" font-size="450" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="0" y="0">Bleu Holdings</tspan></text>
+    </svg>'>
+</div>
+<header class="border">
+    <table>
+        <thead>
+        <tr>
+            <th colspan="2">
+                Bleu Holdings
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="tbl-definition">landlord</td>
+            <td class="tbl-input">{{.Landlord}}</td>
+        </tr>
+        <tr>
+            <td class="tbl-definition">agent</td>
+            <td class="tbl-input">{{.Agent.FirstName}} {{.Agent.LastName}}</td>
+        </tr>
+        <tr>
+            <td class="tbl-definition">email</td>
+            <td class="tbl-input email">{{.Agent.Email}}</td>
+        </tr>
+        <tr>
+            <td class="tbl-definition">contact number</td>
+            <td class="tbl-input">{{.Agent.ContactNumber}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <table >
+        <thead>
+        <tr>
+            <th colspan="2">
+                the tenants
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .Tenants}}
+        <tr class="tenant-name">
+            <td class="tbl-definition">to</td>
+            <td class="tbl-input">{{.FirstName}} {{.LastName}}</td>
+        </tr>
+        <tr>
+            <td class="tbl-definition">id / passport number</td>
+            <td class="tbl-input">{{.ID}} {{.Passport}}</td>
+        </tr>
+        <tr>
+            <td class="tbl-definition">email</td>
+            <td class="tbl-input email">{{.Email}}</td>
+        </tr>
+        <tr class="tenant-contact-number">
+            <td class="tbl-definition">contact number</td>
+            <td class="tbl-input">{{.ContactNumber}}</td>
+        </tr>
+        {{end}}
+        </tbody>
+    </table>
+    <div class="statement-item">
+        <span class="item-description">premises</span>
+        <span class="item">{{.Premises.Address}}</span>
+    </div>
+    <div class="statement-item">
+        <span class="item-description">Period</span>
+        <span class="item">{{formatDate .Date.Start}}</span>
+        <span> to </span>
+        <span class="item">{{formatDate .Date.End}}</span>
+    </div>
+</header>
+<main>
+    <div class="statement-history border">
+        <table>
+            <thead>
+            <tr>
+                <th>transaction date</th>
+                <th>description</th>
+                <th>debits</th>
+                <th>credits</th>
+                <th>balance</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{range .Items}}
+            <tr>
+                <td>{{formatDate .Date}}</td>
+                <td>{{.Description}}</td>
+                <td>
+                    <div class="number">
+                        <span>R</span>
+                        <span>{{.Debit}}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="number">
+                        <span>R</span>
+                        <span>{{.Credit}}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="number">
+                        <span>R</span>
+                        <span>.Balance</span>
+                    </div>
+                </td>
+            </tr>
+            {{end}}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="4">Balance</th>
+                <td>
+                    <div class="number">
+                        <span>R</span>
+                        <span>.ClosingBalance</span>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</main>
+<footer>
+    <p class="fine-print">
+        The statement is interpreted from the client's perspective.
+        Where credits denotes an increase the amount owed to Bleu
+        Holdings and debits would decrease the amount owed to Bleu
+        Holdings. This is reflected in the balance, where a negative
+        balance denotes an amount owed to Bleu Holdings and a
+        positive amount denotes the amount owed to the client by
+        Bleu Holdings.
+    </p>
+</footer>
+</body>
+</html>

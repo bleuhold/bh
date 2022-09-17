@@ -45,6 +45,7 @@ type Contract struct {
 	Percentages struct {
 		Escalation float32 `json:"escalation"`
 	} `json:"percentages"`
+	Account Account `json:"account"`
 }
 
 func (c *Contract) References() map[string]bool {

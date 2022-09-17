@@ -28,6 +28,10 @@ func DirectorySetup() {
 	}
 }
 
+func CreateFile(filename string) (*os.File, error) {
+	return os.Create(FilePath(filename))
+}
+
 // WriteFile writes the file data to the OS/FS.
 func WriteFile(filename string, xb []byte) {
 	filePath := FilePath(filename)
