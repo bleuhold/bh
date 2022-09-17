@@ -1,6 +1,7 @@
 package cmds
 
 import (
+	"embed"
 	"fmt"
 	"github.com/bleuhold/bh/filesys"
 	"github.com/dottics/cli"
@@ -16,6 +17,9 @@ import (
 var STATEMENT *cli.Command
 var tpl *template.Template
 
+//go:embed templates
+var content embed.FS
+
 func formatDateYMD(t time.Time) string {
 	return t.Format("2006-01-02")
 }
@@ -25,7 +29,7 @@ var funcMap = template.FuncMap{
 }
 
 func init() {
-	tpl = template.Must(template.New("").Funcs(funcMap).ParseGlob("templates/*.html"))
+	tpl = template.Must(template.New("").Funcs(funcMap).ParseFS(content, "templates/*.html"))
 }
 
 type Statement struct {

@@ -9,6 +9,7 @@
         * {
             font-family: '.AppleSystemUIFont', sans-serif;
             font-size: 0.8rem;
+            margin: 0;
         }
 
         body {
@@ -75,6 +76,7 @@
             margin: 10px 3px 0;
         }
 
+        h5,
         .statement-item .item-description {
             font-weight: bold;
             text-transform: uppercase;
@@ -137,6 +139,18 @@
             text-align: right;
         }
         /* END STATEMENT HISTORY */
+
+        /* ACCOUNT */
+        .account-table th,
+        .account-table td {
+            text-transform: capitalize;
+            text-align: left;
+        }
+
+        .account-table th {
+            font-weight: normal;
+            color: dimgrey;
+        }
 
         .border {
             border: 1px solid lightgrey;
@@ -273,6 +287,33 @@
                 </td>
             </tr>
             </tfoot>
+        </table>
+    </div>
+    <div class="border">
+        <h5>Account Details</h5>
+        <table class="account-table">
+            <tbody>
+            <tr>
+                <th>Provider</th>
+                <td>{{.Account.ProviderName}}</td>
+            </tr>
+            <tr>
+                <th>Holder</th>
+                <td>{{.Account.HolderName}}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{.Account.Number}}</td>
+            </tr>
+            <tr>
+                <th>Branch Code</th>
+                <td>{{.Account.BranchCode}}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td style="text-transform: uppercase">{{.Reference}}</td>
+            </tr>
+            </tbody>
         </table>
     </div>
 </main>

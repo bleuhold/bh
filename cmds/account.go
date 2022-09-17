@@ -18,6 +18,7 @@ type Account struct {
 	AccountType  string    `json:"accountType"`
 	ProviderName string    `json:"providerName"`
 	HolderName   string    `json:"holderName"`
+	BranchCode   string    `json:"branchCode"`
 	Alias        string    `json:"alias"`
 }
 
