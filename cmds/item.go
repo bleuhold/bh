@@ -142,6 +142,19 @@ func (xi *Items) String() string {
 	return s
 }
 
+// StatementString returns a string representation of the items.
+func (xi *Items) StatementString() string {
+	s := fmt.Sprintf("%-36s %-36s %-10s %-40s %11s %11s %11s %s\n", "UUID", "TRANSACTION UUID", "DATE", "DESCRIPTION", "DEBIT", "CREDIT", "BALANCE", "TAGS")
+	for _, i := range *xi {
+		desc := i.Description
+		if len(i.Description) > 40 {
+			desc = i.Description[:40]
+		}
+		s += fmt.Sprintf("%36s %36s %10s %-40s %11.2f %11.2f %11.2f %s\n", i.UUID, i.TransactionUUID, i.Date.Format("2006-01-02"), desc, i.Debit, i.Credit, i.Balance, i.Tags)
+	}
+	return s
+}
+
 // Add appends items to the Items value pointed to.
 func (xi *Items) Add(items ...Item) {
 	*xi = append(*xi, items...)

@@ -91,16 +91,18 @@ func (s *Statement) LoadTransactions() {}
 // CalculateBalance loops through all the items to calculate the running balance
 // and the closing balance for the statement.
 func (s *Statement) CalculateBalance() {
-	sort.Sort(s.Items)
-	for index, item := range s.Items {
-		v := item.Debit - item.Credit
-		if index == 0 {
-			item.Balance = v
+	items := s.Items
+	sort.Sort(items)
+	for i := 0; i < len(items); i++ {
+		v := items[i].Debit - items[i].Credit
+		if i == 0 {
+			items[i].Balance = v
 		} else {
-			b := v + s.Items[index-1].Balance
-			item.Balance = b
+			b := v + items[i-1].Balance
+			items[i].Balance = b
 		}
 	}
+	s.Items = items
 	s.ClosingBalance = s.Items[len(s.Items)-1].Balance
 }
 
@@ -160,10 +162,11 @@ func StatementExecute(cmd *cli.Command) error {
 		items = items.FilterTags(c.References())
 		s.Items = *items
 		s.CalculateBalance()
+		fmt.Println(s.Items)
 
 		fmt.Printf("\n\u001B[1mSTATEMENT\u001B[0m\n\n")
 		c.Print(false)
-		fmt.Println(items.String())
+		fmt.Println(items.StatementString())
 
 	case S1 != "" && B1:
 		UUID, err := uuid.Parse(S1)
