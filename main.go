@@ -48,6 +48,10 @@ func init() {
 		cmds.INFO_SET,
 	})
 
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	/*
 		UPLOAD
 	*/
@@ -69,6 +73,12 @@ func init() {
 	cmds.TRANSACTION.Execute = cmds.TransactionsExecute
 
 	cmds.TRANSACTION.FlagSet.BoolVar(&cmds.B1, "list", false, "List all transactions for the set date ranges.")
+
+	err = cmds.TRANSACTION.AddCommands([]*cli.Command{})
+
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	/*
 		ITEM
@@ -113,6 +123,10 @@ func init() {
 		cmds.ITEM_REMOVE,
 	})
 
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	/*
 		ACCOUNT
 	*/
@@ -145,6 +159,10 @@ func init() {
 		cmds.ACCOUNT_ADD,
 		cmds.ACCOUNT_REMOVE,
 	})
+
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	/*
 		PREMISES
