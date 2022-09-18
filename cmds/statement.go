@@ -55,8 +55,7 @@ type Statement struct {
 }
 
 // NewStatement creates a new statement based on a specific contract's details.
-func NewStatement(c *Contract) *Statement {
-	endDate := time.Now()
+func NewStatement(c *Contract, endDate time.Time) *Statement {
 	return &Statement{
 		filename:  fmt.Sprintf("%s-%s-statement", endDate.Format("20060102"), c.Reference),
 		Reference: c.Reference,
@@ -143,6 +142,8 @@ func (s *Statement) PDF() error {
 */
 
 func StatementExecute(cmd *cli.Command) error {
+	n := time.Now()
+	currentMonth := time.Date(n.Year(), n.Month(), 25, 0, 0, 0, 0, time.UTC)
 	switch {
 	case Help:
 		cmd.PrintHelp()
@@ -156,9 +157,9 @@ func StatementExecute(cmd *cli.Command) error {
 		if c == nil {
 			return fmt.Errorf("contract not found with UUID: %v", UUID)
 		}
-		s := NewStatement(c)
+		s := NewStatement(c, currentMonth)
 		xi := LoadItems()
-		items := xi.DateRange(c.Dates.Occupation, c.Dates.Termination)
+		items := xi.DateRange(c.Dates.Occupation, currentMonth)
 		items = items.FilterTags(c.References())
 		s.Items = *items
 		s.CalculateBalance()
@@ -176,9 +177,9 @@ func StatementExecute(cmd *cli.Command) error {
 		if c == nil {
 			return fmt.Errorf("contract not found with UUID: %v", UUID)
 		}
-		s := NewStatement(c)
+		s := NewStatement(c, currentMonth)
 		xi := LoadItems()
-		items := xi.DateRange(c.Dates.Occupation, c.Dates.Termination)
+		items := xi.DateRange(c.Dates.Occupation, currentMonth)
 		items = items.FilterTags(c.References())
 		s.Items = *items
 		s.CalculateBalance()
