@@ -74,7 +74,19 @@ func init() {
 
 	cmds.TRANSACTION.FlagSet.BoolVar(&cmds.B1, "list", false, "List all transactions for the set date ranges.")
 
-	err = cmds.TRANSACTION.AddCommands([]*cli.Command{})
+	cmds.TRANSACTION_ADD = cli.NewCommand("add", &cmds.Help, flag.ExitOnError)
+	cmds.TRANSACTION_ADD.Usage = "bh"
+	cmds.TRANSACTION_ADD.Description = "Add a new transaction."
+	cmds.TRANSACTION_ADD.Execute = cmds.TransactionAddExecute
+
+	cmds.TRANSACTION_ADD.FlagSet.StringVar(&cmds.S1, "account-uuid", "", "The account UUID to which the transaction will be added.")
+	cmds.TRANSACTION_ADD.FlagSet.StringVar(&cmds.S2, "date", "", "The date of the transaction with format YYYY-MM-DD.")
+	cmds.TRANSACTION_ADD.FlagSet.Float64Var(&cmds.F1, "debit", 0, "The transaction debits amount (expense).")
+	cmds.TRANSACTION_ADD.FlagSet.Float64Var(&cmds.F2, "credit", 0, "The transaction credits amount (income).")
+
+	err = cmds.TRANSACTION.AddCommands([]*cli.Command{
+		cmds.TRANSACTION_ADD,
+	})
 
 	if err != nil {
 		log.Fatalln(err)

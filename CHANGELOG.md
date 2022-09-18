@@ -5,6 +5,14 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.11.0] - 2022-09-18
+### Added 
+- `bh transaction add` command to be able to add a new transaction.
+- The add command automatically adds an item with matching description and
+values.
+- `bh transaction remove` command to be able to remove a transaction.
+- The remove command, also remove all associated/nested items.
+
 ## [0.10.0] - 2022-09-12
 ### Added 
 - `bh statement` command for the generating of a statement.

@@ -25,7 +25,9 @@ var S3 string
 var S4 string
 var S5 string
 
-//var S4 string
+// all the available float64 variables
+var F1 float64
+var F2 float64
 
 // the name of a data structure
 
