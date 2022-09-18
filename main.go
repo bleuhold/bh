@@ -75,7 +75,7 @@ func init() {
 	cmds.TRANSACTION.FlagSet.BoolVar(&cmds.B1, "list", false, "List all transactions for the set date ranges.")
 
 	cmds.TRANSACTION_ADD = cli.NewCommand("add", &cmds.Help, flag.ExitOnError)
-	cmds.TRANSACTION_ADD.Usage = "bh"
+	cmds.TRANSACTION_ADD.Usage = "bh transaction"
 	cmds.TRANSACTION_ADD.Description = "Add a new transaction."
 	cmds.TRANSACTION_ADD.Execute = cmds.TransactionAddExecute
 
@@ -84,8 +84,16 @@ func init() {
 	cmds.TRANSACTION_ADD.FlagSet.Float64Var(&cmds.F1, "debit", 0, "The transaction debits amount (expense).")
 	cmds.TRANSACTION_ADD.FlagSet.Float64Var(&cmds.F2, "credit", 0, "The transaction credits amount (income).")
 
+	cmds.TRANSACTION_REMOVE = cli.NewCommand("remove", &cmds.Help, flag.ExitOnError)
+	cmds.TRANSACTION_REMOVE.Usage = "bh transaction"
+	cmds.TRANSACTION_REMOVE.Description = "Remove a transaction and it's items based on its UUID."
+	cmds.TRANSACTION_REMOVE.Execute = cmds.TransactionRemoveExecute
+
+	cmds.TRANSACTION_REMOVE.FlagSet.StringVar(&cmds.S1, "uuid", "", "The UUID of the transaction to be removed.")
+
 	err = cmds.TRANSACTION.AddCommands([]*cli.Command{
 		cmds.TRANSACTION_ADD,
+		cmds.TRANSACTION_REMOVE,
 	})
 
 	if err != nil {

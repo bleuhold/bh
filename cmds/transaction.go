@@ -154,6 +154,22 @@ func (xt *Transactions) Find(UUID uuid.UUID) (*Transaction, error) {
 	return &Transaction{}, errors.New("transaction not found")
 }
 
+func (xt *Transactions) Remove(UUID uuid.UUID) (*Transactions, error) {
+	transactions := *xt
+	index := -1
+	for i := 0; i < len(transactions); i++ {
+		if transactions[i].UUID == UUID {
+			index = i
+			break
+		}
+	}
+	if index == -1 {
+		return xt, fmt.Errorf("transaction not found for uuid: %v", UUID)
+	}
+	transactions = append(transactions[:index], transactions[index+1:]...)
+	return &transactions, nil
+}
+
 // ListTransactions loads all the transactions and prints them to the
 // transactions.
 func ListTransactions() {

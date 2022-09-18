@@ -129,6 +129,20 @@ func (xi *Items) FilterTags(tags map[string]bool) *Items {
 	return &items
 }
 
+//func FilterTransactionUUID(UUID uuid.UUID) *Items {
+//
+//}
+
+func (xi *Items) RemoveTransactionUUID(UUID uuid.UUID) *Items {
+	items := Items{}
+	for _, item := range *xi {
+		if item.UUID != UUID {
+			items = append(items, item)
+		}
+	}
+	return &items
+}
+
 // String returns a string representation of the items.
 func (xi *Items) String() string {
 	s := fmt.Sprintf("%-36s %-36s %-10s %-40s %11s %11s %s\n", "UUID", "TRANSACTION UUID", "DATE", "DESCRIPTION", "DEBIT", "CREDIT", "TAGS")
