@@ -22,6 +22,7 @@ type Item struct {
 	Debit           float64   `json:"debit"`
 	Credit          float64   `json:"credit"`
 	Tags            []string  `json:"tags"`
+	Balance         float64   `json:"-"`
 }
 
 // NewItem creates a new Item and returns the value pointed to.
@@ -89,18 +90,18 @@ func (xi *Items) Save() {
 }
 
 // Len returns the length of the slice of items.
-func (xi *Items) Len() int {
-	return len(*xi)
+func (xi Items) Len() int {
+	return len(xi)
 }
 
 // Less return whether item i is before item j.
-func (xi *Items) Less(i, j int) bool {
-	return (*xi)[i].Date.Before((*xi)[j].Date)
+func (xi Items) Less(i, j int) bool {
+	return xi[i].Date.Before(xi[j].Date)
 }
 
 // Swap interchanges the positions of i and j.
-func (xi *Items) Swap(i, j int) {
-	(*xi)[i], (*xi)[j] = (*xi)[j], (*xi)[i]
+func (xi Items) Swap(i, j int) {
+	xi[i], xi[j] = xi[j], xi[i]
 }
 
 func (xi *Items) DateRange(start, end time.Time) *Items {

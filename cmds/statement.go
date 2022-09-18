@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"path"
+	"sort"
 	"time"
 )
 
@@ -48,8 +49,9 @@ type Statement struct {
 		ContactNumber string
 		Email         string
 	}
-	Tenants Tenants
-	Items   Items
+	Tenants        Tenants
+	Items          Items
+	ClosingBalance float64
 }
 
 // NewStatement creates a new statement based on a specific contract's details.
@@ -85,6 +87,22 @@ func NewStatement(c *Contract) *Statement {
 }
 
 func (s *Statement) LoadTransactions() {}
+
+// CalculateBalance loops through all the items to calculate the running balance
+// and the closing balance for the statement.
+func (s *Statement) CalculateBalance() {
+	sort.Sort(s.Items)
+	for index, item := range s.Items {
+		v := item.Debit - item.Credit
+		if index == 0 {
+			item.Balance = v
+		} else {
+			b := v + s.Items[index-1].Balance
+			item.Balance = b
+		}
+	}
+	s.ClosingBalance = s.Items[len(s.Items)-1].Balance
+}
 
 //func (s *Statement) filename(extension string) string {
 //	endDate := s.Date.End.Format("20060102")
@@ -141,6 +159,7 @@ func StatementExecute(cmd *cli.Command) error {
 		items := xi.DateRange(c.Dates.Occupation, c.Dates.Termination)
 		items = items.FilterTags(c.References())
 		s.Items = *items
+		s.CalculateBalance()
 
 		fmt.Printf("\n\u001B[1mSTATEMENT\u001B[0m\n\n")
 		c.Print(false)
@@ -160,6 +179,8 @@ func StatementExecute(cmd *cli.Command) error {
 		items := xi.DateRange(c.Dates.Occupation, c.Dates.Termination)
 		items = items.FilterTags(c.References())
 		s.Items = *items
+		s.CalculateBalance()
+
 		s.Write()
 		err = s.PDF()
 		if err != nil {
