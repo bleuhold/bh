@@ -162,7 +162,6 @@ func StatementExecute(cmd *cli.Command) error {
 		items = items.FilterTags(c.References())
 		s.Items = *items
 		s.CalculateBalance()
-		fmt.Println(s.Items)
 
 		fmt.Printf("\n\u001B[1mSTATEMENT\u001B[0m\n\n")
 		c.Print(false)

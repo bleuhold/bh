@@ -5,6 +5,10 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.11.1] - 2022-09-18
+### Fixed
+- The statement command no longer prints the items' data to the screen.
+
 ## [0.11.0] - 2022-09-18
 ### Added 
 - `bh transaction add` command to be able to add a new transaction.
