@@ -161,6 +161,7 @@ func StatementExecute(cmd *cli.Command) error {
 		xi := LoadItems()
 		items := xi.DateRange(c.Dates.Occupation, currentMonth)
 		items = items.FilterTags(c.References())
+		items = items.SwapDebitCredit()
 		s.Items = *items
 		s.CalculateBalance()
 
@@ -181,6 +182,7 @@ func StatementExecute(cmd *cli.Command) error {
 		xi := LoadItems()
 		items := xi.DateRange(c.Dates.Occupation, currentMonth)
 		items = items.FilterTags(c.References())
+		items = items.SwapDebitCredit()
 		s.Items = *items
 		s.CalculateBalance()
 

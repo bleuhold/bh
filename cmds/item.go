@@ -129,6 +129,15 @@ func (xi *Items) FilterTags(tags map[string]bool) *Items {
 	return &items
 }
 
+func (xi *Items) SwapDebitCredit() *Items {
+	items := Items{}
+	for _, item := range *xi {
+		item.Debit, item.Credit = item.Credit, item.Debit
+		items = append(items, item)
+	}
+	return &items
+}
+
 //func FilterTransactionUUID(UUID uuid.UUID) *Items {
 //
 //}
