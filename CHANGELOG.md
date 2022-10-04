@@ -5,6 +5,11 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.11.4] - 2022-10-04
+### Updated
+- Updated the CSS of the statement template to right align all the values
+in the statement and to keep them fixed to two decimal places.
+
 ## [0.11.3] - 2022-10-04
 ### Added
 - A new method `SwapDebitCredit` to the type `Items` which swaps the debits and
