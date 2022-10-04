@@ -21,7 +21,7 @@ func ItemAddExecute(cmd *cli.Command) error {
 	case err == nil:
 		addItem(item)
 	}
-	return nil
+	return err
 }
 
 func validateItemAdd(s1, s2, s3 string, desc []string) (*Item, error) {
