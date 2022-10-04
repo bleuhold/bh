@@ -5,6 +5,17 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.11.3] - 2022-10-04
+### Added
+- A new method `SwapDebitCredit` to the type `Items` which swaps the debits and
+credits. This is needed for the transactions to reflect in the perspective of
+the client. Credit increases what is owed to the company and Debit increases
+what the company owes the client.
+
+### Fixed
+- The statement functions to correctly reflect debits and credits in a
+statement.
+
 ## [0.11.2] - 2022-09-18
 ### Fixed
 - The default end of a statement period is the 25th of the current month.
