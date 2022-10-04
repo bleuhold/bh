@@ -24,9 +24,13 @@ var content embed.FS
 func formatDateYMD(t time.Time) string {
 	return t.Format("2006-01-02")
 }
+func formatCurrency(v float64) string {
+	return fmt.Sprintf("%.2f", v)
+}
 
 var funcMap = template.FuncMap{
-	"formatDate": formatDateYMD,
+	"formatDate":     formatDateYMD,
+	"formatCurrency": formatCurrency,
 }
 
 func init() {

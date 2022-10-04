@@ -134,8 +134,9 @@
             grid-template-columns: auto 1fr;
             width: 100%;
         }
-
-        .number span + span {
+        .number .number-value {
+            display: inline-block;
+            width: 80%;
             text-align: right;
         }
         /* END STATEMENT HISTORY */
@@ -258,19 +259,19 @@
                 <td>
                     <div class="number">
                         <span>R</span>
-                        <span>{{.Debit}}</span>
+                        <span class="number-value">{{formatCurrency .Debit}}</span>
                     </div>
                 </td>
                 <td>
                     <div class="number">
                         <span>R</span>
-                        <span>{{.Credit}}</span>
+                        <span class="number-value">{{formatCurrency .Credit}}</span>
                     </div>
                 </td>
                 <td>
                     <div class="number">
                         <span>R</span>
-                        <span>{{.Balance}}</span>
+                        <span class="number-value">{{formatCurrency .Balance}}</span>
                     </div>
                 </td>
             </tr>
@@ -282,7 +283,7 @@
                 <td>
                     <div class="number">
                         <span>R</span>
-                        <span>{{.ClosingBalance}}</span>
+                        <span class="number-value">{{formatCurrency .ClosingBalance}}</span>
                     </div>
                 </td>
             </tr>
