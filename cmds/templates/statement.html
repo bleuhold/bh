@@ -23,13 +23,20 @@
         }
 
         header {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-column-gap: 50px;
+            /*display: grid;*/
+            /*grid-template-columns: repeat(2, 1fr);*/
+            /*grid-column-gap: 50px;*/
             /*display: flex;*/
             /*display: -webkit-flex;*/
             /*-webkit-flex-direction: row;*/
             /*flex-direction: row;*/
+        }
+
+        .split > div,
+        .split > table {
+            display: inline-block;
+            width: 48%;
+            vertical-align: top;
         }
 
         /* TABLE  */
@@ -172,71 +179,75 @@
     </svg>'>
 </div>
 <header class="border">
-    <table>
-        <thead>
-        <tr>
-            <th colspan="2">
-                Bleu Holdings
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td class="tbl-definition">landlord</td>
-            <td class="tbl-input">{{.Landlord}}</td>
-        </tr>
-        <tr>
-            <td class="tbl-definition">agent</td>
-            <td class="tbl-input">{{.Agent.FirstName}} {{.Agent.LastName}}</td>
-        </tr>
-        <tr>
-            <td class="tbl-definition">email</td>
-            <td class="tbl-input email">{{.Agent.Email}}</td>
-        </tr>
-        <tr>
-            <td class="tbl-definition">contact number</td>
-            <td class="tbl-input">{{.Agent.ContactNumber}}</td>
-        </tr>
-        </tbody>
-    </table>
-    <table >
-        <thead>
-        <tr>
-            <th colspan="2">
-                the tenants
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        {{range .Tenants}}
-        <tr class="tenant-name">
-            <td class="tbl-definition">to</td>
-            <td class="tbl-input">{{.FirstName}} {{.LastName}}</td>
-        </tr>
-        <tr>
-            <td class="tbl-definition">id / passport number</td>
-            <td class="tbl-input">{{.ID}} {{.Passport}}</td>
-        </tr>
-        <tr>
-            <td class="tbl-definition">email</td>
-            <td class="tbl-input email">{{.Email}}</td>
-        </tr>
-        <tr class="tenant-contact-number">
-            <td class="tbl-definition">contact number</td>
-            <td class="tbl-input">{{.ContactNumber}}</td>
-        </tr>
-        {{end}}
-        </tbody>
-    </table>
-    <div class="statement-item">
-        <span class="item-description">premises</span>
-        <span class="item">{{.Premises.Address}}</span>
+    <div class="split">
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">
+                    the tenants
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {{range .Tenants}}
+            <tr class="tenant-name">
+                <td class="tbl-definition">to</td>
+                <td class="tbl-input">{{.FirstName}} {{.LastName}}</td>
+            </tr>
+            <tr>
+                <td class="tbl-definition">id / passport number</td>
+                <td class="tbl-input">{{.ID}} {{.Passport}}</td>
+            </tr>
+            <tr>
+                <td class="tbl-definition">email</td>
+                <td class="tbl-input email">{{.Email}}</td>
+            </tr>
+            <tr class="tenant-contact-number">
+                <td class="tbl-definition">contact number</td>
+                <td class="tbl-input">{{.ContactNumber}}</td>
+            </tr>
+            {{end}}
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">
+                    Bleu Holdings
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="tbl-definition">landlord</td>
+                <td class="tbl-input">{{.Landlord}}</td>
+            </tr>
+            <tr>
+                <td class="tbl-definition">agent</td>
+                <td class="tbl-input">{{.Agent.FirstName}} {{.Agent.LastName}}</td>
+            </tr>
+            <tr>
+                <td class="tbl-definition">email</td>
+                <td class="tbl-input email">{{.Agent.Email}}</td>
+            </tr>
+            <tr>
+                <td class="tbl-definition">contact number</td>
+                <td class="tbl-input">{{.Agent.ContactNumber}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="statement-item">
-        <span class="item-description">Period</span>
-        <span class="item">{{formatDate .Date.Start}}</span>
-        <span> to </span>
-        <span class="item">{{formatDate .Date.End}}</span>
+    <div class="split">
+        <div class="statement-item">
+            <span class="item-description">premises</span>
+            <span class="item">{{.Premises.Address}}</span>
+        </div>
+        <div class="statement-item">
+            <span class="item-description">Period</span>
+            <span class="item">{{formatDate .Date.Start}}</span>
+            <span> to </span>
+            <span class="item">{{formatDate .Date.End}}</span>
+        </div>
     </div>
 </header>
 <main>
