@@ -145,9 +145,25 @@ func (s *Statement) PDF() error {
 	STATEMENT
 */
 
+// StatementExecute is the function executed with the statement command
+//
+// S1 denotes the contract UUID
+// B1 denotes the PDF flag
+// B2 denotes the tenant statement flag
+// B3 denotes teh owner statement flag
 func StatementExecute(cmd *cli.Command) error {
 	n := time.Now()
 	currentMonth := time.Date(n.Year(), n.Month(), 25, 0, 0, 0, 0, time.UTC)
+
+	tags := make(map[string]bool)
+	if B2 {
+		tags["tenant"] = true
+	}
+	if B3 {
+		tags["landlord"] = true
+		tags["owner"] = true
+	}
+
 	switch {
 	case Help:
 		cmd.PrintHelp()
@@ -165,6 +181,9 @@ func StatementExecute(cmd *cli.Command) error {
 		xi := LoadItems()
 		items := xi.DateRange(c.Dates.Occupation, currentMonth)
 		items = items.FilterTags(c.References())
+		if len(tags) > 0 {
+			items = items.FilterTags(tags)
+		}
 		items = items.SwapDebitCredit()
 		s.Items = *items
 		s.CalculateBalance()
@@ -186,6 +205,9 @@ func StatementExecute(cmd *cli.Command) error {
 		xi := LoadItems()
 		items := xi.DateRange(c.Dates.Occupation, currentMonth)
 		items = items.FilterTags(c.References())
+		if len(tags) > 0 {
+			items = items.FilterTags(tags)
+		}
 		items = items.SwapDebitCredit()
 		s.Items = *items
 		s.CalculateBalance()

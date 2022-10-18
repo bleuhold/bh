@@ -16,6 +16,7 @@ var Help bool
 
 var B1 bool
 var B2 bool
+var B3 bool
 
 // all the available string variables
 
@@ -26,6 +27,7 @@ var S4 string
 var S5 string
 
 // all the available float64 variables
+
 var F1 float64
 var F2 float64
 

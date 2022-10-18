@@ -225,6 +225,8 @@ func init() {
 
 	cmds.STATEMENT.FlagSet.StringVar(&cmds.S1, "uuid", "", "Contract UUID for which to generate a statement.")
 	cmds.STATEMENT.FlagSet.BoolVar(&cmds.B1, "pdf", false, "Generate the statement as a PDF and save to Downloads.")
+	cmds.STATEMENT.FlagSet.BoolVar(&cmds.B2, "tenant", false, "Generate the statement for the tenant.")
+	cmds.STATEMENT.FlagSet.BoolVar(&cmds.B3, "landlord", false, "Generate the statement for the landlord/owner.")
 
 	if err != nil {
 		log.Fatalln(err)
