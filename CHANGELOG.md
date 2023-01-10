@@ -5,6 +5,11 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.12.1] - 2023-01-10
+### Fixed
+- Added a flag `-contract-tag` when generating a statement, this allows the user
+to filter between overlapping contracts.
+
 ## [0.12.0] - 2022-10-18
 - Updated the `bh statement` command to add additional `-tenant` and `-landlord`
 flags to allow automatic filtering of the statement to make analysis easier.
