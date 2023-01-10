@@ -163,15 +163,15 @@ func StatementExecute(cmd *cli.Command) error {
 		tags["landlord"] = true
 		tags["owner"] = true
 	}
-	if S3 != "" {
-		tags[S3] = true
+	if S2 != "" {
+		tags[S2] = true
 	}
 
 	switch {
 	case Help:
 		cmd.PrintHelp()
 		return nil
-	case S1 != "" && S3 != "" && B1 == false:
+	case S1 != "" && S2 != "" && B1 == false:
 		UUID, err := uuid.Parse(S1)
 		if err != nil {
 			return err
@@ -196,7 +196,7 @@ func StatementExecute(cmd *cli.Command) error {
 		c.Print(false)
 		fmt.Println(items.StatementString())
 
-	case S1 != "" && S3 != "" && B1:
+	case S1 != "" && S2 != "" && B1:
 		UUID, err := uuid.Parse(S1)
 		if err != nil {
 			return err
