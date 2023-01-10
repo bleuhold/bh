@@ -167,6 +167,8 @@ func StatementExecute(cmd *cli.Command) error {
 		tags[S2] = true
 	}
 
+	fmt.Println("tags", tags)
+
 	switch {
 	case Help:
 		cmd.PrintHelp()
@@ -184,10 +186,10 @@ func StatementExecute(cmd *cli.Command) error {
 		s := NewStatement(c, currentMonth)
 		xi := LoadItems()
 		items := xi.DateRange(c.Dates.Occupation, currentMonth)
-		items = items.FilterTags(c.References())
-		if len(tags) > 0 {
-			items = items.FilterTags(tags)
-		}
+		items = items.FilterTags(c.References(tags))
+		//if len(tags) > 0 {
+		//	items = items.FilterTags(tags)
+		//}
 		items = items.SwapDebitCredit()
 		s.Items = *items
 		s.CalculateBalance()
@@ -208,10 +210,10 @@ func StatementExecute(cmd *cli.Command) error {
 		s := NewStatement(c, currentMonth)
 		xi := LoadItems()
 		items := xi.DateRange(c.Dates.Occupation, currentMonth)
-		items = items.FilterTags(c.References())
-		if len(tags) > 0 {
-			items = items.FilterTags(tags)
-		}
+		items = items.FilterTags(c.References(tags))
+		//if len(tags) > 0 {
+		//	items = items.FilterTags(tags)
+		//}
 		items = items.SwapDebitCredit()
 		s.Items = *items
 		s.CalculateBalance()

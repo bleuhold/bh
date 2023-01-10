@@ -48,14 +48,12 @@ type Contract struct {
 	Account Account `json:"account"`
 }
 
-func (c *Contract) References() map[string]bool {
-	references := map[string]bool{
-		c.Reference: true,
-	}
+func (c *Contract) References(tags map[string]bool) map[string]bool {
+	tags[c.Reference] = true
 	for _, ref := range c.AdditionalReferences {
-		references[ref] = true
+		tags[ref] = true
 	}
-	return references
+	return tags
 }
 
 func (c *Contract) String(all bool) string {

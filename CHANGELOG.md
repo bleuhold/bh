@@ -5,6 +5,10 @@ The format is based on [Keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.12.2] - 2023-01-10
+### Fixed
+- Improved the tag filtering for items.
+
 ## [0.12.1] - 2023-01-10
 ### Fixed
 - Added a flag `-contract-tag` when generating a statement, this allows the user

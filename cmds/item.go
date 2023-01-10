@@ -119,11 +119,16 @@ func (xi *Items) DateRange(start, end time.Time) *Items {
 func (xi *Items) FilterTags(tags map[string]bool) *Items {
 	items := Items{}
 	for _, item := range *xi {
+		t := true
 		for _, tag := range item.Tags {
 			if _, ok := tags[tag]; ok {
-				items = append(items, item)
-				break
+				// do nothing
+			} else {
+				t = false
 			}
+		}
+		if t {
+			items = append(items, item)
 		}
 	}
 	return &items
