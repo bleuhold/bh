@@ -227,6 +227,7 @@ func init() {
 	cmds.STATEMENT.FlagSet.BoolVar(&cmds.B1, "pdf", false, "Generate the statement as a PDF and save to Downloads.")
 	cmds.STATEMENT.FlagSet.BoolVar(&cmds.B2, "tenant", false, "Generate the statement for the tenant.")
 	cmds.STATEMENT.FlagSet.BoolVar(&cmds.B3, "landlord", false, "Generate the statement for the landlord/owner.")
+	cmds.STATEMENT.FlagSet.StringVar(&cmds.S2, "contract-tag", "", "Contract Tag with which to identify items for a contract.")
 
 	if err != nil {
 		log.Fatalln(err)

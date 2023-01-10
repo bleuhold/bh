@@ -1,0 +1,682 @@
+\documentclass[11pt]{article}
+\usepackage[top=3cm, left=2cm, right=2cm, bottom=3.5cm]{geometry}
+
+% indentation
+\setlength\parindent{0pt}
+
+% List items
+\usepackage{enumitem}
+
+% colours
+\usepackage{color, colortbl}
+\usepackage[dvipsnames]{xcolor}
+%\definecolor{LightGray}{gray}{0.9}
+%\definecolor{LightGray}{RGB}{230, 230, 230}
+
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{XBlue}{RGB}{159,244,236}
+\definecolor{XBluePurple}{RGB}{154,186,221}
+\definecolor{XPurple}{RGB}{135, 134, 208}
+
+% Header and Footer
+\usepackage{lastpage}
+%\usepackage[utf8]{inputenc}
+\usepackage{varioref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Header and Footer
+\setlength{\headheight}{13.59999pt}
+
+\rhead{Page \thepage~of~\pageref{LastPage}}
+\lhead{Scribante Agreement of Lease (Residential)}
+\lfoot{
+	\\
+	\begin{tabular}[ht]{lp{2cm}lp{2cm}lp{2cm}}
+		TENANT 1 & \hrule & his/her Witness 1 & \hrule & his/her Witness 2 & \hrule \\
+		TENANT 2 & \hrule & his/her Witness 1 & \hrule & his/her Witness 2 & \hrule \\
+		AGENT & \hrule & his/her Witness 1 & \hrule & his/her Witness 2 & \hrule
+	\end{tabular}
+}
+
+% List and Paragraph
+\setlist[enumerate,1]{label={\thesection.\arabic*}}
+\setlist[enumerate,2]{label={\theenumi.\arabic*},ref={\theenumi.\arabic*}}
+\setlist[enumerate,3]{label={\theenumi.\arabic*},ref={\theenumi.\arabic*}}
+
+\newcommand{\ifm}[1]{\small{\textbf{#1}}}
+\newcommand{\fr}[1]{\begin{flushright}#1\end{flushright}}
+\newcommand{\inputline}[1]{\underline{\hspace{#1em}}}
+
+
+\begin{document}
+
+\label{start}
+%\tableofcontents
+%\section{\uppercase{outline}}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{0.5\linewidth}p{0.5\linewidth}}
+		FOR THE PREMISES & 37a Drake Road \\
+		at the address & 37a Drake Road, Nahoon, East London
+		\label{input:premises} \\[0.3cm]
+		\textit{entered into by and between} \\
+		\textbf{THE ``LANDLORD (LESSOR)"} & Mr J \& Mrs M Scribante \\
+		\small{(hereinafter referred to as the ``Lessor/Landlord")} & Blaauwklippen Meent no 8, Blaauwklippen Road, Paradyskloof, Stellenbosch, 7600\\[0.3cm]
+		\textit{or} THE ``AGENT" DULY REPRESENTATIVE \label{agent} & Johannes Scribante \\
+		\small{(hereinafter referred to as the ``Agent")} \\[0.3cm]
+		RENTALS AND REPAIRS (contact the Agent) & js@bleuhold.com or 076 161 9447 \label{input:landlord-email} \label{input:agent-email} \\
+%		REPAIRS (contact the Agent)  & johannes.scri@gmail.com or 076 161 9447
+	\end{tabular}
+\end{table}
+
+
+\textit{and} THE ``TENANT(S) (LESSEE(S))" \small{(hereinafter referred to as the ``Tenant/Lessee")}: \\
+all of whom will be jointly and severally fully responsible for honouring this Agreement.
+
+EACH TENANT and his/her respective 2 (two) WITNESSES are to initial pages~\pageref{start}-\pageref{end}. \\
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{0.37\linewidth}p{0.6\linewidth}}
+		\textbf{Tenant 1} & \\ \hrule \\
+		 Preferred Name \& Surname & \inputline{28} \\
+		Mobile Number & \inputline{28}\\
+		E-mail Address \label{input:tenant-email} & \inputline{28} \\
+		Given Names and Surname as on ID or on Passport & \inputline{28} \\
+		Nationality \& ID no / Passport no \hspace{0.5cm} (Provide copy) & \inputline{28} \\
+		Residential address at time of signature & \inputline{28} \\
+		Work address at time of signature & \inputline{28} \\
+		Postal address / FAX no & \inputline{28} \\
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{0.37\linewidth}p{0.6\linewidth}}
+		\textbf{Tenant 2} \\ \hrule \\
+		Preferred Name \& Surname & \inputline{28} \\
+		Mobile Number & \inputline{28} \\
+		E-mail Address & \inputline{28} \\
+		Nationality \& ID no / Passport no \hspace{0.5cm} (Provide copy) & \inputline{28} \\
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{0.37\linewidth}p{0.6\linewidth}}
+	\textbf{Occupant for Tenant 1} & \\ \hrule \\
+		Preferred Name \& Surname & \inputline{28} \\
+		Mobile Number & \inputline{28} \\
+		E-mail Address & \inputline{28} \\
+		Nationality \& ID no / Passport no \hspace{0.5cm} (Provide copy)	 & \inputline{28} \\
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{0.37\linewidth}p{0.6\linewidth}}
+		\textbf{Occupant for Tenant 2} \\ \hrule \\
+		Preferred Name \& Surname & \inputline{28} \\
+		Mobile Number & \inputline{28} \\
+		E-mail Address & \inputline{28} \\
+		Nationality \& ID no / Passport no \hspace{0.5cm} (Provide copy) & \inputline{28} \\
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{0.5\linewidth}p{0.5\linewidth}}
+		DATE and TIME of INCOMING INSPECTION & \underline{01 January 2023\hspace{11.2em}} \\
+		DATE and TIME of OCCUPATION & \underline{01 January 2023\hspace{11.2em}} \\
+		DATE and TIME of COMMENCEMENT & \underline{01 January 2023\hspace{11.2em}} \label{input:commencement-date} \\ \\
+		DATE and TIME of OUTGOING INSPECTION & \underline{31 December 2023\hspace{10em}} \\
+		DATE and TIME of EVACUATION & \underline{31 December 2023\hspace{10em}} \\
+		DATE and TIME of TERMINATION \label{input:termination-date} & \underline{31 December 2023\hspace{10em}} \\
+	\end{tabular}
+\end{table}
+
+%\clearpage
+
+\section{\uppercase{Agreement}}
+\label{sec:agreement}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{0.5\linewidth}p{0.5\linewidth}}
+		\textbf{``THE PREMISES"} & \\
+		Name and Number of Building & Drake Road 37a \\
+		Street & Drake Road \\
+		Suburb \& City/Town & Nahoon, East London \\
+		Postal Code & 5210 \\
+		Garages \& Numbers & Nil \\
+		Parking Bays \& Numbers & 2 x Parking Bays adjacent to Premises \\[0.3cm]
+
+		Municipality and Plot/Section number & SS ERF 69978 EAST LONDON \\
+		Water meter Owner \& Number & \\
+		Electricity (Pre-paid) meter Owner \& Number & \\
+		Fibre owner \& Number & \\
+		Furnished/Unfurnished & Unfurnished \\[0.8cm]
+
+		\textbf{Rental Period} & \\
+		Date and Time of COMMENCEMENT & \underline{\hspace{14em}(Indicated on page~\pageref{input:commencement-date})} \\
+		Date and Time of TERMINATION & \underline{\hspace{14em}(Indicated on page~\pageref{input:termination-date})} \\
+		LEASE PERIOD (number of months) & 12.0 \\[0.8cm]
+
+		\textbf{Agent's Fees \& Costs due at signature of this} \label{input:admin-preparation-fees} & \textbf{lease} \\[0.2cm]
+		\textbf{Agent's Fees / Additional Agent's Fees} & \underline{R - \hspace{3em}} \\ [0.5cm]
+		\textbf{Cost per Initial Agreement} & \underline{R 1500.00}\\
+		\hspace{6em} Tenant's Name and Surname & \\
+		DR37 \underline{\hspace{20em}} & R 750.00 \\
+		DR37 \underline{\hspace{20em}} & R 750.00 \\ [0.5cm]
+		\textbf{Cost for Renewal of Agreement} & \underline{R - \hspace{3em}}\\
+		DR37 \underline{\hspace{20em}} & R - \\
+		DR37 \underline{\hspace{20em}} & R - \\ [0.5cm]
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{0.5\linewidth}p{0.5\linewidth}}
+		\hspace{6em} \textbf{Tenant's Name and Surname} & \textbf{Amount due by each}\\
+		\textbf{Deposit Amounts} \label{input:deposit} & \underline{R 26 000.00 \hspace{3em}}\\
+		\small{(required for new lease)} \\
+		DR37 \underline{\hspace{20em}} & R 13 000.00 \\
+		DR37 \underline{\hspace{20em}} & R 13 000.00 \\ [0.5cm]
+
+		\textbf{Deposit Increase Amount} \label{input:deposit-top-up} & \underline{R - \hspace{3em}}\\
+		\small{(due at signature of a renewal)} \\
+		DR37 \underline{\hspace{20em}} & R - \\
+		DR37 \underline{\hspace{20em}} & R - \\ [0.5cm]
+
+		\textbf{Rental Amount (``Rent Monthly")} \label{input:rent-amount} & \underline{R 13 000.00 \hspace{3em}}\\
+		\small{(due on the first calendar day of each month)} \\
+		DR37 \underline{\hspace{20em}} & R 6 500.00 \hspace{3em} (Room with balcony) \\
+		DR37 \underline{\hspace{20em}} & R 6 500.00 \hspace{3em} (Room without balcony) \\[0.5cm]
+
+		\textbf{Escalation} (after expiry of this lease) \label{input:escalation-percentage} & \underline{Maximum 10\% \hspace{3em}} \\ [0.8cm]
+		\textbf{Bank Details} & \\
+		Bank: Investec & Account Number: \\
+		Branch Code: & Account Holder: \\
+		Payment Reference: (As indicated next to payments due) \\[0.5cm]
+		\textbf{Electricity (Pre-Paid meter)} & Fees due by Tenant \\
+		\textbf{Water} & Fees due by Tenant \\
+		\textbf{Sewerage} & Fees due by Tenant \\
+		\textbf{Refuse} & Fees due by Tenant \\
+		\textbf{Rates, Taxes and Levy} (annual increases) \label{input:municipal-rates} & Fees NOT due by Tenant \\
+		\textbf{Electricity, Water, Sewerage, Refuse, Rates, Taxes} (fees relating to damages, reconnections and increases caused by the Tenant and resultant penalties and legal fees) & Tenant to pay the Lessor within 7 (seven) days after being invoiced \\
+		\textbf{WiFi/Fibre/Internet} (are included in the rental fees of the Premises) & Fees NOT due by Tenant \\[1.2cm]
+		\textbf{WiFi/Fibre/Internet} (are included in the rental fees of the Premises) & Fees NOT due by Tenant \\[1.2cm]
+		\textbf{Interest} on any unpaid / outstanding amounts \label{input:interest}
+ & due by the Tenant to the Lessor since interest will accrue, pursuant to a resolution of the Body Corporate under the National Credit Act (2005) Act No 34 of 2005 at present \textbf{2\%} per month, compounded and monthly in arrears \\[0.7cm]
+		\textbf{Transgression of ``House Rules"} \label{input:house-rule-fees} & R 2500.00 per written notice
+	\end{tabular}
+\end{table}
+%\clearpage
+\section{\uppercase{Interpretations and Definitions}}
+\begin{enumerate}
+	\item The head notes to the clauses of this Agreement are inserted for reference purposes only and shall in no way govern or affect the interpretation hereof.
+	\item Unless inconsistent with the context, any expression herein contained, including any expression and any definition thereof in clause~\ref{sec:def:inconsistent}, which denotes:
+		\begin{enumerate}
+			\item any gender, includes the other genders. 
+			\item a natural person, includes an artificial person or vice versa.
+			\item the singular, includes the plural and vice versa.
+		\end{enumerate}
+	\item Unless inconsistent with the context, the expressions set forth below shall bear the following meanings. \label{sec:def:inconsistent}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{p{4cm}p{13cm}}
+	``Agent" & \textbf{(Indicated on page~\pageref{agent})} \\
+	``Agent's fees" & The Agent shall be entitled to charge an administration fee of R\underline{\hspace{6em}} (include factional value); being in respect of preparing and holding receipts, postage, petties and incidental attendances in relation thereto. This fee shall include the cost of the Incoming and Outgoing Inspections referred to in Clauses \ref{sec:incoming-inspection} and \ref{sec:outgoing-inspection} of the Agreement. In addition to the aforegoing, the Agent shall be entitled to charge additional Agent's fees of R\underline{\hspace{6em}} for attendances necessary to ensure the due fulfilment of the terms of the Agreement.\textbf{(Both indicated on page~\pageref{sec:agreement})} \\
+	``Agent's Premises" & \textbf{(Indicated on page~\pageref{input:premises})}\\
+	``Agreement" & The agreement concluded between the parties as recorded in this document together with all annexures hereto. \\
+	``Commencement Date" & Date @ 12:00; \textbf{(Indicated on page~\pageref{input:commencement-date})}; An ordinary day of the week including Saturdays, Sundays and public holidays.\\
+	``House Rules" & The House Rules in relation to the control, management, administration, use and enjoyment of the premises and annexed hereto marked as \textbf{\underline{HOUSE RULES}} (if applicable). \\
+	``Incoming Inspection" & The mandatory inspection referred to in Section(1)(e) on the Rental Housing Act No. 50 of 1999 and detailed in clause~\ref{sec:incoming-inspection} of this Agreement. \\
+	``Lease Period" & The period from the Commencement Date to the Termination Date. \\
+	``Outgoing Inspection" & The mandatory inspection referred to in Section 5(1)(f) of the Rental Housing Act. 50 of 1999 and detailed in clause~\ref{sec:outgoing-inspection} of this Agreement. \\
+	``Premises" & A furnished/unfurnished \textbf{(Indicated on page~\pageref{input:premises})} dwelling, including the grounds and/or building and/or parking bay/garage at \textbf{(Indicated on page~\pageref{input:premises})} including such property as listed in Annexure \textbf{``C"}. \\
+	``Rental Housing Act" & The Rental Housing Act No.50 of 1999.\\
+	``Termination Date" & Date @ 12:00 unless time specified differently \textbf{(Indicated on page~\pageref{sec:agreement})}\\
+	``Tribunal" & Rental Housing Tribunal established under Section~7 of the Rental Housing Act.\\
+		\end{tabular}
+	\end{table}
+	\item All provisions contained in the Annexures hereto shall be deemed to be incorporated in, and to form part of, this Agreement as fully and effectually as if specifically incorporated herein and each expression defined in this Agreement shall have the same meaning where used in any of the Annexures.
+	\item The parties shall ensure that the relevant Annexures are completed and attached to this Agreement, failing which this Agreement shall be of no force or effect.
+\end{enumerate}
+\section{\uppercase{Lease of premises}}
+
+The Landlord hereby lets to the Tenant who hires the Premises subject to the terms and conditions set out in this Agreement.
+
+\section{\uppercase{commencement and period}}
+
+The lease of the Premises shall commence on the Commencement Date and terminate on the Termination Date subject to earlier termination as provided for in this Agreement.
+
+\section{\uppercase{rent}}
+
+The monthly rent payable by the Tenant to the Landlord for the hire of the Premises is the sum of R\underline{\textbf{(Indicated on page~\pageref{input:rent-amount})}} (And in words).
+\begin{enumerate}
+	\item \textbf{The Tenant shall \underline{pay the rent monthly in advance on or before the first day of every month}}.
+	\item All monthly rent shall be \underline{paid on or before the due date, \textbf{free of deductions, bank charges or set off}}, at the Agent's Premises, or such other place as the Landlord may indicate in writing from time to time.
+	\item The Tenant shall, when effecting payment to the Landlord or Agent, \textbf{\underline{clearly identify each payment with}} \textbf{\underline{reference prefix ``DR37AEL" followed by a suitable description}} as being a payment made by him/her or and shall ensure that such payment is brought to the attention of the Landlord or Agent. Should the Tenant fail to advise the Landlord or Agent of any payment which may be made directly into the Landlord or Agent's bank account, then the Tenant accordingly indemnifies and holds the Landlord or Agent harmless for any damages suffered by the Tenant as a consequence of any action taken against the Tenant pursuant to the Tenant's failure to notify the Landlord or Agent of such payment.
+\end{enumerate}
+
+\section{\uppercase{escalation}}
+
+The amount of monthly rent payable hereunder shall escalate at \underline{\hspace{2em}}\% \textbf{(Indicated on page~\pageref{input:escalation-percentage})} per annum compounded, on each and every anniversary of the Commencement Date.
+
+\section{\uppercase{receipts}}
+
+\begin{enumerate}
+	\item The Landlord/Agent shall provide the Tenant with receipt for each payment made in terms of this Agreement.
+	\item Each receipt shall contain the following information:
+		\begin{enumerate}
+			\item the date of receipt of payment.
+			\item the address of the Premises in respect of which payment is made.
+			\item in respect of which period the payment is made.
+			\item in respect of what payment is made, i.e. rental, electricity, deposit, etc.
+		\end{enumerate}
+\end{enumerate}
+
+\section{\uppercase{deposit}}
+\label{sec:deposit}
+
+\begin{enumerate}
+	\item As security for the due fulfilment of the Tenant's obligations in terms of this Agreement, the Tenant shall deposit with the Landlord upon signature of this Agreement, an amount of R\underline{\hspace{6em}} \textbf{(Indicated on page~\pageref{input:deposit})} as damages and services deposit. This deposit will increase with the renewal of each lease contract and the ``top-up" amount of R\underline{\hspace{6em}} \textbf{(Indicated on page~\pageref{input:deposit-top-up})} is due before the commencement of the renewed lease. \label{deposit-description}
+	\item The Landlord shall be entitled to deduct from such damages deposit any amount payable by the Tenant hereunder unpaid and any amount owing by the Tenant for damages suffered by the Landlord, on expiration of the Lease Agreement.
+%	\item The Landlord shall invest the deposits referred to in clause~\ref{deposit-description} above in an interest bearing account for the benefit of the Tenant in accordance with the provisions of the Rental Agreement Act.
+\end{enumerate}
+
+\section{\uppercase{rates, taxes and levies}}
+\label{sec:rates-taxes-levies}
+
+\begin{enumerate}
+	\item \textbf{The Landlord shall pay all municipal rates, taxes, services and levies, including body corporate levies} (if applicable) and all municipal charges payable in respect of the Premises during the Lease Period. \label{def:municipal-rates}
+	\item Should the amount payable in respect of rates and taxes or body corporate levies increase during he Lease Period, the Landlord shall be entitled to increase the monthly rent payable to an amount equal to such increase.
+	\item Notwithstanding the provisions of clause~\ref{def:municipal-rates} above, \textbf{the Tenant shall refund to the Landlord those amounts disbursed by the Landlord in respect of municipal rates, taxes, services and levies being the basic charges, consumption fees, reconnection fees and disposal charges, for electricity, water, refuse sewerage and solid waste, within \underline{\hspace{2em}} days (Indicated on page~\pageref{input:municipal-rates})} of presentation of proof of payment by the Landlord of these services and charges.
+\end{enumerate}
+
+\section{\uppercase{use of premises}}
+\label{sec:use-of-premises}
+
+The Premises shall only be used for private residential purposes of the Tenant, subject to the provisions contained on the House Rules included and/or annexed hereto.
+
+\section{\uppercase{supplies to the premises}}
+\label{sec:supplies-to-the-premises}
+
+\begin{enumerate}
+	\item If electricity is not supplied by the Landlord, the Tenant shall make all arrangements necessary to procure the supply to the Premises, with effect from the Commencement Date, of electricity and telephone services and shall be responsible for the payment to the supplier concerned of the costs of all electrical current supplied to and consumed upon the Premises and for all telephone installation or reconnection, rental and calls during the Lease Period, and for the payment, where applicable, of any other charges payable in connection with the aforesaid arrangements. The Tenant shall furnish the Landlord on a monthly basis with proof of payment of all electricity and telephone accounts.
+	\item If the Premises are let with a telephone, the Tenant shall pay all charges levied by the telecommunication authorities in relation to the telephone within the time limit allowed for payment, and the Tenant shall do nothing, which may lead to the suspension or termination of the telephone service or to a change of number or directory entry.
+	\item The Tenant indemnifies the Landlord against any damages suffered by him as a result of any failure or interruption of any supplies to the Premises and the Landlord does not warrant that any such supplies will be continues for the duration of the Lease Period. The Landlord undertakes to perform no act or omission to prejudice the continuation or resumption of such supplies.
+\end{enumerate}
+
+\section{\uppercase{fixtures and fittings}}
+\label{sec:fixtures-and-fittings}
+
+\begin{enumerate}
+	\item The Tenant shall not be entitled to affix any fixtures or fittings in and/or to the Premises without the prior written consent of the Landlord, which consent may be granted or withheld at the sole discretion of the Landlord.
+	\item Should the Landlord consent, all fixtures and fittings shall be removed by the Tenant, unless otherwise agreed by the Landlord in writing, by no later than the date of the Outgoing Inspection, by which date all damage occasioned by the original fixing and/or by the removal of such fixtures and fittings shall have been made good at the instance and cost of the Tenant who shall restore the Premises to the condition that these were in on the Commencement Date.
+	\item Should the Tenant fail to remove any authorised fixtures and fittings on or before the Outgoing Inspection, such fixtures and fittings shall become the property of the Landlord, without any obligation to compensate the Tenant therefor.
+	\item The Tenant shall not be entitled to drive nails or any other objects into the walls, woodwork or ceilings of the Premises, nor do anything else which may damage the walls, woodwork or a ceiling or any other portion of the Premises, without the prior written consent of the Landlord. The Tenant shall ensure that all nails and/or other objects driven into or affixed to the walls, woodwork or ceilings of the Premises are removed on or before the Outgoing Inspection date, by which date the Tenant shall repair all damages caused by the driving in, affixing or removal of such nails or other objects and shall restore the Premises to the condition that it was in on the Commencement Date,
+\end{enumerate}
+
+\section{\uppercase{alterations}}
+\label{sec:alterations}
+
+The Tenant shall not effect nay alterations or additions, whether structural or not, to the Premises without the prior written consent of the Landlord, which const may be given. or withheld at the sole discretion of the Landlord.
+
+\section{\uppercase{incoming inspection}}
+\label{sec:incoming-inspection}
+
+\begin{enumerate}
+	\item The Landlord or Agent and the Tenant shall jointly inspect the Premises \textbf{prior to the commencement Date} on the \underline{\hspace{6em}} (Date) and \underline{\hspace{3em}} (Time) \textbf{(Indicated on page~\pageref{input:commencement-date})}. Should the Tenant fail to meet the Landlord or Agent at the Premises on the date and at the time herein referred to, the Premises shall be deemed to be free of defects.
+	\item Any deFect or damage noted or found at thePremises or any  portion thereof, shall be recorded in writing in a list of defects which shall be signed by the Tenant and the Landlord or Agent on the Landlord's behalf and attached to this Agreement marked ``\textbf{DEFECTS AT INCOMING INSPECTION}".
+	\item \textbf{The Premises are let and hired in the condition in which they are at the Commencement Date}, without any warranty, express or implied, as to the absence of latent or patent defects therein, but subject always to the Tenant's maintenance obligations in terms of clause~\ref{sec:maintenance-by-tenant} below.
+	\item The Tenant agrees to conduct the Incoming Inspection simultaneously with the Outgoing Inspection of the Tenant vacating the Premises, if requested to do so by the Landlord or Agent.
+\end{enumerate}
+
+
+\section{\uppercase{maintenance by tenant}}
+\label{sec:maintenance-by-tenant}
+
+\begin{enumerate}
+	\item The Tenant shall throughout the Lease Period and at his own cost, maintain the interior of the Premises as well as all te fixtures and fittings therein in a state of good repair, \underline{fair wear and tear excepted}, and shall, on termination of this Agreement, re-deliver the Premises to the Landlord in the same condition as it existed at the Commencement Date.
+	\item The Tenant's maintenance obligations in terms of this clause shall include, but not limited to:
+		\begin{enumerate}
+			\item the replacement, where necessary, of all fluorescent and incandescent bulbs starters, globes, ballasts used and contained in te Premises.
+			\item the replacement and repair of any damaged or broken glass or mirror, however such damage or breakage was caused.
+		\end{enumerate}
+\end{enumerate}
+
+\section{\uppercase{maintenance of garden and swimming pool}}
+\label{sec:maintenance-of-garden-and-swimming-pool}
+
+\begin{enumerate}
+	\item the tenant shall be responsible for the maintenance and upkeep of the garden and shall, at the termination of this Agreement, return the garden to the Landlord in substantially the same condition that it was in at the Commencement Date.
+	\item The costs of any garden services employed as well as the cost of goods or materials required to restore the garden to substantially the same condition that it was in at the Commencement Date, shall be for the Tenant's account and shall be payable immediately upon demand by the Landlord. \label{clause:garden-pool-upkeep}
+	\item The Tenant shall be responsible for the maintenance and upkeep of the swimming pool. The provisions of clause~\ref{clause:garden-pool-upkeep} shall apply, \textit{mutatis mutandis} to the Landlord's right to employ pool maintenance services and the Tenant's obligations to pay all costs incidental thereto.
+\end{enumerate}
+
+\section{\uppercase{damages to the premises by the tenant, visitors and family}}
+\label{sec:premises-damages-by-tenant}
+
+\begin{enumerate}
+	\item The Tenant shall for the duration of this Lease and at his own cost repair ay damage caused to the Premises during the Lease Period, immediately upon being called upon to do so.
+	\item The Tenant shall not knowingly or negligently cause or allow to be caused any obstruction or blockage or any failure of any sewage pipe, water pipes, drains and other supply equipment and installations serving the Premises and shall cause to be removed at his own cost any obstruction or blockage which occurs in such pipes or drain as a result of his actions and, where necessary shall cause, at his own cost, such sewer, pipe or drain to be repaired.
+\end{enumerate}
+
+\section{\uppercase{insurance}}
+\label{sec:insurance}
+
+\begin{enumerate}
+	\item The Tenant shall not do nor permit to be done any act, matter or thing which may render the Landlord's insurance of the Premises against risk of loss or damage attributable to any of the causes insured against grom time to time, either void or void able , or which may increase the rate of premium payable by the Landlord in respect of the Premises with regard to such insurance.
+	\item The Tenant shall e responsible for insuring his personal property brought on to the Premises The Landlord shall not be responsible for any loss, theft or damage to the Tenant's property, regardless of how such loss, theft or damage is caused.
+\end{enumerate}
+
+\section{\uppercase{nuisance}}
+\label{sec:nuisance}
+
+The Tenant shall not act, nor permit any act, in relation to the Premises, which may be a source of annoyance or nuisance or cause damage or disturbance to the occupant of any neighbouring premises or properties.
+
+\section{\uppercase{inspection of premises during lease period}}
+\label{sec:inspection-during-period}
+
+The Landlord shall, at all reasonable time during the Lease Period and by prior arrangement with the Tenant, be entitle to have access to and inspect the Premises.
+
+\section{\uppercase{compliance with laws and rules}}
+\label{sec:compliance-with-laws-and-rules}
+
+\begin{enumerate}
+	\item The Tenant shall at all times for the duration of the Lease Period observe and comply with all applicable laws and statutory, municipal and other by-laws and regulations.
+	\item The Tenant shall at all times for the duration of the Lease Period observe and comply with the rules and regulations which are included and/or attached hereto marked ``\textbf{HOUSE RULES}".
+\end{enumerate}
+
+\section{\uppercase{landlord's maintenance obligations}}
+\label{sec:landlord-maintenance-obligations}
+
+the Landlord shall, at his cost, keep and maintain, in food order and condition, fair wear and tear excepted, the exterior of the Premises, which shall include the roof, gutters and drain pipes of the Premises, but shall exclude windows and doors of the Premises.
+
+\section{\uppercase{subletting, cession and assignment}}
+\label{sec:subletting-cession-assignment}
+
+\begin{enumerate}
+	\item The Tenant shall not be entitled to sublet the Premises without the Landlord's prior written consent, which consent shall not be unreasonably withheld.
+	\item The Tenant shall not be entitle to cede nor assign any of its rights or obligations under this Agreement without the Landlord's prior written consent, which consent shall not be unreasonably withheld.
+\end{enumerate}
+
+\section{\uppercase{renewal period}}
+\label{sec:renewal-period}
+
+The Tenant may apply to the Landlord, in writing, for the Lease Period to be extended, provided such written application is received at least 2 (two) calendar months prior to the Termination Date. Any renewal of the Agreement will be entirely at the Landlord's discretion and on terms to be negotiated between the Tenant and the Landlord which terms shall be reduced to writing.
+
+\section{\uppercase{indemnity}}
+\label{sec:indemnity}
+
+The Tenant hereby indemnifies the Landlord and holds him harmless for any loss or damage to property or injury to persons suffered on the Premises as a result of any act or omission by the Landlord or its servants or agents.
+
+\section{\uppercase{destruction or damage}}
+\label{sec:destruction-or-damage}
+
+\begin{enumerate}
+	\item Should the Premises at any time during the Lease Period be destroyed or be so damaged, by whatever cause, as to deprive the  Tenant of the beneficial use of the Premises, then this Agreement shall terminate, and each Party shall remain liable for its obligations in terms of the Agreement up to the date os such termination but, save as aforesaid, and subject to clause~\ref{} below, neither Party having any further claim against the other. \label{clause:destruction:termination}
+	\item In the event however of the Premises being only partially damaged by any cause as aforesaid, then this Agreement shall continue in force and effect and the Landlord shall, as soon as is reasonably possible, repair such damage. The Tenant shall be entitled to a reduction of rent during the period in which the Premises are not wholly suitable for occupation, such deduction to be agreed upon by the Landlord and the Tenant, or id such agreement cannot be reached, the Parties shall agree upon an independent third party to decide on the reduction. \label{clause:destruction:partially-damaged}
+	\item Notwithstanding the provisions of clause~\ref{clause:destruction:partially-damaged}, the Tenant shall, in the event of the Premises being only so partially damaged, continue to pay the dull amount of rent until such time as the reduction of rent is determined by the Landlord.
+	\item After the amount of the reduced rent has been determined, the Landlord shall credit the Tenant with such amount as the Tenant may have paid in excess of the reduced rent.
+	\item The provisions of clause~\ref{clause:destruction:termination} above shall not prejudice any claim which the Landlord may have against the Tenant where any destruction of, or damage to, the Premises is occasioned by the act or neglect of the Tenant or of any person for whose action the Tenant shall be responsible in law.
+\end{enumerate}
+
+\section{\uppercase{security}}
+\label{sec:security}
+
+The Tenant shall ensure that all reasonable requests made by or on behalf of the Landlord from time to time pertaining to and in connection with the security of the Premises and the protection of persons and properties thereon, shall be adhered to by the Tenant, the Tenant's visitors and guests. Without detracting from the generality of the aforegoing, the Tenant shall:
+\begin{enumerate}
+	\item Take all reasonable steps to ensure that the burglar alarm or security system is not abused, damaged or rendered inoperative and shall immediately advise the Landlord and/or its Agent of any: \label{clause:security:notification}
+		\begin{enumerate}
+			\item breakdown in the system; and
+			\item burglary, trespass or other crime whether actual or attempted occurring on the premises.
+		\end{enumerate}
+	\item Notwithstanding the provisions of clause~\ref{clause:security:notification} above, the Landlord shall at all material times remain liable for the maintenance and repair of the burglar alarm security system on the Premises. However the provisions of this clause~\ref{sec:security} shall not be construed as an assumption by the Landlord of any liability, which it would not otherwise have had arising from and in connection with this Agreement.
+\end{enumerate}
+
+\section{\uppercase{outgoing inspection}}
+\label{sec:outgoing-inspection}
+
+\begin{enumerate}
+	\item The Landlord or Agent and the Tenant shall, on the termination of this Agreement for whatever reason jointly inspect the Premises for any damage thereto at \underline{\hspace{3em}} (time) \textbf{(Indicated on page~\pageref{input:termination-date})} on the last day of the lease.
+	\item The Tenant shall ensure that the Premises shall be vacant at the time of such inspection. \label{clause:outgoing-inspection:vancant}
+	\item The Landlord may apply any of the deposit and the interest accrued thereon towards the payment of the costs of repair of such damage, including the replacement cost of any keys to the Premises. \label{clause:outgoing-inspection:deposit}
+	\item The Tenant also consents to the new tenant of the Premises (if any) being present at such Outgoing Inspection with the Landlord.
+\end{enumerate}
+
+\section{\uppercase{repayment of deposit}}
+\label{sec:repayment-of-deposit}
+
+\begin{enumerate}
+	\item Should no amounts be owing by the Tenant to the Landlord either for monies owing and unpaid in terms of this Agreement, or for the costs of repair in terms of clause~\ref{clause:outgoing-inspection:deposit}, then the Landlord shall pay the full amount of the deposit plus any interest thereon to the Tenant within 7 (seven) days after the termination of this Agreement.
+	\item Should the Landlord deduct the reasonable cost of repairing damage caused to the Premises or any monies owing by the Tenant in terms of any provision of this Agreement from the deposit, the Landlord shall pay the balance of the deposit (if any) and the interest thereon to the Tenant no later than 14 (fourteen) days after the restoration of the Premises to the Landlord.
+	\item Should the Tenant fail to attend the Outgoing Inspection as contemplated in clause~\ref{sec:outgoing-inspection}, the Landlord shall, on termination of the Agreement inspect the Premises within 7 (seven) days from the Termination Date in order to assess any damages or loss which occurred during the Lease Period. Without detracting from any other right or remedy which the Landlord may be entitled to in terms of this Agreement, the Landlord may deduct from the Tenant's deposit and interest the reasonable cost of repairing damage to the Premises and the cost of replacing lost keys. The balance of the deposit (and interest thereon) shall be refunded to the Tenant by the Landlord no later than 21 (twenty one) days after the Termination Date.
+	\item At the request of the Tenant, the Landlord or Agent shall make all receipts/invoices which indicate the costs of the repairs effected in terms of clauses~\ref{clause:outgoing-inspection:vancant}~and~\ref{clause:outgoing-inspection:deposit} hereinabove available to the Tenant for inspection as proof of the costs incurred by the Landlord.
+\end{enumerate}
+
+\section{\uppercase{termination}}
+\label{sec:termination}
+
+Termination of this Agreement will be according to the stipulations under \textit{Consumer Protection Act on page~\pageref{sec:consumer-protection-act}} of this contract.
+
+\section{\uppercase{interest}}
+\label{sec:interest}
+
+Without prejudice to and not withstanding any other rights the Landlord might have in terms of this Agreement, interest shall accrue on any outstanding payments due by the Tenant to the Landlord in terms of this Agreement, at the rate \textbf{indicated on page~\pageref{input:interest}} of this agreement, compounded monthly in advance, from the due date to the date of actual payment.
+
+\section{\uppercase{breach}}
+
+\begin{enumerate}
+	\item Should any amount payable by the Tenant hereunder not be paid on due date or should the Tenant commit any breach of any other provision of this Agreement and should. such amount not be paid or breach not be remedied, as the case may be, within 7 (seven) days of receipt of written notice from the Landlord or Agent requiring the Tenant to make such payment or remedy such breach, then and in either event, the Landlord shall be entitled to cancel this Agreement by notice given by it or on its behalf to the Tenant to such effect, such cancellation to be without prejudice to any claim that the Landlord may have against the Tenant for any arrear rental or for such damages or cost which the Landlord may suffer by reason of such breach and/or cancellation.
+	\item In the event of the Landlord cancelling this Lease in accordance with his rights hereunder and in the event of the Tenant disputing the right to cancel and remaining in occupation of the Premises, the Tenant shall, pending settlement of such dispute either by negotiation or by litigation or by determination of the Tribunal, continue to pay an amount equivalent to the rent provided for in this Agreement in advance as hereinbefore provided and shall continue to pay, on due date any other amounts for which he is responsible hereunder and the Landlord shall be entitled to accept and recover such payments in acceptance thereof shall be without prejudice to, and shall not in any way whatsoever effect the Landlord's claim for cancellation. \label{clause:breach:cancellation}
+	\item Should the dispute be determined in favour of the Landlord, payment made and received in terms of clause~\ref{clause:breach:cancellation} above, shall be deemed to be amounts paid by the Tenant on account of damages suffered by the Landlord by reason of cancellation of the Agreement and/or the unlawful holding over by the Tenant, but without prejudice to any other claim which the Landlord may have against the Tenant for damages or otherwise. Should the dispute, however, be determined in favour of the Tenant, payments made and received by the Landlord in terms of clause~\ref{clause:breach:cancellation} shall be deemed to be on account of the rent payable by the Tenant on terms of this Agreement.
+\end{enumerate}
+
+\section{\uppercase{agent}}
+\label{sec:agent}
+
+\begin{enumerate}
+	\item The Agent shall be authorised to collect all deposits and rent and other amounts payable in terms of this Agreement.
+	\item Should the mandate of the Agent be terminated during the Lease Period, the Landlord shall notify the Tenant in writing thereof and any payments thereafter made by the Tenant to the Agent shall not be payments due under this Agreement.
+\end{enumerate}
+
+\section{\uppercase{consent to magistrate's court jurisdiction}}
+\label{sec:magistrate-court}
+
+The Tenant consents to the jurisdiction of any Magistrate's Court with jurisdiction under Section 23 of the Magistrate's Court Act 1944, in regard to any legal proceedings instituted by the Landlord in connection with this Agreement; provided that the Landlord shall be entitled to institute such proceedings in the High Court.
+
+\section{\uppercase{legal costs}}
+\label{sec:legal-costs}
+
+Should the Landlord have to take any legal action against the Tenant to enforce its obligations in terms of this Agreement, the Tenant shall pay all legal costs, including collection commission, VAT and tracing costs, incurred by the Landlord on an attorney and client scale, or in the event of the Landlord instructing a debt collecting agency to collet any arrear  monies due, then the Tenant shall pay the debt collectors' administrative charges in terms of the relevant Act and refund to the Landlord any collection commission charges.
+
+\section{\uppercase{domicilia and notices}}
+\label{sec:notices}
+
+The Parties hereby chose \textit{domiciliumcitandi et executandi} for all purposes under this Agreement at the addresses set out below, and either party may at any time change its \texit{domicilium} to any other address (not being a post office box or \textit{post restante} on not less than 10 (ten) days written notice to such effect to the other party: \\
+
+Landlord: Name \& Telefax  no.: \underline{\hspace{29em}}\\ \textbf{(Indicated on page~\pageref{input:landlord-email})} \\
+Agent: Agent's Premises \& Telefax no.: \underline{\hspace{26em}}\\ \textbf{(Indicated on page~\pageref{input:agent-email})} \\
+Tenant: The Premises, Postal adresses  \& Telefax no.: \underline{\hspace{20em}}\\ \textbf{(Indicated on page~\pageref{input:tenant-email})} \\
+
+Any notice given by or to any party in terms of this Agreement shall be given in writing and shall be delivered by hand to a responsible person present at or sent by telefax transmission or prepaid registered post to the \textit{domicilium} chosen by the addressee in terms of this Agreement and whereupon it shall be deemed to have been received when so delivered or faxed or 4 (four) business days after being so sent by post.
+
+\section{\uppercase{reletting or sale of premises}}
+\label{sec:reletting-or-sale-of-premises}
+
+\begin{enumerate}
+	\item The Tenant shall give the Landlord or Agent access to the Premises at all reasonable time on 24hours notice during the last 3 (three) months of the Lease Period and of any Renewal Period, for the purpose of showing interested third parties the Premises;
+	\item and the Landlord or Agent may affix a ``To Let" or ``For Sale" notice to or on the Premises during the last 3 (three) months of the Lease Period or of any Renewal Period.
+\end{enumerate}
+
+\section{\uppercase{no variation}}
+\label{sec:no-variation}
+
+No variation of, or addition or agreed cancellation to this Agreement shall be of any force or effect unless it is reduced to writing and signed by or on behalf of the parties.
+
+\section{\uppercase{indulgences}}
+
+No relaxation, indulgence or concession granted by the Landlord to the Tenant in respect of any of his obligations hereunder shall constitute a novation of any part of this Agreement nor otherwise prejudice, derogate from, or affect, any right which the Landlord may have against the Tenant.
+
+\section{\uppercase{agent's fees}}
+\label{sec:agent-fees}
+
+The Agent's Fees owing to the Agent for the Lease Period shall be payable by the Landlord on signature of this Agreement. Any additional Agent's Fees which may become due and payable from time to time shall be payable by the Landlord to the Agent on demand.
+
+\section{\uppercase{costs}}
+\label{sec:costs}
+
+The Tenant shall be liable for the costs of the preparation of this Agreement together with stamp duty payable thereon as well as the renewals of Agreements in the amount of R\underline{\hspace{6em}} \textbf{(Indicated on page~\pageref{input:admin-preparation-fees})}, which shall be paid in advance on the date of signature thereof. \\
+
+For any other costs that tenants may incur, a \textbf{LIST OF RENTAL COSTS can be requested}.
+
+\section{\uppercase{house rules}}
+\label{sec:house-rules}
+
+House Rules \textit{are implemented to protect the rights of the tenants, occupants, owners and neighbours to peaceful living. It is important that tenants, occupants and their visitors are aware of the house rules and adhere to them in order to at no time be a nuisance to anyone}.
+
+\begin{itemize}
+	\item \textbf{\uppercase{alcohol abuse:}} The use of alcohol-containing products are not permitted in communal area nor permitted to be left there.
+	\item \textbf{\uppercase{alcohol abuse and/or drugs abuse:}} Strictly not permitted in the Premises, in communal areas or around the grounds.
+	\item \textbf{\uppercase{braai facilities and communal areas:}} Tenants are to clean and tidy up immediately after using such.
+	\item \textbf{\uppercase{drains and sanitary ware usage:}} Only non-obstructive bio-degradable waste is allowed. Detergents are not suitable for septic tanks.
+	\item \textbf{\uppercase{electricity:}} Should the electricity be dysfunctional, call the Lessor/Agent immediately. No overloading or changes to the electrical supply, or re-wiring of the Premises is allowed. The Tenants and Occupants will be liable for subsequent costs.
+	\item \textbf{\uppercase{electrical meters (pre-paid):}} If dysfunctional - notify the local Municipality / the owner.
+	\item \textbf{\uppercase{fibre:}} Same rules apply for the fibre installations as for electricity.
+	\item \textbf{\uppercase{fires:}} Fires are only allowed in permitted areas. Resulting damages will be for the account of the tenant.
+	\item \textbf{\uppercase{fire extinguisher:}} Fire extinguishers may not be used for any other purposes other than for extinguishing fires,
+	\item \textbf{\uppercase{fittings and fixtures to premises:}} These may only be installed or removed by the handyman of the Owner or the duly authorised service provider for the Owner.
+	\item \textbf{\uppercase{freestanding items:}} Any items included in this lease are for the sole use of the Tenants/Occupants and are not to be removed from the Premises.
+	\item \textbf{\uppercase{laundry:}} Laundry is allowed only in the allocated areas on the washing lines. Laundry may not be visible from the exterior of the Premises.
+	\item \textbf{\uppercase{postal services:}} To be personally arranged with the local post office.
+	\item \textbf{\uppercase{quiet times:}} Are strictly from 22:00 till 08:00. In the instance of an event being planned, where the noise levels are expected to be above acceptable levels, the onus will be on the Tenant/Occupant(s) to notify the other Tenants/Occupants of the building complex, as well as surrounding neighbours will in time, and proceed only after \underline{all} have given their written consent.
+	\item \textbf{\uppercase{pet animals:}} No pet animals are allowed in the Premises or on the grounds around the Premises. Written permission may be granted by the owner, which will not be binding on the Owner and may be withdrawn at any time. Permission is to be granted to each and every pet animal.
+	\item \textbf{\uppercase{refuse:}} Refuse have to be placed in refuse bags inside dustbins and the dustbins have to be closed tightly. No refuse or refuse bags may be left in any other area other than this. Dustbins may not be used for any purposes other than holding refuse. The dustbins have to stay on the spot allocated to them inside the Premises.
+		The local Municipality requests the placement of refuse in black bags inside dustbins for purpose of removal and will refuse removal of refuse that is not in black bags. Subsequently the Tenant will be liable to remove it at his/her own cost to the Municipal dumping site.
+	\item \textbf{\uppercase{security}: For the safety of all and property, please ensure at all times} all doors are locked, windows without burglar bars are closed, alarms are armed at appropriate times AND that the gates to the grounds around the Premises are closed and no unauthorised persons enter when entering or leaving.
+	\item \textbf{\uppercase{security services:}} To be arranged privately.
+	\item \textbf{\uppercase{vagrants and unauthorised persons:}} No vagrants or unauthorised persons are allowed on or around the Premises.
+	\item \textbf{\uppercase{vehicle parking: vehicles or tenants, occupants and their guests}}: are being allowed in the allocated parking bays and on the Premises. The wheels of vehicles in unauthorised areas will be clamped. Should there be no parking places available inside the Premises, then vehicles have to be parked outside the grounds.
+	\item \textbf{\uppercase{vehicle washing:}} Only authorised vehicles allowed in car washing bays on Premises.
+	\item \textbf{\uppercase{visitors:}} Tenants are liable for the actions of their visitors and other visitors. All requirements of this lease apply to visitors.
+	\item \textbf{\uppercase{visitors overstaying on/in the premises:}} Only visitors with written permission from the Lessor are allowed to stay over as stipulated.
+	\item \textbf{\uppercase{waste water:}} Only allowed to run in drains.
+	\item \textbf{\uppercase{water meters (pre-paid):}} if dysfunctional - notify the owner.
+\end{itemize}
+
+\textbf{FEES FOR THE TRANSGRESSION OF HOUSE RULES are indicated on page~\pageref{input:house-rule-fees}}
+
+\section{\uppercase{consumer protection act} \textit{(Only applies if the tenant is a natural person)}}
+\label{sec:consumer-protection-act}
+
+
+Insofar as the Consumer Protection Act governs this Agreement and/or the relationship between the parties, it is specifically agreed that in the event of any clause os sub-clause herein not being permitted in terms of the Consumer Protection Act, such clause or sub-clause shall be severed from this Agreement and be treated as if it were not part of this Agreement. All provisions which automatically apply to an agreement of this nature in terms of the Consumer Protection Act are automatically incorporated herein.
+
+Notwithstanding anything contained in this Lease Agreement, the parties record in writing that the following provisions of the CPA shall be applicable to this Lease Agreement:
+\begin{enumerate}
+	\item Article 14(2)(a) and Regulation 5(1) which stipulates that the maximum period of a fixed lease 24 (four and twenty) months is from the date of signature by the TENANT, unless explicitly a longer period is agreed with the TENANT and the LANDLORD / AGENT have provided a clear advantage to the TENANT.
+	\item Article 14(2)(b), which entitles the TENANT to terminate the lease before its due expiration date by giving 20 business days' notice of termination to the LANDLORD / AGENT, subject to the LANDLORD's right to claim a reasonable cancellation penalty. \textbf{The parties herewith agree that the following cancellation penalty is reasonable: The amount equal to the full deposit amount.}
+	\item Article 14(2)(c), which entitles the LANDLORD to cancel the lease 20 business days after giving written notice to the TENANT of a material failure by the TENANT to comply with the agreement unless the TENANT has rectified the failure within that time.
+	\item Article 14(2)(c), which stipulates that the LANDLORD must notify the TENANT in writing or in any other manner recorded of the proposed expiry date, in not more than 80 (eighty) and not less than 40 (forty) working days before the date of expiration of this Agreement, including notification of:
+
+		\begin{enumerate}
+			\item Any significant amendments that would apply if the agreement is renewed or otherwise may continue after the expiry date.
+			\item The fact that at the expiration of the fixed term of this agreement it will automatically continue to exist on a month to month basis, subject to any changes which the LANDLORD has to give notification of, unless the TENANT explicitly terminates this agreement on the expiry date; or agrees to a renewal of this agreement for another fixed term.
+		\end{enumerate}
+\end{enumerate}
+
+\textbf{\uppercase{declaration:}} \\
+I / We, the undersigned hereby declare that: \\
+
+This lease was presented to me/us in plain language and that I/we understand the contents thereof.
+
+I was/We were not forced, coerced, influenced or pressurised unduly, harassed or placed under duress to sign this agreement and no unfair tactics or any other similar conduct with regard to the negotiation, conclusion, execution or enforcement of this Agreement were applied to me. \\
+
+This Agreement was not the result of direct marketing and as such the cooling off period as referred to in section 16 of the CPA is not applicable to this transaction. \\
+
+I/We had the opportunity to inspect the Property prior to entering into this lease and have verified for myself/ourselves that it is suitable for the intended purpose of this agreement. \\
+
+I/We has the opportunity to obtain legal or other advice regarding the contents thereof, and I/we have exercised such right before signing of this lease, or I/we have elected, out of my/our own choice to waive such right. \\
+
+Tenant(s) and Landlord/Agent hereby acknowledges the contents of this contract and undertake to adhere to it. The Tenant(s) lease(s) this property voetstoots and no rental monies may be withheld due to uncompleted repair works.
+
+%\clearpage
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{\linewidth}}
+		\rowcolor{XBlue}
+		\textbf{TENANT 1 NAME PRINTED:} \\[0.8cm]  \hrule \\
+		\rowcolor{XBlue}
+		\textbf{SIGNATURE of the TENANT 1 in the presence of his/her undersigned witnesses:} \\[0.8cm] \hrule \\
+		\begin{tabular}{p{0.3\linewidth}p{0.3\linewidth}p{0.3\linewidth}}
+			\underline{\hspace{14em}} & \underline{\hspace{14em}} & \underline{\hspace{14em}} \\
+			WITNESS 1 Signature: & WITNESS 1 Name Printed: & WITNESS 1 Contact Number: \\[0.5cm]
+			\underline{\hspace{14em}} & \underline{\hspace{14em}} & \underline{\hspace{14em}} \\
+			WITNESS 2 Signature: & WITNESS 2 Name Printed: & WITNESS 2 Contact Number: \\ [0.5cm]
+		\end{tabular} \\
+		at \underline{\hspace{19em}} on the \underline{\hspace{4em}} day of \underline{\hspace{8em}} 20\underline{\hspace{4em}}
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{\linewidth}}
+		\rowcolor{XBlue}
+		\textbf{TENANT 2 NAME PRINTED:} \\[0.8cm]  \hrule \\
+		\rowcolor{XBlue}
+		\textbf{SIGNATURE of the TENANT 2 in the presence of his/her undersigned witnesses:} \\[0.8cm] \hrule \\
+		\begin{tabular}{p{0.3\linewidth}p{0.3\linewidth}p{0.3\linewidth}}
+			\underline{\hspace{14em}} & \underline{\hspace{14em}} & \underline{\hspace{14em}} \\
+			WITNESS 1 Signature: & WITNESS 1 Name Printed: & WITNESS 1 Contact Number: \\[0.5cm]
+			\underline{\hspace{14em}} & \underline{\hspace{14em}} & \underline{\hspace{14em}} \\
+			WITNESS 2 Signature: & WITNESS 2 Name Printed: & WITNESS 2 Contact Number: \\ [0.5cm]
+		\end{tabular} \\
+		at \underline{\hspace{19em}} on the \underline{\hspace{4em}} day of \underline{\hspace{8em}} 20\underline{\hspace{4em}}
+	\end{tabular}
+\end{table}
+
+%\clearpage
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{\linewidth}}
+		\rowcolor{XBluePurple}
+		\textbf{AGENT (duly authorised hereto) NAME PRINTED:} \\[0.8cm]  \hrule \\
+		\rowcolor{XBluePurple}
+		\textbf{SIGNATURE of the AGENT in the presence of his/her undersigned witnesses:} \\[0.8cm] \hrule \\
+		\begin{tabular}{p{0.3\linewidth}p{0.3\linewidth}p{0.3\linewidth}}
+			\underline{\hspace{14em}} & \underline{\hspace{14em}} & \underline{\hspace{14em}} \\
+			WITNESS 1 Signature: & WITNESS 1 Name Printed: & WITNESS 1 Contact Number: \\[0.5cm]
+			\underline{\hspace{14em}} & \underline{\hspace{14em}} & \underline{\hspace{14em}} \\
+			WITNESS 2 Signature: & WITNESS 2 Name Printed: & WITNESS 2 Contact Number: \\ [0.5cm]
+		\end{tabular} \\
+		at \underline{\hspace{19em}} on the \underline{\hspace{4em}} day of \underline{\hspace{8em}} 20\underline{\hspace{4em}}
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{p{\linewidth}}
+		\rowcolor{XBluePurple}
+		\textbf{LANDLORD (duly authorised hereto) NAME PRINTED:} \\[0.8cm]  \hrule \\
+		\rowcolor{XBluePurple}
+		\textbf{SIGNATURE of the LANDLORD in the presence of his/her undersigned witnesses:} \\[0.8cm] \hrule \\
+		\begin{tabular}{p{0.3\linewidth}p{0.3\linewidth}p{0.3\linewidth}}
+			\underline{\hspace{14em}} & \underline{\hspace{14em}} & \underline{\hspace{14em}} \\
+			WITNESS 1 Signature: & WITNESS 1 Name Printed: & WITNESS 1 Contact Number: \\[0.5cm]
+			\underline{\hspace{14em}} & \underline{\hspace{14em}} & \underline{\hspace{14em}} \\
+			WITNESS 2 Signature: & WITNESS 2 Name Printed: & WITNESS 2 Contact Number: \\ [0.5cm]
+		\end{tabular} \\
+		at \underline{\hspace{19em}} on the \underline{\hspace{4em}} day of \underline{\hspace{8em}} 20\underline{\hspace{4em}}
+	\end{tabular}
+\end{table}
+
+\label{end}
+\end{document}

@@ -3,3 +3,9 @@
 
 # Compiled Executables
 bh
+
+# All LaTeX related files
+**/templates/*.aux
+**/templates/*.log
+**/templates/*.gz
+**/templates/*.pdf

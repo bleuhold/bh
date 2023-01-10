@@ -163,12 +163,15 @@ func StatementExecute(cmd *cli.Command) error {
 		tags["landlord"] = true
 		tags["owner"] = true
 	}
+	if S3 != "" {
+		tags[S3] = true
+	}
 
 	switch {
 	case Help:
 		cmd.PrintHelp()
 		return nil
-	case S1 != "" && B1 == false:
+	case S1 != "" && S3 != "" && B1 == false:
 		UUID, err := uuid.Parse(S1)
 		if err != nil {
 			return err
@@ -177,6 +180,7 @@ func StatementExecute(cmd *cli.Command) error {
 		if c == nil {
 			return fmt.Errorf("contract not found with UUID: %v", UUID)
 		}
+
 		s := NewStatement(c, currentMonth)
 		xi := LoadItems()
 		items := xi.DateRange(c.Dates.Occupation, currentMonth)
@@ -192,7 +196,7 @@ func StatementExecute(cmd *cli.Command) error {
 		c.Print(false)
 		fmt.Println(items.StatementString())
 
-	case S1 != "" && B1:
+	case S1 != "" && S3 != "" && B1:
 		UUID, err := uuid.Parse(S1)
 		if err != nil {
 			return err
