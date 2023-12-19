@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Title</title>
     <style>
         /* add document styling here */
@@ -10,10 +10,17 @@
             font-family: '.AppleSystemUIFont', sans-serif;
             font-size: 0.8rem;
             margin: 0;
+            list-style-position: inside;
+            text-align: justify;
         }
 
         body {
-            max-width: 1200px;
+            max-width: 700px;
+            padding: 60px;
+        }
+
+        p {
+            padding: 0.5rem 0;
         }
 
         .logo {
@@ -35,24 +42,115 @@
             padding: 10px;
             margin: 10px;
         }
+
+        .underline {
+            border-bottom: 1px solid lightgrey;
+        }
+
+        .input-table {
+            display: grid;
+            grid-template-columns: minmax(40%, 100%) minmax(60%, 100%);
+            gap: 1rem;
+            padding: 1rem;
+
+            &:nth-child(odd) {
+                min-width: 40%;
+            }
+        }
+
+        .user-input {
+            max-width: 100%;
+            min-width: 50%;
+            /*width: fill-content;*/
+            /*width: minmax(50%, 100%);*/
+            /*width: 100%;*/
+            border-bottom: 1px solid lightgrey;
+        }
+
+        /* the first ordered list should not be indented*/
+        ol {
+            counter-reset: item;
+            padding: 2px;
+        }
+
+        li {
+            display: table;
+            counter-increment: item;
+            margin: 0.5rem 0;
+
+            & > h1 {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin: 0 0 1rem 0;
+                display: inline-block;
+                text-transform: capitalize;
+            }
+        }
+
+        li:before {
+            content: counters(item, ".") ". ";
+            display: table-cell;
+            padding-right: 10px;
+        }
+
+        li li:before {
+            content: counters(item, ".") " ";
+        }
+        /**/
+        .sign-section {
+            margin: 1rem 0;
+
+            & h3 + hr {
+                margin-top: 1rem;
+            }
+
+            .witnesses > div {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+
+                & hr {
+                    margin-top: 1.5rem;
+                }
+            }
+        }
+
+        /* page numbers */
+        @page {
+            margin: 10%;
+
+            @top-center {
+                font-family: sans-serif;
+                font-weight: bold;
+                font-size: 2em;
+                content: counter(page);
+            }
+        }
+
+        @media print {
+            .page-break {
+                padding-top: 5rem;
+                page-break-before: always;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="logo">
-    <img src='data:image/svg+xml;utf8,<svg id="bleuhold-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3460.076 631" width="400" height="73">
-        <g id="bleuhold-logo-2" data-name="bleuhold-logo" transform="translate(0 72)">
-            <path id="Union_5" data-name="Union 5" d="M99.808,246.461a124.324,124.324,0,0,1-44.7-18.808,125.36,125.36,0,0,1-45.288-55A124.362,124.362,0,0,1,2.54,149.192,125.779,125.779,0,0,1,0,125H0V.008C.359,0,.68,0,.985,0A61.217,61.217,0,0,1,25.124,4.911a61.891,61.891,0,0,1,10.535,5.763,62.554,62.554,0,0,1,9.178,7.632,62.835,62.835,0,0,1,7.573,9.249,62.718,62.718,0,0,1,5.718,10.616A62.437,62.437,0,0,1,62.983,61H63v62h.008c-.005.3-.008.631-.008,1a61.713,61.713,0,0,0,10.589,34.664,62.18,62.18,0,0,0,27.278,22.463A61.617,61.617,0,0,0,125,186c.33,0,.666,0,1-.008v63c-.332,0-.669,0-1,0A125.891,125.891,0,0,1,99.808,246.461Z" transform="matrix(0.966, -0.259, 0.259, 0.966, 0, 39.548)" fill="#598298"/>
-            <path id="Union_6" data-name="Union 6" d="M124.582,436H.509C.5,435.641.5,435.318.5,435.014a61.418,61.418,0,0,1,4.911-24.181,62.054,62.054,0,0,1,5.763-10.553A62.513,62.513,0,0,1,61.5,372.909v-.017h64V373a61.706,61.706,0,0,0,34.164-10.586,62.18,62.18,0,0,0,22.463-27.278,61.919,61.919,0,0,0-5.716-58.8,62.18,62.18,0,0,0-27.278-22.463A61.591,61.591,0,0,0,125,249c-.331,0-.668,0-1,.007V249a125.846,125.846,0,0,1-24.192-2.536,124.324,124.324,0,0,1-44.7-18.808,125.36,125.36,0,0,1-45.288-55A124.362,124.362,0,0,1,2.54,149.192,125.832,125.832,0,0,1,0,125H0V.008C.359,0,.68,0,.985,0A61.217,61.217,0,0,1,25.124,4.911a61.891,61.891,0,0,1,10.535,5.763,62.554,62.554,0,0,1,9.178,7.632,62.835,62.835,0,0,1,7.573,9.249,62.718,62.718,0,0,1,5.718,10.616A62.437,62.437,0,0,1,62.983,61H63v62h.008c-.005.3-.008.631-.008,1a61.713,61.713,0,0,0,10.589,34.664,62.18,62.18,0,0,0,27.278,22.463A61.617,61.617,0,0,0,125,186c.33,0,.666,0,1-.008V186a125.8,125.8,0,0,1,24.192,2.536,124.324,124.324,0,0,1,44.7,18.808,125.36,125.36,0,0,1,45.288,55,124.343,124.343,0,0,1,7.284,23.464,126.207,126.207,0,0,1,0,50.384,124.323,124.323,0,0,1-18.808,44.7,125.36,125.36,0,0,1-55,45.288,124.342,124.342,0,0,1-23.464,7.284A125.892,125.892,0,0,1,125.5,436h-.919Z" transform="translate(56.076)" fill="#8baabc"/>
-        </g>
-        <text id="Bleu_Holdings" data-name="Bleu Holdings" transform="translate(386.076 473)" fill="#707070" font-size="450" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="0" y="0">Bleu Holdings</tspan></text>
-    </svg>'>
+<!--    <img src='data:image/svg+xml;utf8,<svg id="bleuhold-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3460.076 631" width="400" height="73">-->
+<!--        <g id="bleuhold-logo-2" data-name="bleuhold-logo" transform="translate(0 72)">-->
+<!--            <path id="Union_5" data-name="Union 5" d="M99.808,246.461a124.324,124.324,0,0,1-44.7-18.808,125.36,125.36,0,0,1-45.288-55A124.362,124.362,0,0,1,2.54,149.192,125.779,125.779,0,0,1,0,125H0V.008C.359,0,.68,0,.985,0A61.217,61.217,0,0,1,25.124,4.911a61.891,61.891,0,0,1,10.535,5.763,62.554,62.554,0,0,1,9.178,7.632,62.835,62.835,0,0,1,7.573,9.249,62.718,62.718,0,0,1,5.718,10.616A62.437,62.437,0,0,1,62.983,61H63v62h.008c-.005.3-.008.631-.008,1a61.713,61.713,0,0,0,10.589,34.664,62.18,62.18,0,0,0,27.278,22.463A61.617,61.617,0,0,0,125,186c.33,0,.666,0,1-.008v63c-.332,0-.669,0-1,0A125.891,125.891,0,0,1,99.808,246.461Z" transform="matrix(0.966, -0.259, 0.259, 0.966, 0, 39.548)" fill="#598298"/>-->
+<!--            <path id="Union_6" data-name="Union 6" d="M124.582,436H.509C.5,435.641.5,435.318.5,435.014a61.418,61.418,0,0,1,4.911-24.181,62.054,62.054,0,0,1,5.763-10.553A62.513,62.513,0,0,1,61.5,372.909v-.017h64V373a61.706,61.706,0,0,0,34.164-10.586,62.18,62.18,0,0,0,22.463-27.278,61.919,61.919,0,0,0-5.716-58.8,62.18,62.18,0,0,0-27.278-22.463A61.591,61.591,0,0,0,125,249c-.331,0-.668,0-1,.007V249a125.846,125.846,0,0,1-24.192-2.536,124.324,124.324,0,0,1-44.7-18.808,125.36,125.36,0,0,1-45.288-55A124.362,124.362,0,0,1,2.54,149.192,125.832,125.832,0,0,1,0,125H0V.008C.359,0,.68,0,.985,0A61.217,61.217,0,0,1,25.124,4.911a61.891,61.891,0,0,1,10.535,5.763,62.554,62.554,0,0,1,9.178,7.632,62.835,62.835,0,0,1,7.573,9.249,62.718,62.718,0,0,1,5.718,10.616A62.437,62.437,0,0,1,62.983,61H63v62h.008c-.005.3-.008.631-.008,1a61.713,61.713,0,0,0,10.589,34.664,62.18,62.18,0,0,0,27.278,22.463A61.617,61.617,0,0,0,125,186c.33,0,.666,0,1-.008V186a125.8,125.8,0,0,1,24.192,2.536,124.324,124.324,0,0,1,44.7,18.808,125.36,125.36,0,0,1,45.288,55,124.343,124.343,0,0,1,7.284,23.464,126.207,126.207,0,0,1,0,50.384,124.323,124.323,0,0,1-18.808,44.7,125.36,125.36,0,0,1-55,45.288,124.342,124.342,0,0,1-23.464,7.284A125.892,125.892,0,0,1,125.5,436h-.919Z" transform="translate(56.076)" fill="#8baabc"/>-->
+<!--        </g>-->
+<!--        <text id="Bleu_Holdings" data-name="Bleu Holdings" transform="translate(386.076 473)" fill="#707070" font-size="450" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="0" y="0">Bleu Holdings</tspan></text>-->
+<!--    </svg>'>-->
 </div>
 <table>
     <tbody>
-        <tr>
-            <td>FOR THE PREMISES</td>
-            <td>37a Drake Road</td>
-        </tr>
+    <tr>
+        <td><b>FOR THE PREMISES</b></td>
+        <td>37a Drake Road</td>
+    </tr>
     <tr>
         <td>at the address</td>
         <td>37a Drake Road, Nahoon, East London</td>
@@ -61,7 +159,7 @@
         <td colspan="2">entered into by and between</td>
     </tr>
     <tr>
-        <td>THE "LANDLORD (LESSOR)"</td>
+        <td><b>THE "LANDLORD (LESSOR)"</b></td>
         <td>Mr J &amp; Mrs M Scribante</td>
     </tr>
     <tr>
@@ -69,14 +167,1497 @@
         <td>Blaauwklippen Meent no 8, Blaauwklippen Road, Paradyskloof, Stellenbosch, 7600</td>
     </tr>
     <tr>
-        <td>or THE "AGENT" DULY REPRESENTATIVE</td>
+        <td><b>or THE "AGENT" DULY REPRESENTATIVE</b></td>
         <td>Johannes Scribante</td>
     </tr>
     <tr>
-        <td>RENTALS AND REPAIRS (contact the Agent)</td>
+        <td><b>RENTALS AND REPAIRS (contact the Agent)</b></td>
         <td>johannes.scri@gmail.com or 076 161 9447</td>
     </tr>
     </tbody>
 </table>
+
+<p>
+    and the "tenant(s) (lessee(s))" (hereinafter referred to as the "Tentant/Lesee"):
+    all of whom will be jointly and severally fully responsible for honouring this
+    Agreement. Each tenant and his/her respective 2 (two) witnesses are to initial
+    pages 1-14.
+</p>
+
+<div style="margin-top: 2rem;">
+    <h4>Tenant 1</h4>
+    <hr/>
+    <div class="input-table">
+        <div>Preferred Name and Surname</div>
+        <div class="user-input"></div>
+        <div>Mobile number</div>
+        <div class="user-input"></div>
+        <div>E-mail address</div>
+        <div class="user-input"></div>
+        <div>Given names and surname as on ID / Passport</div>
+        <div class="user-input"></div>
+        <div>Nationality ID / Passport number (Provide Copy)</div>
+        <div class="user-input"></div>
+        <div>Residential address at time of signature</div>
+        <div class="user-input"></div>
+        <div>Work address at time of signature</div>
+        <div class="user-input"></div>
+    </div>
+</div>
+<div style="margin-top: 2rem;">
+    <h4>Tenant 2</h4>
+    <hr/>
+    <div class="input-table">
+        <div>Preferred Name and Surname</div>
+        <div class="user-input"></div>
+        <div>Mobile number</div>
+        <div class="user-input"></div>
+        <div>E-mail address</div>
+        <div class="user-input"></div>
+        <div>Given names and surname as on ID / Passport</div>
+        <div class="user-input"></div>
+        <div>Nationality ID / Passport number (Provide Copy)</div>
+        <div class="user-input"></div>
+        <div>Residential address at time of signature</div>
+        <div class="user-input"></div>
+        <div>Work address at time of signature</div>
+        <div class="user-input"></div>
+    </div>
+</div>
+
+<ol style="margin-top: 2rem;">
+    <!-- AGREEMENT -->
+    <li>
+        <h1>agreement</h1>
+        <p>
+            The Landlord hereby lets to the Tenant who hereby hires the Premises
+            for the period and at the rental and upon the terms and conditions
+            hereinafter contained.
+        </p>
+    </li>
+    <li class="page-break">
+        <h1>interpretations and definitions</h1>
+        <ol>
+            <li>
+                <p>
+                    The head notes to the clauses of this Agreement are inserted for
+                    reference purposes only and shall in no way govern of affect the
+                    interpretation hereof.
+                </p>
+                <div>
+                    <h4>occupant for tenant 1</h4>
+                    <div class="input-table">
+                        <div>preferred name and surname</div>
+                        <div class="user-input"></div>
+                        <div>mobile number</div>
+                        <div class="user-input"></div>
+                        <div>e-mail address</div>
+                        <div class="user-input"></div>
+                        <div>nationality ID / Passport no (provide copy)</div>
+                        <div class="user-input"></div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                Unless inconsistent with the context, any expression herein
+                container, including any expression and any definition thereof
+                in clause 2.3, which denotes:
+                <ol>
+                    <li>any gender, includes the other genders.</li>
+                    <li>
+                        a natural person, includes an artificial person or vice
+                        versa.
+                    </li>
+                    <li>the singular, include the plural and vice versa.</li>
+                </ol>
+            </li>
+            <li>
+                Unless inconsistent with the context, the expressions set forth
+                below shall bear the following meanings.
+            </li>
+            <li>
+                All provisions contained in the Annexures hereto shall be deemed
+                to be incorporated in, and to form part of, this Agreement as
+                fully and effectually as if specifically incorporated herein and
+                each expression defined in this Agreement shall have the same
+                meaning where used in any of the Annexures.
+            </li>
+            <li>
+                The parties shall ensure that the relevant Annexures are
+                completed and attached to this Agreement, failing which this
+                Agreement shall be of no force of effect.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>lease of premises</h1>
+        <p>
+            The Landlord hereby lets to the Tenant who hereby hires the Premises
+            subject to the terms and conditions set out in this Agreement.
+        </p>
+    </li>
+    <li>
+        <h1>commencement and period</h1>
+        <p>
+            The lease of the Premisses shall commence on the Commencement Date
+            and terminate on the Termination Date subject to earlier termination
+            as provided for in this Agreement.
+        </p>
+    </li>
+    <li>
+        <h1>rent</h1>
+        <p>
+            The monthly rent payable by the Tenant to the Landlord for the hire
+            of the Premises in the sum of (Indicated on page 11).
+        </p>
+        <div class="input-table">
+            <div>incoming inspection date</div>
+            <div></div>
+            <div>occupation date</div>
+            <div></div>
+            <div>commencement date</div>
+            <div></div>
+            <div>outgoing inspection date</div>
+            <div></div>
+            <div>evacuation date</div>
+            <div></div>
+            <div>termination date</div>
+            <div></div>
+        </div>
+        <ol>
+            <li>
+                <b>
+                    The Tenant shall pay <u>pay the rent monthly in advance on
+                    or before the first day of every month.</u>
+                </b>
+            </li>
+            <li>
+                All montly rent shall be <u>paid on or before the due date, <b>
+                free of deductions, bank charges or set off</b>, at the Agent's
+                Premises, or such other place as the Landlord may indicate in
+                writing from time to time.</u>
+            </li>
+            <li>
+                The Tenant shall, when effecting payment to the Landlord or
+                Agent, <b><u>clearly identifying each payment with reference
+                prefix "DR37AEL" follow by a suitable description</u></b> as
+                being a payment made by him/her or and shall ensure that such
+                payment is brought to the attention of the Landlord or Agent.
+                Should the Tenant fail to advise the Landlord or Agent of any
+                payment which may be made directly into the Landlord or Agent's
+                bank account, then the Tenant accordingly indemnifies and holds
+                the Landlord or Agent harmless for any damages suffered by the
+                Tenant as a consequence of any action taken against the Tenant
+                pursuant to the Tenant's failure to notify the Landlord or Agent
+                of such payment.
+            </li>
+        </ol>
+    </li>
+    <li class="page-break">
+        <h1>escalation</h1>
+        <p>
+            The amount of monthly rent payable hereunder shall escalate at
+            (Indicated on page 11) per annum compounded, on each and every
+            anniversary of the Commencement Date.
+        </p>
+    </li>
+    <li>
+        <h1>receipts</h1>
+        <ol>
+            <li>
+                The Landlord/Agent shall provide the Tenant with receipt for
+                each payment made in terms of this Agreement.
+            </li>
+            <li>
+                Each receipt shall contain the following information:
+                <ol>
+                    <li>the date of receipt of payment.</li>
+                    <li>the address of the Premises in respect of which payment is made.</li>
+                    <li>in respect of which period the payment is made.</li>
+                    <li>in respect of what payment is made, i.e. rental, electricity, deposit, etc.</li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>deposit</h1>
+        <ol>
+            <li>
+                As security for the due fulfilment of the Tenant's obligations
+                in terms of this Agreement, the Tenant shall deposit with the
+                Landlord upon signature of this Agreement, an amount of (Indicated
+                on page 11) as damages and services deposit. This deposit will
+                increase with the renewal of each lease contract and the "top-up"
+                amount of (Indicated on page 11) is due before the commencement
+                of the renewed lease.
+            </li>
+            <li>
+                The Landlord shall be entitled to deduct from such damages deposit
+                any amount payable by the Tenant hereunder unpaid and any amount
+                owing by the Tenant for damages suffered by the Landlord, on
+                expiration of the Lease Agreement.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>rates, taxes and levies</h1>
+        <ol>
+            <li>
+                <b>
+                    The Landlord shall pay all municipal rates, taxes, services
+                    and levies, including body corporate levies
+                </b>
+                (if applicable) and all municipal charges payable in respect of
+                the Premises during the Lease Period.
+            </li>
+            <li>
+                Should the amount payable in respect of rates and taxes or body
+                corporate levies increase during the Lease Period, the Landlord
+                shall be entitled to increase the monthly rent payable to an
+                amount equal to such increase.
+            </li>
+            <li>
+                Notwithstanding the provisions of clause 9.1 above, <b>the
+                Tenant shall refund to the Landlord those amounts disbursed by
+                the Landlord in respect of municipal rates, taxes, services and
+                levies being the basic charges, consumption fees, reconnection
+                fees and disposal charges, for electricity, water, refuse
+                sewerage and solid waste, within (Indicated on page 11)</b> of
+                presentation of proof of payment by the Landlord of these
+                services and charges.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>use of premises</h1>
+        <p>
+            The Premises shall only be used for private residential purposes of
+            the Tenant, subject to the provisions contained on the House Rules
+            included and/or annexed hereto.
+        </p>
+    </li>
+    <li>
+        <h1>supplies to the premises</h1>
+        <ol>
+            <li>
+                If electricity is not supplied by the Landlord, the Tenant shall
+                make all arrangements necessary to procure the supply to the
+                Premises, wiht effect from the Commencement Date, of electricity
+                and shall be responsible for the payment to the supplier concerned
+                of the costs of all electrical current supplied to and consumed
+                upon the Premises and for all installation or reconnection, rental
+                and calls during teh Lease Period, and for the payment, where
+                applicable, of any other charges payable in connection with the
+                aforesaid arrangements. The Tenant shall furnish the Landlord on
+                a monthly basis with proof of payment of all electrical accounts.
+            </li>
+            <li>
+                The Tenant indemnifies the Landlord against any damages suffered
+                by him as a result of any failure of interruption of any supplies
+                to the Premises and the Landlord does not warrant that any such
+                supplies will be continued for the duration of the Lease Period.
+                The Landlord undertakes to perform no act or omission to
+                prejudice the continuation or resumption of such supplies.
+            </li>
+        </ol>
+    </li>
+    <li class="page-break">
+        <h1>fixtures and fittings</h1>
+        <ol>
+            <li>
+                The Tenant shall not be entitled to affix any fixtures of fittings
+                in and/or to the Premises without prior written consent of the
+                Landlord, which consent may be granted or withheld at the sole
+                discretion of the Landlord.
+            </li>
+            <li>
+                Should the Landlord, consent, all fixtures and fittings shall be
+                removed by the Tenant, unless otherwise agreed by the Landlord in
+                writing, by no later than the date of the Outgoing Inspection, by
+                which date all damage occasioned by teh original fixing and /or
+                by the removal of such fixtures and fittings shall have been
+                made good at the instance and cost of the Tenant who shall restore
+                the Premises to the condition that these were in on the
+                Commencement Date.
+            </li>
+            <li>
+                Should the Tenant fail to remove any authorised fixtures and
+                fittings on/or before the Outgoing Inspection, such fixtures and
+                fittings shall become the property of the Landlord, without any
+                obligation to compensate the Tenant therefore.
+            </li>
+            <li>
+                The Tenant shall not be entitled to drive nails or any other
+                objects into the walls, woodwork or ceilings of the Premises, nor
+                do anything else which may damage the walls, woodwork or ceiling
+                or any other portion of the Premises, without the prior written
+                consent of the Landlord. The Tenant shall ensure that all nails
+                and/or other objects driven into or affixed to the walls, woodwork
+                or ceilings of the Premises are removed on/or before the Outgoing
+                Inspection date, by which date the Tenant shall repair all damages
+                caused by the driving in, affixing or removal of such nails or
+                objects and shall restore the Premises to the condition that it
+                was in on the Commencement Date.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>alterations</h1>
+        <p>
+            The Tenant shall not effect any alterations or additions, whether
+            structural or not, to the Premises without the prior written consent
+            of the Landlord, which consent may be given or withheld at the sole
+            discretion of the Landlord.
+        </p>
+    </li>
+    <li>
+        <h1>incoming inspection</h1>
+        <ol>
+            <li>
+                The Landlord or Agent and the Tenant shall jointly inspect the
+                Premises <b>prior to the Commencement Date</b> on (Indicated on
+                page 11) date at (Indicated on page 11) time. Should the Tenant
+                fail to meet the Landlord or Agent at the Premises on the date
+                and at the time herein referred to, the Premises shall be deemed
+                to be free of defects.
+            </li>
+            <li>
+                Any defect of damage noted or found at teh Premises or any portion
+                thereof, shall be recorded in writing in a list of defects which
+                shall be signed by teh Tenant and the Landlord or Agent on the
+                Landlord's behalf and attached to this Agreement marked "<b>
+                DEFECTS AT INCOMING INSPECTION</b>".
+            </li>
+            <li>
+                <b>The Premises are let and hired in the condition in which
+                    they are at the Commencement Date</b>, without any warranty,
+                express or implied, as to the absence of latent or patent defects
+                therein, but subject always to the Tenant's maintenance obligations
+                in terms of clause 15 herein.
+            </li>
+            <li>
+                The Tenant agrees to conduct teh Incoming Inspection simultaneously
+                with the Outgoing Inspection of the Tenant vacating the Premises,
+                if requested to do so by the Landlord or Agent.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>maintenance by tenant</h1>
+        <ol>
+            <li>
+                The Tenant shall throughout the Lease Period and at his own cost,
+                maintain the interior of the Premises as well as the fixtures and
+                fittings therein in a state of good repair, <u>fair wear and tear
+                expected</u>, and shall, on termination fo this Agreement,
+                re-deliver the Premises to the Landlord in the same condition as
+                it existed at the Commencement Date.
+            </li>
+            <li>
+                The Tenant's maintenance obligations in terms of this clause
+                shall include, but not limited to:
+                <ol>
+                    <li>
+                        the replacement, where necessary, of all fluorescent and
+                        incandescent bulbs, starters, globes, ballasts used and
+                        contained in the Premises.
+                    </li>
+                    <li>
+                        the replacement and repair of any damaged or broken glass
+                        or mirror, however such damage or breakage was caused.
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>maintenance of garden and swimming pool</h1>
+        <ol>
+            <li>
+                The Tenant shall be responsible for the maintenance and upkeep
+                of the garden and shall, at the termination of this Agreement,
+                return the garden to teh Landlord in substantially the same condition
+                that it was in at the Commencement Date.
+            </li>
+            <li>
+                The costs of any garden services employed as well as the costs of
+                goods or materials required to restore the garden to substantially
+                the same condition that it was in at the Commencement Date, shall be
+                for the Tenant's account and shall be payable immediately upon
+                demand by the Landlord.
+            </li>
+            <li>
+                The Tenant shall be responsible for the maintenance and upkeep of
+                the swimming pool. The provisions of clause 16.2 shall apply,
+                <i>mutatis mutandis</i> to the Landlord's right to employ pool
+                maintenance services and the Tenant's obligations to pay all costs
+                incidental thereto.
+            </li>
+        </ol>
+    </li>
+    <li class="page-break">
+        <h1>damages to the premises by the tenant, visitors and family</h1>
+        <ol>
+            <li>
+                The Tenant shall for the duration of this Lease and at his own cost
+                repair any damage caused to the Premises during the Lease Period,
+                immediately upon being called upon to do so.
+            </li>
+            <li>
+                The Tenant shall not knowingly or negligently cause or allow to
+                be caused any obstruction of blockage or any failure of any
+                sewage pipe, water pipes, drains and other supply equipment and
+                installations serving the Premises and shall cause to be removed
+                at his own cost any obstruction or blockage which occurs in such
+                pipes or drain as a result of his actions and, where necessary
+                shall cause, at his own cost,such sewer, pipe or drain to be repaired.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>insurance</h1>
+        <ol>
+            <li>
+                The Tenant shall not do nor permit to be done any act, matter or
+                thing which may render the Landlord's insurance of the Premises
+                against risk of loss or damage attributable to any of the causes
+                insured against from time to time, either void or voidable, or
+                which may increase the rate of premium payable by the Landlord
+                in respect of the Premises with regard rto such insurance.
+            </li>
+            <li>
+                The Tenant shall be responsible for insuring his personal property
+                brought on to the Premises. The Landlord shall not be responsible
+                for any loss, theft of damage to the Tenant's property, regardless
+                of how such loss, theft or damage was caused.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>nuisance</h1>
+        <p>
+            The Tenant shall not act, nor permit any act, in relation to the Premises,
+            which may be a source of annoyance of nuisance or cause damage or
+            disturbance to the occupant of any neighouring premises or properties.
+        </p>
+    </li>
+    <li>
+        <h1>inspection of premises during lease period</h1>
+        <p>
+            The Landlord shall, at a reasonable time during the Lease Period and
+            by prior arrangement with the Tenant, be entitled to have access to and
+            inspect the Premises.
+        </p>
+    </li>
+    <li>
+        <h1>compliance with laws and rules</h1>
+        <ol>
+            <li>
+                The Tenant shall at all times for the duration of the Lease Period
+                observe and comply with all applicable laws and statutory, municipal
+                and other by-laws and regulations.
+            </li>
+            <li>
+                The Tenant shall at all time for the duration of the Lease Period
+                observe and comply with the rules and regulations which are included
+                and/or attached hereto marked "<b>HOUSE RULES</b>".
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>landlord's maintenance obligations</h1>
+        <p>
+            The Landlord shall, at his cost, keep and maintain, in food order and
+            condition, fair wear and tear excepted, the exterior of the Premises,
+            which shall include the roof, gutters and drain pipes of the Premises,
+            but shall exclude windows and doors of the Premises.
+        </p>
+    </li>
+    <li>
+        <h1>subletting, cession and assignment</h1>
+        <ol>
+            <li>
+                The Tenant shall not be entitled to sublet the Premises without
+                the Landlord's prior written consent, which consent shall not be
+                unreasonably withheld.
+            </li>
+            <li>
+                The Tenant shall not be entitled to cede nor assign any of its
+                rights or obligations under this Agreement without the Landlord's
+                prior written consent, which consent shall not be unreasonably
+                withheld.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>renewal period</h1>
+        <p>
+            The Tenant may apply to the Landlord, in writing, for the Lease Period
+            to be extended, provided such written application is received at least
+            2 (two) calendar months proir to the Termination Date. Any renewal of
+            the Agreement will be entirely at the Landlord's discretion and on terms
+            to be negotiated between the Tenant and the Landlord which terms shall
+            be reduced to writing.
+        </p>
+    </li>
+    <li>
+        <h1>indemnity</h1>
+        <p>
+            The Tenant hereby indemnifies the Landlord and holds him harmless
+            for any loss or damage to property or injury to persons suffered on
+            the Premises as a result of any act or omission by the Landlord or
+            its servants or agents.
+        </p>
+    </li>
+    <li class="page-break">
+        <h1>destruction or damage</h1>
+        <ol>
+            <li>
+                Should the Premises at any time during the Lease Period be destroyed
+                or ge so damaged, by whatever cause, as to deprive the Tenant of the
+                beneficial use fo the Premises, then this Agreement shall terminate,
+                and each Party shall remain liable for its obligations in terms of
+                the Agreement up to the date of such termination, but save as aforesaid,
+                and subject to clause 25.2, neither Party shall have any claim against
+                the other.
+            </li>
+            <li>
+                In the event however of the Premises being only partially damaged
+                by any cause aforesaid, then this Agreement shall continue in force
+                and effect and the Landlord shall, as soon as is reasonably possible, repair
+                such damage. The Tenant shall be entitled to a reduction of rent during
+                the period in which the Premises are not wholly suitable for occupation,
+                such reduction to be agreed upon by the Landlord and the Tenant, or
+                if such agreement cannot be reached, the Parties shall agree upon
+                an independent third party to decide on teh reduction.
+            </li>
+            <li>
+                Notwithstanding the provisions of clause 26.2, the Tenant shall,
+                in the event of the Premises being only partially damaged, continue
+                to pay the full amount of rent until such time as the reduction of
+                rent is determined by the Landlord.
+            </li>
+            <li>
+                After the amount of the reduced rent has been determined, the Landlord
+                shall credit the Tenant with such amount as the Tenant may have paid
+                in excess of the reduced rent.
+            </li>
+            <li>
+                The provisions of clause 26.1 above shall not prejudice any claim
+                which the Landlord may have against the Tenant where any destruction
+                of, or damage to, the Premises is occasioned by the act or neglect
+                of the Tenant or of any person whose action the Tenant shall be
+                responsible in law.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>security</h1>
+        <p>
+            The Tenant shall ensure that all reasonable requests made by or on
+            behalf of the Landlord from time to time pertaining to and in connection
+            with the security of the Premises and the protection of persons and
+            properties thereon, shall be adhered to by the Tenant, the Tenant's
+            visitors and guests. Without detracting from the generality of the
+            aforegoing, the Tenant shall:
+        </p>
+        <ol>
+            <li>
+                Take all reasonable steps to ensure that the burglar alarm or
+                security system is not abused, damaged or rendered inoperative
+                and shall immediately advise the Landlord and/or its Agent of any:
+                <ol>
+                    <li>breakdown in the system; and</li>
+                    <li>burglary, trespass or other crime whether actual or attempted occurring on the Premises.</li>
+                </ol>
+            </li>
+            <li>
+                Notwithstanding the provisions of clause 27.1 above, the Landlord shall
+                at all material times remain liable for the maintenance and repair of the
+                burglar alarm security system on the Premises. However, the provisions
+                of this clause 27 shall not be construed as an assumption by the
+                Landlord of any liability, which it would not otherwise have had
+                arising from and in connection with this Agreement.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>outgoing inspection</h1>
+        <ol>
+            <li>
+                The Landlord or Agent and the Tenant shall, on the termination of
+                this Agreement for whatever reason jointly inspect the Premises for
+                any damage thereto on the last day of the lease.
+            </li>
+            <li>
+                The Tenant shall ensure that the Premises shall be vacant at the
+                time of such inspection.
+            </li>
+            <li>
+                The Landlord may apply any of the deposit and the interest accrued
+                thereon towards the payment of the costs fo repair of such damage,
+                including the replacement of any cost of any keys to the Premises.
+            </li>
+            <li>
+                The Tenant also consents to the new tenant of the Premises (if any)
+                being present at such Outgoing Inspection with the Landlord.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>repayment of deposit</h1>
+        <ol>
+            <li>
+                Should no amounts be owing by the Tenant to the Landlord either for
+                monies owing and unpaid in terms of this Agreement, or for the costs
+                of repair in terms of clause 28.3, then the Landlord shall pay the full
+                amount of the deposit plus any interest thereon to the Tenant within
+                7 (seven) days after the termination of this Agreement.
+            </li>
+            <li>
+                Should the Landlord deduct the reasonable cost fo repairing damage
+                caused to the Premises or any monies owing by the Tenant in terms of
+                any provision of this Agreement from the deposit, the Landlord shall
+                pay the balance of the deposit (if any) and the interest thereon to
+                the Tenant no later than 14 (fourteen) days after the restoration
+                of the Premises to the Landlord.
+            </li>
+            <li>
+                Should the Tenant fail to attend the Outgoing Inspection as contemplated in
+                clause 28, the Landlord shall, on termination of the Agreement inspect
+                the Premises within 7 (seven) days from the Termination Date in order
+                to assess any damages or loss which occurred during the Lease Period.
+                Without detracting from any other right or remedy which the Landlord
+                may be entitled to in terms of this Agreement, the Landlord may
+                deduct from the Tenant's deposit and interest the reasonable cost of
+                repairing damage to the Premises and the cost of replacing lost keys.
+                The balance of the deposit (and interest thereon) shall be refunded
+                to the Tenant by the Landlord no later than 21 (twenty-one) days
+                after the Termination Date.
+            </li>
+            <li>
+                At the request of the Tenant, the Landlord or Agent shall make all
+                receipts/invoices which indicate the costs of the repairs effected
+                in terms of clauses 28.2 and 28.3 available to the Tenant for inspection
+                as proof of the costs incurred by the Landlord.
+            </li>
+        </ol>
+    </li>
+    <li class="page-break">
+        <h1>termination</h1>
+        <p>
+            Termination of this Agreement will be according to the stipulations under
+            <i>Consumer Protection Act</i> on page 13 of this contract.
+        </p>
+    </li>
+    <li>
+        <h1>interest</h1>
+        <p>
+            Without prejudice to and not withstanding any other rights the Landlord
+            might have in terms of this Agreement, interest shall accrue on any
+            outstanding payments due by the Tenant to the Landlord in terms of this
+            Agreement, at the rate of (Indicated on page 11) compounded monthly in
+            advance, from the duw date to the date of actual payment.
+        </p>
+    </li>
+    <li>
+        <h1>breach</h1>
+        <ol>
+            <li>
+                Should any amount payable by the Tenant hereunder not be paid on
+                due date or should the Tenant commit any breach of any other provision
+                of this Agreement and should such amount not be paid or breach not
+                be remedied, as teh case may be, within 7 (seven) days of receipt
+                of written notice from the Landlord or Agent requiring the Tenant to make
+                such payment or remedy such breach, then and in either event, the
+                Landlord shall be entitled to cancel this Agreement by notice given
+                by it or on its behalf to the Tenant to such effect, such cancellation to
+                be without prejudice to any claim that the Landlord may have against
+                the Tenant for any rental arrears or for such damages or cost which
+                the Landlord may suffer by reason of such breach and/or cancellation.
+            </li>
+            <li>
+                In the event of the Landlord cancelling this Lease in accordance
+                with his rights hereunder and in the event of the Tenant disputing
+                the right to cancel and remaining in occupation of the Premises, the
+                Tenant shall, pending settlement of such dispute either by negotiation or
+                by litigation or by determination of the Tribunal, continue to pay an
+                amount equivalent to the rent provided for in this Agreement in advance
+                as herein before provided and shall continue to pay, on due date any
+                other amounts for which he is responsible hereunder and the Landlord
+                shall be entitled to accept and recover such payments in acceptance
+                thereof shall be without prejudice to, and shall not in any way
+                whatsoever effect the Landlord's claim for cancellation.
+            </li>
+            <li>
+                Should the dispute be determined in favour of the Landlord, payment made
+                and received in terms of clause 32.2 above, shall be deemed to be
+                amounts paid by the Tenant on account of damages suffered by the
+                Landlord by reason of cancellation of the Agreement and/or the unlawful
+                holding over by the Tenant, but without prejudice to any other claim
+                which the Landlord may have against the Tenant for damages or otherwise.
+                Should the dispute, however, be determined in favour of the Tenant,
+                payments made and received by the Landlord in terms of clause 32.2
+                shall be deemed to be on account of the rent payable by the Tenant
+                on terms of this Agreement.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>agent</h1>
+        <ol>
+            <li>
+                The Agent shall be authorised to collect all deposits and rent and
+                other amounts payable in terms of this Agreement.
+            </li>
+            <li>
+                Should the mandate of the Agent by terminated during the Lease Period,
+                the Landlord shall notify the Tenant in writing thereof and any payments
+                thereafter made by the Tenant to the Agent shall not be payments due
+                under this Agreement.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>consent to magistrate's count jurisdiction</h1>
+        <p>
+            The Tenant consents to the jurisdiction of any Magistrate's Court
+            with jurisdiction under Section 23 of the Magistrate's Court Act 1944,
+            in regard to any legal proceedings instituted by the Landlord in connection
+            with this Agreement; provided that the Landlord shall be entitled to
+            institute such proceedings in the High Court.
+        </p>
+    </li>
+    <li>
+        <h1>legal costs</h1>
+        <p>
+            Should the Landlord have to take any legal action against the Tenant to
+            enforce its obligations in terms of this Agreement, the Tenant shall pay
+            all legal costs, including collection commission, VAT and tracing costs,
+            incurred by the Landlord on an attorney and client scale, or in the event
+            of the Landlord instructing a debt collecting agency to collect any arrears
+            monies due, then the Tenant shall pay the debt collectors' administrative charges
+            in terms of the relevant Act and refund to the Landlord any collection
+            commission charges.
+        </p>
+    </li>
+    <li class="page-break">
+        <h1>domicilia and notices</h1>
+        <p>
+            The Parties hereby chose <i>domiciliumcitandi et exceutandi</i> for all
+            purposes under this Agreement at the addresses set out below, and either
+            party may at any time change its <i>domicilium</i> to any other address
+            (not being a post office box or <i>post restante</i> on not less than
+            10 (ten) days written notice to such effect to the other party:
+        </p>
+        <div class="input-table">
+            <div>Landlord: Name and Mobile No.:</div>
+            <div class="user-input"></div>
+            <div>Agent: Name and Mobile No.:</div>
+            <div class="user-input"></div>
+            <div>Tenant 1: Name and Mobile No.:</div>
+            <div class="user-input"></div>
+            <div>Tenant 2: Name and Mobile No.:</div>
+            <div class="user-input"></div>
+        </div>
+        <p>
+            Any notice given by or to any party in terms of this Agreement shall
+            by given in writing and shall be delivered by hand to a responsible person
+            present at or sent by E-mail or prepaid registered post to the <i>domicilium</i>
+            chosen by the addressee in terms of this Agreement and whereupon it shall be
+            deemed to have been received when so delivered of 4 (four) business days
+            after being so sent by post.
+        </p>
+    </li>
+    <li>
+        <h1>reletting or sale of premises</h1>
+        <ol>
+            <li>
+                The Tenant shall give the Landlord or Agent access to the Premises
+                at all reasonable time on 24 hours notice during the last 3 (three)
+                months of the Lease Period and of any Renewal Period, for the purpose
+                of showing interested third parties the Premises;
+            </li>
+            <li>
+                and the Landlord or Agent may affix a "To Let" or "For Sale" notice
+                to or on the Premises during the last 3 (three) months of the Lease
+                Period or of any Renewal Period.
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h1>no variation</h1>
+        <p>
+            No variation of, or addition or agreed cancellation to this Agreement shall be
+            of any force or effect unless it is reduced to writing and signed by or on
+            behalf of the Parties.
+        </p>
+    </li>
+    <li>
+        <h1>indulgences</h1>
+        <p>
+            No relaxation, indulgences or concession granted by the Landlord to the
+            Tenant in respect of his obligations hereunder shall constitute a novation of
+            any part of this Agreement nor otherwise prejudice, derogate from, or
+            affect, any right which the Landlord may have against the Tenant.
+        </p>
+    </li>
+    <li>
+        <h1>agent's fees</h1>
+        <p>
+            The Agent's Fees owing to the Agent for the Lease Period shall be payable
+            by the Landlord on signature of this Agreement. Any additional Agent's Fees
+            which may become due and payable from time to time shall be payable by the
+            Landlord to the Agent on demand.
+        </p>
+    </li>
+    <li>
+        <h1>costs</h1>
+        <p>
+            The Tenant shall be liable for the costs of the preparation of this Agreement
+            together with stamp duty payable thereon as well as the renewals of Agreements
+            in the amount of (Indicated on page 15) per renewal, which shall be paid
+            in advance on the date of signature thereof.
+        </p>
+        <p>
+            For any other costs that tenants may incur, a <b>LIST OF RENTAL COSTS
+            can be requested.</b>
+        </p>
+    </li>
+    <li class="page-break">
+        <h1>house rules</h1>
+        <p>
+            House Rules
+            <i>
+                are implemented to protect the rights of the tenants, owners and
+                neighbours to peaceful living. It is important that tenants, occupants
+                and their visitors are aware of the house rules and adhere to them
+                in order to at no time be a nuisance to anyone.
+            </i>
+        </p>
+        <ol>
+            <li>
+                <b>Alcohol Abuse</b>: The use of alcohol-containing products are
+                not permitted in communal area nor permitted to be left there.
+            </li>
+            <li>
+                <b>Alcohol Abuse and/or Drugs Abuse</b>: Strictly not permitted in
+                the Premises, in communal areas or around the grounds.
+            </li>
+            <li>
+                <b>Braai Facilities and Communal Areas</b>: Tenants are to clean
+                and tidy up immediately after using such.
+            </li>
+            <li>
+                <b>Drains and Sanitary Ware Usage</b>: Only non-obstructive biodegradable
+                waste is allowed. Detergents are not suitable for septic tanks.
+            </li>
+            <li>
+                <b>Electricity</b>: Should the electricity be dysfunctional, call
+                the Lessor/Agent immediately. No overloading or changes to the electrical
+                supply or re-wiring of the Premises is allowed. The Tenants and Occupants
+                will be liable for subsequent costs.
+            </li>
+            <li>
+                <b>Electrical Meters (Prepaid)</b>: If dysfunctional - notify the local
+                Municipality / the owner.
+            </li>
+            <li>
+                <b>Fibre</b>: Same rules apply for the fibre installations as for
+                electricity.
+            </li>
+            <li>
+                <b>Fires</b>: Fires are only allowed in permitted areas. Resulting
+                damages will be for the account of the Tenant.
+            </li>
+            <li>
+                <b>Fire Extinguisher</b>: Fire extinguishers may not be used for any other
+                purposes other than for extinguishing fires.
+            </li>
+            <li>
+                <b>Fittings and Fixtures to Premises</b>: These may only be installed or
+                removed by the handyman of the Owner or the duly authorised service provider
+                for the Owner.
+            </li>
+            <li>
+                <b>Freestanding Items</b>: Any items included in this lease are for
+                the sole use of the Tenants/Occupants and are not te be removed from
+                the Premises.
+            </li>
+            <li>
+                <b>Laundry</b>: Laundry is allowed only in the allocated areas on
+                the washing lines. Laundry may not be visible from the exterior of
+                the Premises.
+            </li>
+            <li>
+                <b>Postal Services</b>: To be personally arranged with the local
+                post office.
+            </li>
+            <li>
+                <b>Quiet Times</b>: Are strictly from 22:00 till 08:00. In the instance
+                of an event being planned, where the noise levels are expected to
+                be above acceptable levels, the onus will be on the Tenant/Occupant to
+                notify the other Tenant(s)/Occupant(s) of the building complex, as well
+                as surrounding neighbours will in time and proceed only after <u>all</u>
+                have given their written consent.
+            </li>
+            <li>
+                <b>Pet Animals</b>: No pet animals are allowed in the Premises or
+                on the grounds around the Premises. Written permission may be granted
+                by the Owner, which will not be binding on the Owner and may be
+                withdrawn at any time. Permission is to be granted to each and every
+                pet animal.
+            </li>
+            <li>
+                <b>Refuse</b>: Refuse have to be placed in refuse bags inside dustbins
+                and the dustbins have to be closed tightly. No refuse or refuse bags
+                may be left in any other area other than this. Dustbins may not be used
+                for any purposes other than holding refuse. The dustbins have to
+                stay on the spot allocated to them inside the Premises. The local
+                Municipality requests the placement of refuse in black bags inside
+                dustbins for purpose of removal and will refuse removal of refuse that is
+                not in black bags. Subsequently, the Tenant will be liable to remove
+                it at his/her own cost to the Municipal dumping site.
+            </li>
+            <li>
+                <b>Security</b>: <b>For the safety of all and property, please ensure at ll times</b>
+                all doors are locked, windows without burglar bars are closed, alarms are armed
+                at appropriate times AND that the gates to the grounds around the Premises
+                are closed and no unauthorised persons enter when entering or leaving.
+            </li>
+            <li>
+                <b>Security Services</b>: To be arranged privately.
+            </li>
+            <li>
+                <b>Vagrants and Unauthorised Persons</b>: No vagrants or unauthorised
+                persons are allowed on or around the Premises.
+            </li>
+            <li>
+                <b>Vehicle Parking: Vehicles of Tenants, Occupants and the Guests</b>:
+                are being allowed in the allocated parking bays and on the Premises. The
+                wheels of vehicles in unauthorised areas will be clamped. Should there
+                be no parking places available inside the Premises, then vehicles
+                have to be parked outside the grounds.
+            </li>
+            <li>
+                <b>Vehicle Washing</b>: Only authorised vehicles allowed in car
+                washing bays on Premises.
+            </li>
+            <li>
+                <b>Visitors</b>: Tenants are liable for the actions of their visitors
+                and other visitors. All requirements of this lease apply to visitors.
+            </li>
+            <li>
+                <b>Visitors Overstaying on/in the Premises</b>: Only visitors with
+                written permission from the Lessor are allowed to stay over as stipulated.
+            </li>
+            <li>
+                <b>Waste Water</b>: Only allowed to run in drains.
+            </li>
+            <li>
+                <b>Water Meters (Prepaid)</b>: if dysfunctional - notify the owner.
+            </li>
+        </ol>
+        <p>
+            <b>FEES FOR THE TRANSGRESSION OF HOUSE RULES are indicated on page 11</b>
+        </p>
+    </li>
+    <li class="page-break">
+        <h1>CONSUMER PROTECTION ACT (Only applies if the tenant is a natural person)</h1>
+        <p>
+            Insofar as the Consumer Protection Act governs this Agreement and/or
+            the relationship between the parties, it is specifically agreed that in
+            the event of any clause os sub-clause herein not being permitted in terms
+            of the Consumer Protection Act, such clause or sub-clause shall be severed
+            from this Agreement and be treated as if it were not part of this Agreement.
+            All provisions which automatically apply to an agreement of this nature in
+            terms of the Consumer Protection Act are automatically incorporated herein.
+        </p>
+        <p>
+            Notwithstanding anything contained in this Lease Agreement, the parties
+            record in writing that the following provisions of the CPA shall be
+            applicable to this Lease Agreement:
+        </p>
+        <ol>
+            <li>
+                Article 14(2)(a) and Regulation 5(1) which stipulates that the maximum
+                period of a fixed lease 24 (twenty-four) months is from the date of
+                signature by the Tenant, unless explicitly a longer period is agreed
+                with the TENANT and the LANDLORD / AGENT have provided a clear
+                advantage to the TENANT.
+            </li>
+            <li>
+                Article 14(2)(b), which entitles the TENANT to terminate the lease before
+                its due expiration date by giving 20 (twenty) business days' notice to
+                termination to the LANDLORD / AGENT, subject to the LANDLORD's right to
+                claim a reasonable cancellation penalty. <b>The parties herewith agree
+                that the following cancellation penalty is reasonable: The amount
+                equal to the full deposit amount.</b>
+            </li>
+            <li>
+                Article 14(2)(c), which entitles the LANDLORD to cancel the lease 20
+                business days after giving written notice to the TENANT of a material
+                failure by the TENANT to comply with the agreement unless the TENANT
+                has rectified the failure within that time.
+            </li>
+            <li>
+                Article 14(2)(c), which stipulates that the LANDLORD must notify the
+                TENANT in writing or in any other manner recorded of the proposed expiry date,
+                in not more than 80 (eighty) and not less than 40 (forty) working days
+                before the date of expiration of this Agreement, including notification of:
+                <ol>
+                    <li>
+                        Any significant amendments that would apply if the agreement is
+                        renewed or otherwise may continue after the expiry date.
+                    </li>
+                    <li>
+                        The fact that at the expiration of the fixed term of this agreement
+                        it will automatically continue to exist on a month-to-month
+                        basis, subject to any changes which the LANDLORD has to give
+                        notification of, unless the TENANT explicitly terminates this
+                        agreement on the expiry date; or agrees to a renewal of this
+                        agreement for another fixed term.
+                    </li>
+                </ol>
+            </li>
+        </ol>
+        <b>DECLARATION</b>
+        <p>I / We, the undersigned hereby declare that:</p>
+        <p>
+            This lease was presented to me/us in plain language and that I/we understand
+            the contents thereof. I was/We were not forced, coerced, influenced or
+            pressurised unduly, harassed or placed under duress to sign this agreement
+            and no unfair tactics or any other similar conduct with regard to the negotiation,
+            conclusion, execution or enforcement of this Agreement were applied to me.
+        </p>
+        <p>
+            This Agreement was not the result of direct marketing and as such the
+            cooling-off period as referred to in section 16 of the CPA is not applicable
+            to this transaction.
+        </p>
+        <p>
+            I/We had the opportunity to inspect the Property prior to entering into
+            this lease and have verified for myself/ourselves that it is suitable for
+            the intended purpose of this agreement.
+        </p>
+        <p>
+            I/We have the opportunity to obtain legal or other advice regarding the
+            contents thereof, and I/we have exercised such right before signing of
+            this lease, or I/we have elected, out of my/our own choice to waive such right.
+        </p>
+        <p>
+            Tenant(s) and Landlord/Agent hereby acknowledges the contents of this
+            contract and undertake to adhere to it. The Tenant(s) lease(s) this property
+            voetstoots and no rental monies may be withheld due to uncompleted repair works.
+        </p>
+    </li>
+</ol>
+
+<div class="page-break"></div>
+
+<h1>The Premises</h1>
+<div class="input-table" style="gap: 0.5rem">
+    <div>Name and Number of Buildings</div>
+    <div>Drake Road 37a</div>
+
+    <div>Street</div>
+    <div>Drake Road</div>
+
+    <div>Suburb and City / Town</div>
+    <div>Nahoon, East London</div>
+
+    <div>Postal Code</div>
+    <div>5210</div>
+
+    <div>Garages and Numbers</div>
+    <div>Nil</div>
+
+    <div>Parking Bays and Numbers</div>
+    <div>2 x Parking Bays adjacent to Premises</div>
+
+    <div>Municipal and Plot/Section Number</div>
+    <div>SS ERF 69978 EAST LONDON</div>
+
+    <div>Water Meter Owner and Number</div>
+    <div></div>
+
+    <div>Electricity (Prepaid) Meter Owner and Number</div>
+    <div>Municipality</div>
+
+    <div>Fibre Owner and Number</div>
+    <div></div>
+
+    <div>Furnished / Unfurnished</div>
+    <div>Unfurnished</div>
+</div>
+<h2>Rental Period</h2>
+<div class="input-table" style="gap: 0.5rem">
+    <div>Date and Time of COMMENCEMENT</div>
+    <div>
+        <hr style="margin-top: 0.8rem">
+    </div>
+    <div>Date and Time of TERMINATION</div>
+    <div>
+        <hr style="margin-top: 0.8rem">
+    </div>
+    </div>
+    <div>LEASE PERIOD (number of months)</div>
+    <div>12</div>
+</div>
+<h2>Agent's Fees and Costs due at Signature of this Lease</h2>
+<div class="input-table">
+    <div>Agent's Fees and Additional Agent's Fees</div>
+    <div>Nil</div>
+</div>
+<h2>Costs and Fees</h2>
+<div class="input-table" style="gap: 0.5rem">
+    <div>
+        <h2>Cost per Initial Agreement</h2>
+    </div>
+    <div>1500</div>
+    <div>DR37AEL <span>Tenant 1</span></div>
+    <div>750</div>
+    <div>DR37AEL <span>Tenant 2</span></div>
+    <div>750</div>
+    <div>
+        <h2>Renewal of Agreement</h2>
+    </div>
+    <div>1500</div>
+    <div>DR37AEL <span>Tenant 1</span></div>
+    <div>750</div>
+    <div>DR37AEL <span>Tenant 2</span></div>
+    <div>750</div>
+    <div>
+        <h2>Deposit Amounts</h2>
+    </div>
+    <div>26000</div>
+    <div>DR37AEL <span>Tenant 1</span></div>
+    <div>13000</div>
+    <div>DR37AEL <span>Tenant 2</span></div>
+    <div>13000</div>
+    <div>
+        <h2>Deposit Increase Amounts</h2>
+    </div>
+    <div>0</div>
+    <div>DR37AEL <span>Tenant 1</span></div>
+    <div>0</div>
+    <div>DR37AEL <span>Tenant 2</span></div>
+    <div>0</div>
+    <div>
+        <h2>Rental Amount ("Rent Monthly")</h2>
+    </div>
+    <div>13000</div>
+    <div>DR37AEL <span>Tenant 1</span></div>
+    <div>6500</div>
+    <div>DR37AEL <span>Tenant 2</span></div>
+    <div>6500</div>
+    <div>
+        <b>Escalation</b> (after expiry of this lease)
+    </div>
+    <div>Maximum 10%</div>
+    <div><b>Electricity (Prepaid meter)</b></div>
+    <div>Fees due by Tenant</div>
+    <div><b>Water</b></div>
+    <div>Fees due by Tenant</div>
+    <div><b>Sewerage</b></div>
+    <div>Fees due by Tenant</div>
+    <div><b>Refuse</b></div>
+    <div>Fees due by Tenant</div>
+    <div><b>Rates, Taxes and Levy</b> (annual increase)</div>
+    <div>Fees NOT due by Tenant</div>
+    <div>
+        <b>Electricity, Water, Sewerage, Refuse, Rates, Taxes</b> (fees relating
+        to damages, reconnections and increases caused by the Tenant and resultant
+        penalties and legal fees)
+    </div>
+    <div>Tenant to pay the Lessor within 7 (seven) days after being invoiced</div>
+    <div><b>WiFi/Fibre/Internet</b> (are included in the rental fees of the Premises)</div>
+    <div>Fees NOT due by Tenant</div>
+    <div><b>Interest</b> on any unpaid / outstanding amounts</div>
+    <div>
+        Due by the Tenant to the Lessor since interest will accrue, pursuant to
+        a resolution of the Body Corporate under the National Credit Act (2005) Act
+        No 34 of 2005 at present 2% per month, compounded and monthly in arrears.
+    </div>
+    <div><b>Transgression of "House Rules"</b></div>
+    <div>R2500 per written notice</div>
+</div>
+
+<div class="page-break"></div>
+
+<div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem;">
+    <div>"Agent"</div>
+    <div>(Indicated on page 1).</div>
+    <div>"Agent Fees"</div>
+    <div>
+        The Agent shall be entitled to charge an administration fee of R_______
+        (include fractional value); being in respect of preparing and holding receipts,
+        postage, petties and incidental attendances in relation thereto. This fee
+        shall include the cost of the Incoming and Outgoing Inspections referred to in
+        Clauses 14 and 28 of the Agreement. In addition to ghe aforegoing, the Agent
+        shall be entitled to charge additional Agent's fees of R_______ for attendances
+        necessary to ensure the due fulfilment of the terms of the Agreement (Indicated on page 1).
+    </div>
+    <div>"Agent's Premises"</div>
+    <div>(Indicated on page 1).</div>
+    <div>"Agreement"</div>
+    <div>
+        The agreement concluded between the parties as recorded in this document
+        together with all annexures hereto.
+    </div>
+    <div>"Commencement Date"</div>
+    <div>
+        Date at 12:00; (Indicated on page 3); An ordinary day of the week including
+        Saturdays, Sundays and Public Holidays.
+    </div>
+    <div>"House Rules"</div>
+    <div>
+        The House Rules in relation to the control, management, administration, use
+        and enjoyment of the premises and annexed hereto marked as <b><u>HOUSE RULES</u></b>
+        (if applicable).
+    </div>
+    <div>"Incoming Inspection"</div>
+    <div>
+        The mandatory inspection referred to in Section(1)(e) on the Rental Housing
+        Act No. 50 of 1999 and detailed in clause 14 of this Agreement.
+    </div>
+    <div>"Lease Period"</div>
+    <div>
+        The period from the Commencement Date to the Termination Date.
+    </div>
+    <div>"Outgoing Inspection"</div>
+    <div>
+        The mandatory inspection referred to in Section 5(1)(f) on the Rental Housing
+        Act No. 50 of 1999 and detailed in clause 28 of this Agreement.
+    </div>
+    <div>"Premises"</div>
+    <div>
+        A furnished/unfurnished (Indicated on page 1) dwelling, including the grounds
+        and/or building and/or parking bay/garage at (Indicated on page 1) including
+        such property as listed in Annexure "C".
+    </div>
+    <div>"Rental Housing Act"</div>
+    <div>The Rental Housing At No. 50 of 1999.</div>
+    <div>"Termination Date"</div>
+    <div>Date at 12:00 unless time specified differently (Indicated on page 1).</div>
+    <div>"Tribunal"</div>
+    <div>Rental Housing Tribunal established under Section 7 of the Rental Housing Act.</div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="sign-section">
+    <h3>Tenant 1 Name Printed:</h3>
+    <br>
+    <br>
+    <hr />
+    <h3>Signature of the Tenant 1 in the presence of his/her undersigned witnesses:</h3>
+    <br>
+    <br>
+    <hr />
+    <br>
+    <div class="witnesses">
+        <div>
+            <hr/>
+            <hr/>
+            <hr/>
+        </div>
+        <div>
+            <div>Witness 1 Signature:</div>
+            <div>Witness 1 Name Printed:</div>
+            <div>Witness 1 Contact Number:</div>
+        </div>
+        <div>
+            <hr/>
+            <hr/>
+            <hr/>
+        </div>
+        <div>
+            <div>Witness 2 Signature:</div>
+            <div>Witness 2 Name Printed:</div>
+            <div>Witness 2 Contact Number:</div>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex">
+        <p>at</p>
+        <div>
+            <hr style="width: 20rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>of the</p>
+        <div>
+            <hr style="width: 3rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>day of</p>
+        <div>
+            <hr style="width: 10rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>20</p>
+        <div>
+            <hr style="width: 3rem; margin-top: 1.5rem;"/>
+        </div>
+    </div>
+</div>
+
+<div class="sign-section">
+    <h3>Tenant 2 Name Printed:</h3>
+    <br>
+    <br>
+    <hr />
+    <h3>Signature of the Tenant 1 in the presence of his/her undersigned witnesses:</h3>
+    <br>
+    <br>
+    <hr />
+    <br>
+    <div class="witnesses">
+        <div>
+            <hr/>
+            <hr/>
+            <hr/>
+        </div>
+        <div>
+            <div>Witness 1 Signature:</div>
+            <div>Witness 1 Name Printed:</div>
+            <div>Witness 1 Contact Number:</div>
+        </div>
+        <div>
+            <hr/>
+            <hr/>
+            <hr/>
+        </div>
+        <div>
+            <div>Witness 2 Signature:</div>
+            <div>Witness 2 Name Printed:</div>
+            <div>Witness 2 Contact Number:</div>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex">
+        <p>at</p>
+        <div>
+            <hr style="width: 20rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>of the</p>
+        <div>
+            <hr style="width: 3rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>day of</p>
+        <div>
+            <hr style="width: 10rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>20</p>
+        <div>
+            <hr style="width: 3rem; margin-top: 1.5rem;"/>
+        </div>
+    </div>
+</div>
+
+
+<div class="sign-section">
+    <h3>Agent (duly authorised to) Name Printed:</h3>
+    <br>
+    <br>
+    <hr />
+    <h3>Signature of the Agent in the presence of his/her undersigned witnesses:</h3>
+    <br>
+    <br>
+    <hr />
+    <br>
+    <div class="witnesses">
+        <div>
+            <hr/>
+            <hr/>
+            <hr/>
+        </div>
+        <div>
+            <div>Witness 1 Signature:</div>
+            <div>Witness 1 Name Printed:</div>
+            <div>Witness 1 Contact Number:</div>
+        </div>
+        <div>
+            <hr/>
+            <hr/>
+            <hr/>
+        </div>
+        <div>
+            <div>Witness 2 Signature:</div>
+            <div>Witness 2 Name Printed:</div>
+            <div>Witness 2 Contact Number:</div>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex">
+        <p>at</p>
+        <div>
+            <hr style="width: 20rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>of the</p>
+        <div>
+            <hr style="width: 3rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>day of</p>
+        <div>
+            <hr style="width: 10rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>20</p>
+        <div>
+            <hr style="width: 3rem; margin-top: 1.5rem;"/>
+        </div>
+    </div>
+</div>
+
+
+<div class="sign-section">
+    <h3>Landlord (duly authorised to) Name Printed:</h3>
+    <br>
+    <br>
+    <hr />
+    <h3>Signature of the Landlord in the presence of his/her undersigned witnesses:</h3>
+    <br>
+    <br>
+    <hr />
+    <br>
+    <div class="witnesses">
+        <div>
+            <hr/>
+            <hr/>
+            <hr/>
+        </div>
+        <div>
+            <div>Witness 1 Signature:</div>
+            <div>Witness 1 Name Printed:</div>
+            <div>Witness 1 Contact Number:</div>
+        </div>
+        <div>
+            <hr/>
+            <hr/>
+            <hr/>
+        </div>
+        <div>
+            <div>Witness 2 Signature:</div>
+            <div>Witness 2 Name Printed:</div>
+            <div>Witness 2 Contact Number:</div>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex">
+        <p>at</p>
+        <div>
+            <hr style="width: 20rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>of the</p>
+        <div>
+            <hr style="width: 3rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>day of</p>
+        <div>
+            <hr style="width: 10rem; margin-top: 1.5rem;"/>
+        </div>
+        <p>20</p>
+        <div>
+            <hr style="width: 3rem; margin-top: 1.5rem;"/>
+        </div>
+    </div>
+</div>
 </body>
 </html>
